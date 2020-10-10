@@ -35,21 +35,21 @@ for legislator in legislators:
 
 donor_info = donor_info()
 pprint.pprint(donor_info)
-candidates_in_db = []
+donors_in_db = []
 
 response = donor_info['response']
-legislators = response['legislator']
+contributors = response['contributors']
+contributor = contributors['contributor']
 
-for legislator in legislators:
-    attributes = legislator['@attributes']
-    firstlast = attributes['firstlast']
-    party = attributes['party']
-    cid = attributes['cid']
+for contrib in contributor:
+    attributes = contrib['@attributes']
+    org_name = attributes['org_name']
+    total = attributes['total']
 
-    db_candidate = crud.create_candidate(cid, firstlast, party)
-    candidates_in_db.append(db_candidate)
+    db_donor = crud.create_donor(org_name, total)
+    donors_in_db.append(db_donor)
 
-pprint.pprint(candidates_in_db)
+pprint.pprint(donors_in_db)
 
 # Create 10 users; each user will make 10 ratings
 # for n in range(10):

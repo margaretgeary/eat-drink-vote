@@ -27,18 +27,21 @@ def candidate_info():
 
 def donor_info():
 
-    years = ["2012", "2014", "2016," "2018", "2020"]
+    years = ["2012", "2014", "2016", "2018", "2020"]
 
     candidates = Candidate.query.all()
 
     for year in years:
         for candidate in candidates:
-            donor_resp = requests.get("https://www.opensecrets.org/api/?method=candContrib")
-            params={
-                "apikey": os.environ['apikey'],
-                "cid": candidate,
-                "cycle": year,
-                "output": "json",
-            },
-        print(donor_resp.json())
+            donor_resp = requests.get(
+                "https://www.opensecrets.org/api/",
+                params={
+                    "apikey": os.environ['apikey'],
+                    "method": "candContrib",
+                    "cid": candidate.cid,
+                    "cycle": year,
+                    "output": "json",
+                },
+            )
+        print("This is what donor response is for candidate:", candidate)
         return donor_resp.json()

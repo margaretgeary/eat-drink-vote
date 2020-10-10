@@ -32,10 +32,10 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_donor(donor_name, industry):
+def create_donor(org_name, total):
     """Create and return a new donor."""
 
-    donor = Donor(donor_name=donor_name, industry=industry)
+    donor = Donor(org_name=org_name, total=total)
 
     db.session.add(donor)
     db.session.commit()

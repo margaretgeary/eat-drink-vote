@@ -24,13 +24,13 @@ class Donor(db.Model):
     __tablename__ = 'donors'
 
     donor_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    donor_name = db.Column(db.String, unique=True)
-    industry = db.Column(db.String)
+    org_name = db.Column(db.String, unique=True)
+    total = db.Column(db.String)
 
     # donations = db.relationship("Donation")
 
     def __repr__(self):
-        return f'<Donor donor_id={self.donor_id} donor_name={self.donor_name}>'
+        return f'<Donor donor_id={self.donor_id} org_name={self.org_name} total={self.total}>'
 
 
 class Donation(db.Model):
@@ -39,7 +39,6 @@ class Donation(db.Model):
     __tablename__ = 'donations'
 
     donation_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    amount = db.Column(db.Integer)
     cid = db.Column(db.String, db.ForeignKey('candidates.cid'))
     donor_id = db.Column(db.Integer, db.ForeignKey('donors.donor_id'))
 
@@ -47,7 +46,7 @@ class Donation(db.Model):
     donor = db.relationship('Donor', backref='donations')
 
     def __repr__(self):
-        return f'<Donation donation_id={self.donation_id} amount={self.amount}>'
+        return f'<Donation donation_id={self.donation_id}>'
 
 def connect_to_db(flask_app, db_uri='postgresql:///donations', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri

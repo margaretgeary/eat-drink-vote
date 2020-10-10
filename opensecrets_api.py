@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from model import Candidate
 import requests
 import os
 import pprint
@@ -15,7 +16,7 @@ def candidate_info():
 
     for state in states:
         candidate_resp = requests.get(
-            "http://www.opensecrets.org/api/?method=getLegislators&id=NJ&apikey=328d75a1609aade8bb040fa0fc597fde",
+            "http://www.opensecrets.org/api/?method=getLegislators",
             params={
                 "apikey": os.environ['apikey'],
                 "id": state,
@@ -24,16 +25,20 @@ def candidate_info():
         )
     return candidate_resp.json()
 
-def industry_info():
+def donor_info():
 
-    apikey = "328d75a1609aade8bb040fa0fc597fde"
-    industry_resp = requests.get("https://www.opensecrets.org/api/?method=candIndustry&cid=N00007360&cycle=2020&apikey=328d75a1609aade8bb040fa0fc597fde"
-        "",
-        params={
-            "apikey": apikey,
-            "cid": "N00003389",
-            "cycle": "2020",
-            "output": "json",
-        },
-    )
-    return industry_resp.json()
+    years = ["2012", "2014", "2016," "2018", "2020"]
+
+    candidates = Candidate.query.all()
+
+    for year in years:
+        for candidate in candidates:
+            donor_resp = requests.get("https://www.opensecrets.org/api/?method=candContrib")
+            params={
+                "apikey": os.environ['apikey'],
+                "cid": candidate,
+                "cycle": year,
+                "output": "json",
+            },
+        print(donor_resp.json())
+        return donor_resp.json()

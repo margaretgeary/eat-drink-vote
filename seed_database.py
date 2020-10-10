@@ -6,9 +6,10 @@ from random import choice, randint
 import pprint
 
 import crud
+from model import Candidate
 import model
 import server
-from opensecrets_api import candidate_info, industry_info
+from opensecrets_api import candidate_info, donor_info
 
 os.system('dropdb donations')
 os.system('createdb donations')
@@ -17,7 +18,6 @@ model.connect_to_db(server.app)
 model.db.create_all()
 
 candidate_info = candidate_info()
-industry_info = industry_info()
 
 candidates_in_db = []
 
@@ -28,8 +28,25 @@ for legislator in legislators:
     attributes = legislator['@attributes']
     firstlast = attributes['firstlast']
     party = attributes['party']
+    cid = attributes['cid']
 
-    db_candidate = crud.create_politician(firstlast, party)
+    db_candidate = crud.create_candidate(cid, firstlast, party)
+    candidates_in_db.append(db_candidate)
+
+donor_info = donor_info()
+pprint.pprint(donor_info)
+candidates_in_db = []
+
+response = donor_info['response']
+legislators = response['legislator']
+
+for legislator in legislators:
+    attributes = legislator['@attributes']
+    firstlast = attributes['firstlast']
+    party = attributes['party']
+    cid = attributes['cid']
+
+    db_candidate = crud.create_candidate(cid, firstlast, party)
     candidates_in_db.append(db_candidate)
 
 pprint.pprint(candidates_in_db)

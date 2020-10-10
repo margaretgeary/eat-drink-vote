@@ -5,19 +5,17 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class Politician(db.Model):
-    """A politician."""
+class Candidate(db.Model):
+    """A Candidate."""
 
-    __tablename__ = 'politicians'
+    __tablename__ = 'candidates'
 
-    politician_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String, unique=True)
+    cid = db.Column(db.String, primary_key=True)
+    firstlast = db.Column(db.String, unique=True)
     party = db.Column(db.String)
 
-    # donations = db.relationship("Donation")
-
     def __repr__(self):
-        return f'<Politician politician_id={self.politician_id} name={self.name} party={self.party}>'
+        return f'<Candidate cid={self.cid} name={self.firstlast} party={self.party}>'
 
 
 class Donor(db.Model):
@@ -42,10 +40,10 @@ class Donation(db.Model):
 
     donation_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     amount = db.Column(db.Integer)
-    politician_id = db.Column(db.Integer, db.ForeignKey('politicians.politician_id'))
+    cid = db.Column(db.String, db.ForeignKey('candidates.cid'))
     donor_id = db.Column(db.Integer, db.ForeignKey('donors.donor_id'))
 
-    politician = db.relationship('Politician', backref='donations')
+    candidate = db.relationship('Candidate', backref='donations')
     donor = db.relationship('Donor', backref='donations')
 
     def __repr__(self):

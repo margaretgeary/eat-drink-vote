@@ -9,29 +9,24 @@ import crud
 from model import Candidate
 import model
 import server
-from opensecrets_api import candidate_info, donor_info
+from opensecrets_api import get_candidates, donor_info
 
-os.system('dropdb donations')
-os.system('createdb donations')
 
-model.connect_to_db(server.app)
-model.db.create_all()
 
-candidate_info = candidate_info()
 
-candidates_in_db = []
 
-response = candidate_info['response']
-legislators = response['legislator']
-
-for legislator in legislators:
-    attributes = legislator['@attributes']
-    firstlast = attributes['firstlast']
-    party = attributes['party']
-    cid = attributes['cid']
-
-    db_candidate = crud.create_candidate(cid, firstlast, party)
-    candidates_in_db.append(db_candidate)
+if True:
+    os.system('dropdb donations')
+    os.system('createdb donations')
+    model.connect_to_db(server.app)
+    model.db.create_all()
+    candidates = get_candidates()
+    candidates_in_db = []
+    for candidate in candidates:
+        db_candidate = crud.create_candidate(candidate['cid'], candidate['firstlast'], candidate['party'])
+        candidates_in_db.append(db_candidate)
+else:
+    model.connect_to_db(server.app)
 
 donor_info = donor_info()
 pprint.pprint(donor_info)

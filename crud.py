@@ -3,10 +3,10 @@
 from model import db, Candidate, Donation, Donor, connect_to_db
 
 
-def create_candidate(cid, firstlast, party):
+def create_candidate(cid, firstlast, party, state):
     """Create and return a new candidate."""
 
-    candidate = Candidate(cid=cid, firstlast=firstlast, party=party)
+    candidate = Candidate(cid=cid, firstlast=firstlast, party=party, state=state)
 
     db.session.add(candidate)
     db.session.commit()
@@ -14,28 +14,28 @@ def create_candidate(cid, firstlast, party):
     return candidate
 
 
-def get_users():
-    """Return all users."""
+def get_all_candidates():
+    """Return all candidates."""
 
-    return User.query.all()
+    return Candidate.query.all()
 
 
-def get_user_by_id(user_id):
+def get_candidate_by_id(cid):
     """Return a user by primary key."""
 
-    return User.query.get(user_id)
+    return Candidate.query.get(cid)
 
 
-def get_user_by_email(email):
-    """Return a user by email."""
+# def get_user_by_email(email):
+#     """Return a user by email."""
 
-    return User.query.filter(User.email == email).first()
+#     return User.query.filter(User.email == email).first()
 
 
-def create_donor(org_name, total):
+def create_donor(org_name):
     """Create and return a new donor."""
 
-    donor = Donor(org_name=org_name, total=total)
+    donor = Donor(org_name=org_name)
 
     db.session.add(donor)
     db.session.commit()
@@ -43,22 +43,22 @@ def create_donor(org_name, total):
     return donor
 
 
-def get_movies():
-    """Return all movies."""
+def get_all_donors():
+    """Return all donors."""
 
-    return Movie.query.all()
+    return Donor.query.all()
 
 
-def get_movie_by_id(movie_id):
+def get_donor_by_id(donor_id):
     """Return a movie by primary key."""
 
-    return Movie.query.get(movie_id)
+    return Donor.query.get(donor_id)
 
 
-def create_donation(politician, donor, amount):
+def create_donation(candidate, donor, total):
     """Create and return a new donation."""
 
-    donation = Donation(politician=politician, donor=donor, amount=amount)
+    donation = Donation(candidate=candidate, donor=donor, total=total)
 
     db.session.add(donation)
     db.session.commit()

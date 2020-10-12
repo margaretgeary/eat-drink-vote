@@ -13,6 +13,7 @@ class Candidate(db.Model):
     cid = db.Column(db.String, primary_key=True)
     firstlast = db.Column(db.String, unique=True)
     party = db.Column(db.String)
+    state = db.Column(db.String)
 
     def __repr__(self):
         return f'<Candidate cid={self.cid} name={self.firstlast} party={self.party}>'
@@ -25,13 +26,13 @@ class Donor(db.Model):
 
     donor_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     org_name = db.Column(db.String, unique=True)
-    total = db.Column(db.String)
+    # total = db.Column(db.String)
 
     # donations = db.relationship("Donation")
 
     def __repr__(self):
-        return f'<Donor donor_id={self.donor_id} org_name={self.org_name} total={self.total}>'
-
+        # return f'<Donor donor_id={self.donor_id} org_name={self.org_name}>'
+        return f'<Donor org_name={self.org_name}>'
 
 class Donation(db.Model):
     """A donation."""
@@ -41,6 +42,7 @@ class Donation(db.Model):
     donation_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     cid = db.Column(db.String, db.ForeignKey('candidates.cid'))
     donor_id = db.Column(db.Integer, db.ForeignKey('donors.donor_id'))
+    total = db.Column(db.String)
 
     candidate = db.relationship('Candidate', backref='donations')
     donor = db.relationship('Donor', backref='donations')

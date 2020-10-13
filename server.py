@@ -1,7 +1,6 @@
 """Server for movie ratings app."""
 
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from flask import Flask, render_template, request, flash, session,redirect, jsonify
 from model import connect_to_db
 import crud
 
@@ -29,16 +28,16 @@ def all_donors():
 @app.route('/api/donors/<id>')
 def donor(donor_id):
     donor = crud.get_donor_by_id(donor_id)
-    return jsonify({'movie': {'movie_id': movie.movie_id, 'title': movie.title, 'overview': movie.overview, 'release_date': movie.release_date, 'poster_path': movie.poster_path}})
+    return jsonify({'donor': {'donor_id': donor.donor_id, 'org_name': donor.org_name}})
 
 
 
-@app.route('/api/movies')
-def movies():
-    movie_list = []
-    for movie in crud.get_movies():
-        movie_list.append({'movie_id': movie.movie_id, 'title': movie.title, 'overview': movie.overview, 'release_date': movie.release_date, 'poster_path': movie.poster_path})
-    return jsonify({'movies': movie_list})
+@app.route('/api/donors')
+def donors():
+    donor_list = []
+    for donor in crud.get_all_donors():
+        donor_list.append({'donor_id': donor.donor_id, 'org_name': donor.org_name})
+    return jsonify({'donors': donor_list})
     
 
 if __name__ == '__main__':

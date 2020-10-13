@@ -10,7 +10,7 @@ def get_candidates():
 
     # states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
     # states = ["CA", "NY"]
-    states=["CA"]
+    states=["NJ"]
 
     candidates = []
     for state in states:
@@ -39,7 +39,7 @@ def get_donors():
     # years = ["2012", "2014", "2016", "2018", "2020"]
     years = ["2018"]
 
-    candidates = Candidate.query.all()
+    candidates = Candidate.query.filter(Candidate.state=="NJ").all()
     #candidates = Candidate.query.limit(3).all()
     # candidates = Candidate.query.filter(Candidate.firstlast=="Kirsten Gillibrand").all()
 

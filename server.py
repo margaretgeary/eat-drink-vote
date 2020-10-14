@@ -28,9 +28,10 @@ def all_donors():
 @app.route('/api/donors/<id>')
 def donor(donor_id):
     donor = crud.get_donor_by_id(donor_id)
-    return jsonify({'donor': {'donor_id': donor.donor_id, 'org_name': donor.org_name}})
-
-
+    candidates = []
+    for donation in donor.donations:
+        candidates.append(donation.candidate)
+    return jsonify({'donor': {'donor_id': donor.donor_id, 'org_name': donor.org_name, 'candidates': candidates}})
 
 @app.route('/api/donors')
 def donors():

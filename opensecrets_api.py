@@ -9,7 +9,9 @@ app = Flask(__name__)
 def get_candidates():
 
     # states = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
-    
+    # states added = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA"]
+    states = ["IA"]
+
     candidates = []
     for state in states:
         print(f"Hitting opensecrets getLegislators for {state}...")
@@ -37,7 +39,7 @@ def get_donors():
     # years = ["2012", "2014", "2016", "2018", "2020"]
     years = ["2018", "2020"]
 
-    candidates = Candidate.query.all()
+    candidates = Candidate.query.filter(Candidate.state=="IA").all()
     #candidates = Candidate.query.limit(3).all()
     # candidates = Candidate.query.filter(Candidate.firstlast=="Kirsten Gillibrand").all()
 
@@ -89,3 +91,5 @@ def get_donors():
         #     print(f"URRRRRRRR donors for {candidate} in {year}")
         #     pprint.pprint(donor_resp.json())
         # return donor_resp.json()
+
+

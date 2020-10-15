@@ -25,13 +25,22 @@ def all_donors():
     return render_template('donors.html')
 
 
-@app.route('/api/donors/<id>')
+@app.route('/api/donors/<donor_id>')
 def donor(donor_id):
     donor = crud.get_donor_by_id(donor_id)
     candidates = []
     for donation in donor.donations:
-        candidates.append(donation.candidate)
-    return jsonify({'donor': {'donor_id': donor.donor_id, 'org_name': donor.org_name, 'candidates': candidates}})
+        info = {
+            'firstlast': donation.candidate.firstlast,
+            'party': donation.candidate.party,
+            'state': donation.candidate.state
+        }
+        candidates.append(info)
+    return jsonify({'donor': {
+        # 'donor_id': donor.donor_id,
+        # 'org_name': donor.org_name,
+        'candidates': candidates
+    }})
 
 @app.route('/api/donors')
 def donors():

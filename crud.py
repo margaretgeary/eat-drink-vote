@@ -50,7 +50,7 @@ def get_all_donors():
 
 
 def get_donor_by_id(donor_id):
-    """Return a movie by primary key."""
+    """Return a donor by primary key."""
 
     return Donor.query.get(donor_id)
 

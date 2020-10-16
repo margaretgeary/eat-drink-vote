@@ -33,9 +33,11 @@ def donor(donor_id):
         info = {
             'firstlast': donation.candidate.firstlast,
             'party': donation.candidate.party,
-            'state': donation.candidate.state
+            'state': donation.candidate.state,
+            'total': donation.total
         }
-        candidates.append(info)
+        if info not in candidates:
+            candidates.append(info)
     return jsonify({'donor': {
         # 'donor_id': donor.donor_id,
         # 'org_name': donor.org_name,

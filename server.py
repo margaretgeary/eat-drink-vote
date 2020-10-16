@@ -28,7 +28,7 @@ def all_donors():
 @app.route('/api/donors/<donor_id>')
 def donor(donor_id):
     donor = crud.get_donor_by_id(donor_id)
-    candidates = []
+    candidate_list = []
     for donation in donor.donations:
         info = {
             'firstlast': donation.candidate.firstlast,
@@ -36,8 +36,9 @@ def donor(donor_id):
             'state': donation.candidate.state,
             'total': donation.total
         }
-        if info not in candidates:
-            candidates.append(info)
+        if info not in candidate_list:
+            candidate_list.append(info)
+            candidates = sorted(candidate_list, key = lambda i: i['total'],reverse=True)
     return jsonify({'donor': {
         # 'donor_id': donor.donor_id,
         # 'org_name': donor.org_name,

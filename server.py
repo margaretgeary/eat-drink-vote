@@ -34,14 +34,15 @@ def donor(donor_id):
             'firstlast': donation.candidate.firstlast,
             'party': donation.candidate.party,
             'state': donation.candidate.state,
-            'total': donation.total
+            'total': int(donation.total)
         }
-        if info not in candidate_list:
+        existing_candidates = list(candidate for candidate in candidate_list if candidate['firstlast'] == donation.candidate.firstlast)
+        if existing_candidates == []:
             candidate_list.append(info)
-            candidates = sorted(candidate_list, key = lambda i: i['total'],reverse=True)
+        else:
+            existing_candidates[0]['total'] += int(donation.total)
+    candidates = sorted(candidate_list, key = lambda i: i['total'],reverse=True)
     return jsonify({'donor': {
-        # 'donor_id': donor.donor_id,
-        # 'org_name': donor.org_name,
         'candidates': candidates
     }})
 

@@ -1,6 +1,6 @@
 # """CRUD operations."""
 
-from model import db, Candidate, Donation, Donor, connect_to_db
+from model import db, Candidate, Donation, Donor, Industry, Organization, connect_to_db
 
 
 def create_candidate(cid, firstlast, party, state):
@@ -65,6 +65,24 @@ def create_donation(candidate, donor, total):
 
     return donation
 
+
+def get_industries():
+
+    catcode_list = ["A1300", "C2000", "C4100", "C5000", "C5110", "C5210", "C6100", "C6200", "C6300", "C6400", "C6500", "E1110", "F2300", "F3200", "G2100", "G2300", "G2400", "G2600", "G2700", "G2800", "G4000", "G4300", "G4500", "G4900", "G2600", "G2810", "G2900", "G4900", "H4000", "H5100", "M3200", "M3300", "T1100", "T2100"]
+
+    return db.session.query(Industry).filter(Industry.catcode.in_((catcode_list))).all()
+
+
+def get_industries_by_catcode(catcode):
+
+    return Industry.query.get(catcode)
+
+
+def match_orgs_and_donors():
+
+    match = db.session.query(Organization, Industry).filter(Organization.orgname == Donor.org_name).all()
+    
+    return match
 
 if __name__ == '__main__':
     from server import app

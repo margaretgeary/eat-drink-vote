@@ -1,7 +1,7 @@
 """Server for movie ratings app."""
 
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import connect_to_db
+from model import connect_to_db, Organization, Donor
 import crud
 
 from jinja2 import StrictUndefined
@@ -52,7 +52,32 @@ def donors():
     for donor in crud.get_all_donors():
         donor_list.append({'donor_id': donor.donor_id, 'org_name': donor.org_name})
     return jsonify({'donors': donor_list})
-    
+
+
+@app.route('/api/industries')
+def industries():
+    industry_list = []
+    for industry in crud.get_industries():
+        industry_list.append({'catcode': industry.catcode, 'catname': industry.catname})
+    return jsonify({'industries': industry_list}) 
+
+
+@app.route('/api/industries/<catcode>')
+def industry(catcode):
+    organizations = Organization.query(Organization, Donor).filter(
+        Organization.orgname==Donor.org_name).filter(
+        Organization.realcode == catcode).distinct(Organization.orgname).all()
+    organization_list = []
+    for organization in organizations:
+        info = {'orgname': organization.orgname.strip()}
+        if info not in organization_list:
+            organization_list.append(info)
+    for donor in crud.get_all_donors():
+        organization_list.append({'donor_id': donor.donor_id,'org_name': donor.org_name})
+    return jsonify({'industry': {
+        'organizations': organization_list
+    }})
+
 
 if __name__ == '__main__':
     connect_to_db(app)

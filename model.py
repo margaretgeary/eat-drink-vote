@@ -43,9 +43,13 @@ class Donation(db.Model):
     cid = db.Column(db.String, db.ForeignKey('candidates.cid'))
     donor_id = db.Column(db.Integer, db.ForeignKey('donors.donor_id'))
     total = db.Column(db.String)
+    # fec_trans_id = db.Column(db.String, db.ForeignKey('organizations.fec_trans_id'))
+    # catcode = db.Column(db.String, db.ForeignKey('industries.catcode'))
 
     candidate = db.relationship('Candidate', backref='donations')
     donor = db.relationship('Donor', backref='donations')
+    # organization = db.relationship('Organization', backref='organizations')
+    # industry = db.relationship('Industry', backref='industries')
 
     def __repr__(self):
         return f'<Donation donation_id={self.donation_id}>'

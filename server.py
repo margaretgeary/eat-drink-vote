@@ -48,6 +48,8 @@ def donor(donor_id):
             existing_candidates[0]['total'] += int(donation.total)
     candidates = sorted(candidate_list, key = lambda i: i['total'],reverse=True)
     totals['all'] = sum(totals.values())
+    totals['d_perc'] = round((totals['D']/totals['all'])*100)
+    totals['r_perc'] = round((totals['R']/totals['all'])*100)
     return jsonify({'donor': {
         'candidates': candidates,
         'totals': totals,

@@ -80,7 +80,7 @@ def get_industries_by_catcode(catcode):
 
 def match_orgs_and_donors():
 
-    match = db.session.query(Organization, Industry).filter(Organization.orgname == Donor.org_name).all()
+    match = db.session.query(Organization, Donor).filter(Organization.orgname == Donor.org_name).all()
     
     return match
 

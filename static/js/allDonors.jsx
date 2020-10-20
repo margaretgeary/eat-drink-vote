@@ -34,7 +34,7 @@ function Donor({ donor }) {
                     return (
                         <React.Fragment>
                             <div><p>{candidate.firstlast}, {candidate.party}-{candidate.state}</p>
-                                <p>${candidate.total}</p></div>
+                                <p>${candidate.total.toLocaleString()}</p></div>
                             <br></br>
                         </React.Fragment>
                     )

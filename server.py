@@ -18,13 +18,16 @@ def homepage():
     return render_template('homepage.html')
 
 
-@app.route('/donors')
-def all_donors():
+@app.route('/industries')
+def all_industries():
     """View all donors/food companies."""
 
-    return render_template('donors.html')
+    return render_template('industries.html')
 
-
+#SQLALCHEMY EAGER LOADING
+#N+1 QUERIES
+#JOIN DONOR, CANDIDATE, & DONATION TOGETHER
+#RATHER THAN 3 SEPARATE REQUESTS
 @app.route('/api/donors/<donor_id>')
 def donor(donor_id):
     donor = crud.get_donor_by_id(donor_id)
@@ -73,12 +76,14 @@ def industries():
 
 @app.route('/api/industries/<catcode>')
 def industry(catcode):
-    organizations = db.session.query(Organization.orgname).\
+    organizations = db.session.query(Organization.orgname, Donor.donor_id, Donor.org_name).\
         join(Donor, Donor.org_name == Organization.orgname).\
         filter(Organization.realcode == catcode).distinct(Organization.orgname).all()
     organization_list = []
     for organization in organizations:
-        info = {'orgname': organization.orgname.strip()}
+        info = {'orgname': organization.orgname.strip(),
+            'donor_id': organization.donor_id,
+            'org_name': organization.org_name}
         if info not in organization_list:
             organization_list.append(info)
     return jsonify({'industry': {

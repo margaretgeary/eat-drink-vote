@@ -15,20 +15,24 @@ function Industry({ catcode, catname }) {
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
-                <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={catcode}>
-                    {catname}
-                </ReactBootstrap.Accordion.Toggle>
+                <ReactBootstrap.Button 
+                    onClick={() => setIsOpen(!isOpen) }
+                    aria-controls={`collapse-${catcode}`}
+                    aria-expanded={isOpen}
+                    >
+                        {catname}
+                </ReactBootstrap.Button>
             </ReactBootstrap.Card.Header>
             {donors.organizations &&
-                <ReactBootstrap.Accordion.Collapse eventKey={catcode}> 
+                <ReactBootstrap.Collapse in={isOpen}> 
                     <ReactBootstrap.Card.Body>
                     {donors.organizations.map(organization => {
                         return (
-                            <Donor donor_id={organization.donor_id} org_name={organization.org_name}>urrrr</Donor>
+                            <Donor key={organization.donor_id} donor_id={organization.donor_id} org_name={organization.org_name}>urrrr</Donor>
                         )
                     })}
                     </ReactBootstrap.Card.Body>
-                </ReactBootstrap.Accordion.Collapse>
+                </ReactBootstrap.Collapse>
             }
         </ReactBootstrap.Card>
     )
@@ -48,7 +52,7 @@ function Donor({donor_id, org_name}) {
             console.log("Got donor response", donor);
             setCandidates(donor.donor);
         })
-    }, [isOpen, donor_id]) // dependency list (if these change, the function gets called)
+    }, [isOpen, donor_id]) // dependency list (if these change, the function gets called)   
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -62,7 +66,7 @@ function Donor({donor_id, org_name}) {
                     <h3>{org_name} donated {candidates.totals.d_perc}% to Democrats and {candidates.totals.r_perc}% to Republicans.</h3>
                     {candidates.candidates.map(candidate => {
                         return (
-                            <React.Fragment>
+                            <React.Fragment key={candidate.firstlast}>
                                 <div><p>{candidate.firstlast}, {candidate.party}-{candidate.state}</p>
                                     <p>${candidate.total.toLocaleString()}</p></div>
                                 <br></br>
@@ -87,7 +91,7 @@ function AllIndustries() {
     if (industries.length === 0) return <div>Loading...</div>
     const content = []
     for (const industry of industries) {
-        content.push(<Industry catcode={industry.catcode} catname={industry.catname}/>);
+        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname}/>);
     }
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 

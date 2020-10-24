@@ -1,3 +1,7 @@
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, Link } from 'react-router'
+
 function Industry({ catcode, catname }) {
     const [isOpen, setIsOpen] = React.useState(false);
     const [donors, setDonors] = React.useState({}); //donors is being set to: industry: organizations: orgname
@@ -87,6 +91,7 @@ function Donor({donor_id, org_name}) {
 //one search bar with radio feature where user selects what they're searching for
 function NavBar() {
     return (
+        // <div>hi margaret</div>
         <ReactBootstrap.Navbar bg="dark" variant="dark">
             <ReactBootstrap.Navbar.Brand href="#home">Campaign Finance App</ReactBootstrap.Navbar.Brand>
             <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -106,11 +111,16 @@ function NavBar() {
                 </ReactBootstrap.Form>
             </ReactBootstrap.Navbar.Collapse>
         </ReactBootstrap.Navbar>
-
     )
 
 }
 
+function About(){
+    return (
+        <div>Hello!</div>
+    )
+
+}
 
 
 //     const [industries, setIndustries] = React.useState([]);
@@ -128,7 +138,15 @@ function NavBar() {
 
 // }
 
-ReactDOM.render(<NavBar />, document.getElementById('root'))
+ReactDOM.render((
+    <div>
+        <NavBar />
+        {/* <BrowserRouter>
+            <Route path="#about" component={About}/>
+        </BrowserRouter> */}
+    </div>
+    ), 
+    document.getElementById('root'))
 
 
 //have list of possibilities

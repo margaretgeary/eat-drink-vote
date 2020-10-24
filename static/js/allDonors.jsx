@@ -80,21 +80,56 @@ function Donor({donor_id, org_name}) {
     )
 }
 //loop through candidate list and make list of jsx elements and put list into line 33(like trading cards lab)
+//search bar-show nothing on screen until they search for something that matches
+//then you find corresponding thing and show that
+//is there a match? if there is a match figure out how to display one that is matching
+//use regular expression
+//one search bar with radio feature where user selects what they're searching for
+function NavBar() {
+    return (
+        <ReactBootstrap.Navbar bg="dark" variant="dark">
+            <ReactBootstrap.Navbar.Brand href="#home">Campaign Finance App</ReactBootstrap.Navbar.Brand>
+            <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
+                <ReactBootstrap.Nav className="mr-auto">
+                    <ReactBootstrap.Nav.Link href="#home">Home</ReactBootstrap.Nav.Link>
+                    <ReactBootstrap.Nav.Link href="#about">About</ReactBootstrap.Nav.Link>
+                    <ReactBootstrap.NavDropdown title="Browse" id="basic-nav-dropdown">
+                        <ReactBootstrap.NavDropdown.Item href="#action/3.1">Industries</ReactBootstrap.NavDropdown.Item>
+                        <ReactBootstrap.NavDropdown.Item href="#action/3.2">Companies</ReactBootstrap.NavDropdown.Item>
+                        <ReactBootstrap.NavDropdown.Item href="#action/3.3">Candidates</ReactBootstrap.NavDropdown.Item>
+                    </ReactBootstrap.NavDropdown>
+                </ReactBootstrap.Nav>
+                <ReactBootstrap.Form inline>
+                    <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                    <ReactBootstrap.Button variant="outline-success">Search</ReactBootstrap.Button>
+                </ReactBootstrap.Form>
+            </ReactBootstrap.Navbar.Collapse>
+        </ReactBootstrap.Navbar>
 
-function AllIndustries() {
-    const [industries, setIndustries] = React.useState([]);
-    React.useEffect(() => {
-        fetch('/api/industries').
-        then((response) => response.json()).
-        then((industries) => setIndustries(industries.industries));
-    }, [])
-    if (industries.length === 0) return <div>Loading...</div>
-    const content = []
-    for (const industry of industries) {
-        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname}/>);
-    }
-    return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
+    )
 
 }
 
-ReactDOM.render(<AllIndustries />, document.getElementById('root'))
+
+
+//     const [industries, setIndustries] = React.useState([]);
+//     React.useEffect(() => {
+//         fetch('/api/industries').
+//         then((response) => response.json()).
+//         then((industries) => setIndustries(industries.industries));
+//     }, [])
+//     if (industries.length === 0) return <div>Loading...</div>
+//     const content = []
+//     for (const industry of industries) {
+//         content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname}/>);
+//     }
+//     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
+
+// }
+
+ReactDOM.render(<NavBar />, document.getElementById('root'))
+
+
+//have list of possibilities
+//as user types, you check if there's a match

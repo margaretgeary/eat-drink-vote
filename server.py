@@ -15,14 +15,8 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """View homepage."""
 
-    return render_template('homepage.html')
-
-
-@app.route('/industries')
-def all_industries():
-    """View all donors/food companies."""
-
     return render_template('industries.html')
+
 
 #SQLALCHEMY EAGER LOADING
 #N+1 QUERIES

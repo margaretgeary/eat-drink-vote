@@ -27,12 +27,3 @@ if False:
             created_cids.add(cid)
 else:
     model.connect_to_db(server.app)
-
-
-donations = get_donors()
-for donation in donations:
-    org_name = donation['org_name']
-    db_donor = Donor.query.filter(Donor.org_name == org_name).first()
-    if not db_donor:
-        db_donor = crud.create_donor(org_name)
-    db_donations = crud.create_donation(donation["candidate"], db_donor, donation['total'])

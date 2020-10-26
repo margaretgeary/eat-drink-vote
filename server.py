@@ -1,7 +1,5 @@
-"""Server for movie ratings app."""
-
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import db, connect_to_db, Organization, Donor
+from model import db, connect_to_db, Candidate, Organization
 import crud
 
 from jinja2 import StrictUndefined
@@ -18,45 +16,61 @@ def homepage():
     return render_template('industries.html')
 
 
-#SQLALCHEMY EAGER LOADING
-#N+1 QUERIES
-#JOIN DONOR, CANDIDATE, & DONATION TOGETHER
-#RATHER THAN 3 SEPARATE REQUESTS
-@app.route('/api/donors/<donor_id>')
-def donor(donor_id):
-    donor = crud.get_donor_by_id(donor_id)
+@app.route('/api/donors/<orgname>')
+def donor(orgname):
+    donor = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
+    Candidate.firstlast, Organization.orgname, Organization.amount).\
+    join(Candidate, Candidate.cid == Organization.recip_id).\
+    filter(Organization.orgname == orgname).\
+    order_by(Organization.cycle, Organization.amount).all()
     candidate_list = []
     totals = {
         'D': 0,
         'R': 0,
+        'I': 0,
     }
-    for donation in donor.donations:
-        totals[donation.candidate.party] += int(donation.total)
+    for donation in donor:
+        totals[donation.party] += int(donation.amount)
         info = {
-            'firstlast': donation.candidate.firstlast,
-            'party': donation.candidate.party,
-            'state': donation.candidate.state,
-            'total': int(donation.total)
+            'firstlast': donation.firstlast,
+            'party': donation.party,
+            'state': donation.state,
+            'total': int(donation.amount)
         }
-        existing_candidates = list(candidate for candidate in candidate_list if candidate['firstlast'] == donation.candidate.firstlast)
+        existing_candidates = list(candidate for candidate in candidate_list if candidate['firstlast'] == donation.firstlast)
         if existing_candidates == []:
             candidate_list.append(info)
         else:
-            existing_candidates[0]['total'] += int(donation.total)
+            existing_candidates[0]['total'] += int(donation.amount)
     candidates = sorted(candidate_list, key = lambda i: i['total'],reverse=True)
     totals['all'] = sum(totals.values())
     totals['d_perc'] = round((totals['D']/totals['all'])*100)
     totals['r_perc'] = round((totals['R']/totals['all'])*100)
+    totals['i_perc'] = round((totals['I']/totals['all'])*100)
     return jsonify({'donor': {
         'candidates': candidates,
         'totals': totals,
     }})
 
+
+# @app.route('/api/donors/<orgname>')
+# def donor(orgname):
+#     donor = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
+#         Candidate.firstlast, Organization.orgname, Organization.amount).\
+#         join(Candidate, Candidate.cid == Organization.recip_id).\
+#         filter(Organization.orgname == orgname).\
+#         order_by(Organization.cycle, Organization.amount).all()
+
+
 @app.route('/api/donors')
 def donors():
     donor_list = []
-    for donor in crud.get_all_donors():
-        donor_list.append({'donor_id': donor.donor_id, 'org_name': donor.org_name})
+    donors = (db.session.query(Organization.cycle, Candidate.party, Candidate.state,
+    Candidate.firstlast, Organization.orgname, Organization.amount).
+    join(Candidate, Candidate.cid == Organization.recip_id).
+    distinct().order_by(Organization.cycle, Organization.amount))
+    for donor in donors:
+        donor_list.append({'fec_trans_id': donor.fec_trans_id, 'orgname': donor.orgname})
     return jsonify({'donors': donor_list})
 
 
@@ -70,14 +84,14 @@ def industries():
 
 @app.route('/api/industries/<catcode>')
 def industry(catcode):
-    organizations = db.session.query(Organization.orgname, Donor.donor_id, Donor.org_name).\
-        join(Donor, Donor.org_name == Organization.orgname).\
-        filter(Organization.realcode == catcode).distinct(Organization.orgname).all()
+    organizations = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
+        Candidate.firstlast, Organization.orgname, Organization.fec_trans_id, Organization.amount).\
+        join(Candidate, Candidate.cid == Organization.recip_id).\
+        filter(Organization.realcode == catcode).\
+        order_by(Organization.cycle, Organization.amount).all()
     organization_list = []
     for organization in organizations:
-        info = {'orgname': organization.orgname.strip(),
-            'donor_id': organization.donor_id,
-            'org_name': organization.org_name}
+        info = {'orgname': organization.orgname.strip()}
         if info not in organization_list:
             organization_list.append(info)
     return jsonify({'industry': {

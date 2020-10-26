@@ -28,15 +28,59 @@ def get_candidate_by_id(cid):
 
 def get_industries():
 
-    catcode_list = ["A1300", "C2000", "C4100", "C5000", "C5110", "C5210", "C6100", "C6200", "C6300", "C6400", "C6500", "E1110", "F2300", "F3200", "G2100", "G2300", "G2400", "G2600", "G2700", "G2800", "G4000", "G4300", "G4500", "G4900", "G2600", "G2810", "G2900", "G4900", "H4000", "H5100", "M3200", "M3300", "T1100", "T2100",
-        "A000", "A1000", "A1200", "A1400", "A1500", "A1600", "A2000", "A2300", "A3000", "G2000", "G2100", "G2110", "G2200", "G2300", "G2350", "G2400", "G2500", "G2600", "G2700", "G2800", "G2810," "G2820", "G2910"]
+    catname_list = ["Accident & health insurance",
+                    "Airlines",
+                    "Alcohol",
+                    "Artificial sweeteners and food additives",
+                    "Auto manufacturers",
+                    "Beer",
+                    "Beverage bottling & distribution",
+                    "Beverages (non-alcoholic)",
+                    "Computer components & accessories",
+                    "Confectionery processors & manufacturers",
+                    "Crop production & basic processing",
+                    "Department, variety & convenience stores",
+                    "Drug stores",
+                    "Electronics manufacturing & services",
+                    "Entertainment Industry/Broadcast & Motion Pictures",
+                    "Fish Processing",
+                    "Food & Beverage Products and Services",
+                    "Food and kindred products manufacturing",
+                    "Food catering & food services",
+                    "Food stores",
+                    "Food wholesalers",
+                    "Hardware & building materials stores",
+                    "Health care products",
+                    "Hosting/Cloud Services",
+                    "Investment banking",
+                    "Livestock",
+                    "Major (multinational) oil & gas producers",
+                    "Meat processing & products",
+                    "Milk & dairy producers",
+                    "Online Entertainment",
+                    "Other commodities (incl rice, peanuts, honey)",
+                    "Poultry & eggs",
+                    "Restaurants & drinking establishments",
+                    "Retail trade",
+                    "Schools & colleges",
+                    "Search Engine/Email Services",
+                    "Shoes & leather products",
+                    "Social Media",
+                    "Sugar cane & sugar beets",
+                    "Telephone utilities",
+                    "Tobacco & Tobacco products",
+                    "Toiletries & cosmetics",
+                    "Vegetables, fruits and tree nut",
+                    "Vendors",
+                    "Wheat, corn, soybeans and cash grain",
+                    "Wine & distilled spirits manufacturing"]
 
-    return db.session.query(Industry).filter(Industry.catcode.in_((catcode_list))).all()
+    return db.session.query(Industry).filter(Industry.catname.in_((catname_list))).order_by(Industry.catname).all()
 
 
-def get_industries_by_catcode(catcode):
+def get_industries_by_catname(catname):
 
-    return Industry.query.get(catcode)
+    return Industry.query.get(catname)
 
 
 if __name__ == '__main__':

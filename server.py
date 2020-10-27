@@ -16,6 +16,30 @@ def homepage():
     return render_template('industries.html')
 
 
+@app.route('/api/candidates')
+def candidates():
+    candidate_list = []
+    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast).
+        join(Organization, Organization.recip_id == Candidate.cid).
+        distinct().order_by(Candidate.state, Candidate.party, Candidate.firstlast))
+    for candidate in candidates:
+        candidate_list.append({'firstlast': candidate.firstlast,
+        'party': candidate.party,
+        'state': candidate.state})
+    return jsonify({'candidates': candidate_list})
+
+
+# @app.route('/api/candidates/<firstlast>')
+# def candidate(firstlast):
+#     candidate = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
+#         Candidate.firstlast, Organization.orgname, Organization.amount).\
+#         join(Candidate, Candidate.cid == Organization.recip_id).\
+#         filter(Candidate.firstlast == firstlast).\
+#         order_by(Candidate.firstlast).all()
+#     candidate_list = []
+#     for 
+
+
 @app.route('/api/donors/<orgname>')
 def donor(orgname):
     donor = db.session.query(Organization.cycle, Candidate.party, Candidate.state,

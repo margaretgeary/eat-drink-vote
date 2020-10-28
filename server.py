@@ -18,17 +18,15 @@ def homepage():
 
 @app.route('/api/candidates')
 def candidates():
+    candidate_list = []
     candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast).\
         join(Organization, Organization.recip_id == Candidate.cid).\
         distinct().order_by(Candidate.state, Candidate.party, Candidate.firstlast))
-    states = {}
     for candidate in candidates:
-        if candidate.state not in states:
-            states[candidate.state] = []
-        states[candidate.state].append(candidate)
-    return jsonify({'candidates': {
-        'states': states
-    }})
+        candidate_list.append({'firstlast': candidate.firstlast,
+        'party': candidate.party,
+        'state': candidate.state})
+    return jsonify({'candidates': candidate_list})
 
 
 @app.route('/api/candidates/<firstlast>')

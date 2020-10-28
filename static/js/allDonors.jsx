@@ -163,6 +163,7 @@ function CandidateState({ firstlast, state, party }) {
                     aria-expanded={isOpen}
                 >
                     {state}
+                    {/* ^^ or firstlast? indicate candidate US state here ideally */}
                 </ReactBootstrap.Button>
             </ReactBootstrap.Card.Header>
             {orgs.orgs &&
@@ -185,12 +186,12 @@ function AllCandidates() {
     React.useEffect(() => {
         fetch('/api/candidates').
             then((response) => response.json()).
-            then((candidates) => setCandidates(candidates.candidates.states));
+            then((candidates) => setCandidates(candidates.candidates));
     }, [])
     if (candidates.length === 0) return <div>Loading...</div>
     const content = []
     for (const candidate of candidates) {
-        content.push(<CandidateState key={candidate.firstlast}
+        content.push(<Candidate key={candidate.firstlast}
             firstlast={candidate.firstlast}
             party={candidate.catname}
             state={candidate.state} />);

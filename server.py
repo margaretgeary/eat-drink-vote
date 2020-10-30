@@ -108,7 +108,7 @@ def donors():
     join(Candidate, Candidate.cid == Organization.recip_id).
     distinct().order_by(Organization.cycle, Organization.amount))
     for donor in donors:
-        donor_list.append({'fec_trans_id': donor.fec_trans_id, 'orgname': donor.orgname})
+        donor_list.append({'orgname': donor.orgname})
     return jsonify({'donors': donor_list})
 
 

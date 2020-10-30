@@ -1,3 +1,4 @@
+//hihi
 function Donor({ orgname }) {
     const [isOpen, setIsOpen] = React.useState(false);
     const [candidates, setCandidates] = React.useState({});
@@ -95,7 +96,6 @@ function AllIndustries() {
     }
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
-
 
 
 function Candidate({ firstlast, state, party }) {

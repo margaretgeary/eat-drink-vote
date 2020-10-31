@@ -127,13 +127,23 @@ def industry(catcode):
         join(Candidate, Candidate.cid == Organization.recip_id).\
         filter(Organization.realcode == catcode).\
         order_by(Organization.cycle, Organization.amount).all()
-    organization_list = []
+    unsorted_total_donated = {}
+    unsorted_organization_list = []
     for organization in organizations:
-        info = {'orgname': organization.orgname.strip()}
-        if info not in organization_list:
-            organization_list.append(info)
+        if organization.orgname not in unsorted_total_donated:
+            unsorted_total_donated[organization.orgname] = 0
+        unsorted_total_donated[organization.orgname.strip()] += int(organization.amount)
+        info = {'orgname': organization.orgname.strip(),
+            'amount': organization.amount}
+        if info not in unsorted_organization_list:
+            unsorted_organization_list.append(info)
+    organization_list = sorted(unsorted_organization_list, key=lambda i: i['amount'])
+    total_donated = {k: v for k, v in sorted(
+        unsorted_total_donated.items(), key=lambda item: -item[1])}
+    print("total_donated is:", total_donated)
     return jsonify({'industry': {
-        'organizations': organization_list
+        'organizations': organization_list,
+        'total_donated': total_donated
     }})
 
 

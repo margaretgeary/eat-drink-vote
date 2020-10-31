@@ -1,5 +1,5 @@
 //hihi
-function Donor({ orgname }) {
+function Donor({ orgname, totalAmount }) {
     const [isOpen, setIsOpen] = React.useState(false);
     const [candidates, setCandidates] = React.useState({});
     React.useEffect(() => {
@@ -12,12 +12,12 @@ function Donor({ orgname }) {
                 console.log("Got donor response", donor);
                 setCandidates(donor.donor);
             })
-    }, [isOpen, orgname]) // dependency list (if these change, the function gets called)   
+    }, [isOpen, orgname]) // dependency list (if these change, the function gets called)  
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
-                    {orgname}
+                    {`${orgname} (donated ${totalAmount})`}
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
@@ -55,6 +55,9 @@ function Industry({ catcode, catname }) {
                 setDonors(industry.industry);
             })
     }, [isOpen, catcode]) // dependency list (if these change, the function gets called)
+    const sortedDonation = donors.total_donated ? Object.entries(donors.total_donated)
+        .sort(([, amount1], [, amount2]) => amount2 - amount1)
+        .reduce((r, [orgname, amount]) => ({ ...r, [orgname]: amount }), {}) : {};
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -69,9 +72,9 @@ function Industry({ catcode, catname }) {
             {donors.organizations &&
                 <ReactBootstrap.Collapse in={isOpen}> 
                     <ReactBootstrap.Card.Body>
-                    {donors.organizations.map(organization => {
+                    {Object.keys(sortedDonation).map(organization => {
                         return (
-                            <Donor key={organization.orgname} orgname={organization.orgname}>urrrr</Donor>
+                            <Donor key={organization} orgname={organization} totalAmount={sortedDonation[organization]}></Donor>
                         )
                     })}
                     </ReactBootstrap.Card.Body>

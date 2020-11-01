@@ -38,7 +38,7 @@ def get_industries():
                     "Beverages (non-alcoholic)",
                     "Computer components & accessories",
                     "Confectionery processors & manufacturers",
-                    "Crop production & basic processing",
+                    # "Crop production & basic processing",
                     "Department, variety & convenience stores",
                     "Drug stores",
                     "Electronics manufacturing & services",
@@ -72,7 +72,7 @@ def get_industries():
                     "Toiletries & cosmetics",
                     "Vegetables, fruits and tree nut",
                     "Vendors",
-                    "Wheat, corn, soybeans and cash grain",
+                    # "Wheat, corn, soybeans and cash grain",
                     "Wine & distilled spirits manufacturing"]
 
     return db.session.query(Industry).filter(Industry.catname.in_((catname_list))).order_by(Industry.catname).all()

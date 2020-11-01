@@ -10,8 +10,10 @@ app.jinja_env.undefined = StrictUndefined
 
 
 @app.route('/')
-def homepage():
-    """View homepage."""
+@app.route('/industries')
+@app.route('/candidates')
+def pages():
+    """View pages."""
 
     return render_template('industries.html')
 
@@ -85,6 +87,7 @@ def donor(orgname):
     totals['d_perc'] = round((totals['D']/totals['all'])*100)
     totals['r_perc'] = round((totals['R']/totals['all'])*100)
     totals['i_perc'] = round((totals['I']/totals['all'])*100)
+    candidates = [c for c in candidates if c['total'] > 2000]
     return jsonify({'donor': {
         'candidates': candidates,
         'totals': totals,
@@ -131,7 +134,7 @@ def industry(catcode):
     unsorted_organization_list = []
     for organization in organizations:
         if organization.orgname not in unsorted_total_donated:
-            unsorted_total_donated[organization.orgname] = 0
+            unsorted_total_donated[organization.orgname.strip()] = 0
         unsorted_total_donated[organization.orgname.strip()] += int(organization.amount)
         info = {'orgname': organization.orgname.strip(),
             'amount': organization.amount}
@@ -141,6 +144,9 @@ def industry(catcode):
     total_donated = {k: v for k, v in sorted(
         unsorted_total_donated.items(), key=lambda item: -item[1])}
     print("total_donated is:", total_donated)
+    for org in list(total_donated.keys()):
+        if total_donated[org] < 2800:
+            del total_donated[org]
     return jsonify({'industry': {
         'organizations': organization_list,
         'total_donated': total_donated

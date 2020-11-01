@@ -17,22 +17,36 @@ function Donor({ orgname, totalAmount }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
-                    {`${orgname} (donated ${totalAmount})`}
+                    {`${orgname} gave $${totalAmount.toLocaleString()}`}
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
                 <ReactBootstrap.Accordion.Collapse eventKey={orgname}>
                     <ReactBootstrap.Card.Body>
-                        <h3>{orgname} donated {candidates.totals.d_perc}% to Democrats and {candidates.totals.r_perc}% to Republicans.</h3>
-                        {candidates.candidates.map(candidate => {
-                            return (
-                                <React.Fragment key={candidate.firstlast}>
-                                    <div><p>{candidate.firstlast}, {candidate.party}-{candidate.state}</p>
-                                        <p>${candidate.total.toLocaleString()}</p></div>
-                                    <br></br>
-                                </React.Fragment>
-                            )
-                        })}
+                        <strong>{orgname} gave {candidates.totals.d_perc}% to Democrats and {candidates.totals.r_perc}% to Republicans.</strong>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>Candidate</td>
+                                        <td>Party</td>
+                                        <td>State</td>
+                                        <td>Amount</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {candidates.candidates.map(candidate => 
+                                    <tr key={candidate.firstlast}>
+                                        <td>{candidate.firstlast}</td>
+                                        <td>{candidate.party}</td>
+                                        <td>{candidate.state}</td>
+                                        <td>{candidate.total.toLocaleString()}</td>
+                                    </tr>   
+                            
+                                )}
+                                </tbody>
+                            </table>
+                        </div>
                     </ReactBootstrap.Card.Body>
                 </ReactBootstrap.Accordion.Collapse>
             }
@@ -202,6 +216,12 @@ function AllCandidates() {
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
 
+function Home() {
+    return(
+        <h1>Welcome to Campaign Finance App</h1>
+    )
+}
+
 
 function NavBar() {
     return (
@@ -211,7 +231,7 @@ function NavBar() {
                 <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
                     <ReactBootstrap.Nav className="mr-auto">
-                        <ReactBootstrap.Nav.Link href="#home">Home</ReactBootstrap.Nav.Link>
+                        <ReactRouterDOM.Link to="/home" className="nav-link" >Home</ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/industries" className="nav-link" >Industries</ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/candidates" className="nav-link" >Candidates</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
@@ -230,6 +250,9 @@ function App() {
         <ReactRouterDOM.BrowserRouter>
             <NavBar />
             <ReactRouterDOM.Switch>
+                <ReactRouterDOM.Route path="/home" exact>
+                    <Home />
+                </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/industries" exact>
                     <AllIndustries />
                 </ReactRouterDOM.Route>

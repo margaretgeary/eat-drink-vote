@@ -17,33 +17,33 @@ function Donor({ orgname, totalAmount }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
-                    {`${orgname} gave $${totalAmount.toLocaleString()}`}
+                    <h5>{`${orgname} gave $${totalAmount.toLocaleString()}`}</h5>
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
                 <ReactBootstrap.Accordion.Collapse eventKey={orgname}>
                     <ReactBootstrap.Card.Body>
-                        <strong>{orgname} gave {candidates.totals.d_perc}% to Democrats and {candidates.totals.r_perc}% to Republicans.</strong>
+                        <br></br><h5>{orgname} gave {candidates.totals.d_perc}% to Democrats and {candidates.totals.r_perc}% to Republicans.</h5><br></br>
                         <div>
-                            <table>
+                            <ReactBootstrap.Table striped bordered hover size="sm">
                                 <thead>
                                     <tr>
-                                        <td>Candidate</td>
-                                        <td>Party-State</td>
-                                        <td>Amount ($)</td>
+                                        <td><strong>Amount</strong></td>
+                                        <td><strong>Party-State</strong></td>
+                                        <td><strong>Candidate</strong></td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 {candidates.candidates.map(candidate => 
                                     <tr key={candidate.firstlast}>
-                                        <td>{candidate.firstlast}</td>
+                                        <td>${candidate.total.toLocaleString()}</td>
                                         <td>{candidate.party}-{candidate.state}</td>
-                                        <td>{candidate.total.toLocaleString()}</td>
+                                        <td>{candidate.firstlast}</td>
                                     </tr>   
                             
                                 )}
                                 </tbody>
-                            </table>
+                            </ReactBootstrap.Table>
                         </div>
                     </ReactBootstrap.Card.Body>
                 </ReactBootstrap.Accordion.Collapse>
@@ -78,7 +78,7 @@ function Industry({ catcode, catname }) {
                     aria-controls={`collapse-${catcode}`}
                     aria-expanded={isOpen}
                     >
-                        {catname}
+                        <h4>{catname}</h4>
                 </ReactBootstrap.Button>
             </ReactBootstrap.Card.Header>
             {donors.organizations &&

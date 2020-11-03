@@ -59,6 +59,8 @@ def get_industries():
                     "Milk & dairy producers",
                     "Online Entertainment",
                     # "Other commodities (incl rice, peanuts, honey)",
+                    "Pharmaceutical manufacturing",
+                    # "Pharmaceutical wholesale",
                     "Poultry & eggs",
                     "Restaurants & drinking establishments",
                     # "Retail trade",
@@ -71,7 +73,7 @@ def get_industries():
                     "Tobacco & Tobacco products",
                     "Toiletries & cosmetics",
                     # "Vegetables, fruits and tree nut",
-                    "Vendors",
+                    # "Vendors",
                     # "Wheat, corn, soybeans and cash grain",
                     "Wine & distilled spirits manufacturing"]
 

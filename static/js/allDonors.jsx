@@ -29,17 +29,15 @@ function Donor({ orgname, totalAmount }) {
                                 <thead>
                                     <tr>
                                         <td>Candidate</td>
-                                        <td>Party</td>
-                                        <td>State</td>
-                                        <td>Amount</td>
+                                        <td>Party-State</td>
+                                        <td>Amount ($)</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 {candidates.candidates.map(candidate => 
                                     <tr key={candidate.firstlast}>
                                         <td>{candidate.firstlast}</td>
-                                        <td>{candidate.party}</td>
-                                        <td>{candidate.state}</td>
+                                        <td>{candidate.party}-{candidate.state}</td>
                                         <td>{candidate.total.toLocaleString()}</td>
                                     </tr>   
                             

@@ -87,7 +87,7 @@ def donor(orgname):
     totals['d_perc'] = round((totals['D']/totals['all'])*100)
     totals['r_perc'] = round((totals['R']/totals['all'])*100)
     totals['i_perc'] = round((totals['I']/totals['all'])*100)
-    candidates = [c for c in candidates if c['total'] > 2000]
+    # candidates = [c for c in candidates if c['total'] > 2000]
     return jsonify({'donor': {
         'candidates': candidates,
         'totals': totals,

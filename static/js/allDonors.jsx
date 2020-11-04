@@ -131,22 +131,31 @@ function Candidate({ firstlast, state, party }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={firstlast}>
-                    {firstlast}
+                    <h5>{firstlast}</h5>
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {orgs.orgs &&
                 <ReactBootstrap.Accordion.Collapse eventKey={firstlast}>
                     <ReactBootstrap.Card.Body>
-                        <h3>{firstlast} received campaign contributions from:</h3>
-                        {orgs.orgs.map(org => {
-                            return (
-                                <React.Fragment key={org.firstlast}>
-                                    <div><p>{org.orgname}</p>
-                                        <p>${org.amount.toLocaleString()}</p></div>
-                                    <br></br>
-                                </React.Fragment>
-                            )
-                        })}
+                        <h5>{firstlast} received campaign contributions from:</h5>
+                        <div>
+                            <ReactBootstrap.Table striped bordered hover size="sm">
+                                <thead>
+                                    <tr>
+                                        <td><strong>Company</strong></td>
+                                        <td><strong>Amount</strong></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {orgs.orgs.map(org => 
+                                    <tr key={org.orgname}>
+                                        <td>${org.amount.toLocaleString()}</td>
+                                        <td>{org.orgname}</td>
+                                    </tr>   
+                                )}
+                                </tbody>
+                            </ReactBootstrap.Table>
+                        </div>
                     </ReactBootstrap.Card.Body>
                 </ReactBootstrap.Accordion.Collapse>
             }
@@ -157,36 +166,35 @@ function Candidate({ firstlast, state, party }) {
 
 function CandidateState({ firstlast, state, party }) {
     const [isOpen, setIsOpen] = React.useState(false);
-    const [orgs, setOrgs] = React.useState({});
+    const [candidates, setCandidates] = React.useState({}); //donors is being set to: industry: organizations: orgname
     React.useEffect(() => {
         if (!isOpen) {
             return;
         }
-        fetch(`/api/candidates/${firstlast}`).
+        fetch(`/api/states/${state}`).
             then((response) => response.json()).
-            then((candidate) => {
-                console.log("Got candidate response", candidate);
-                setOrgs(candidate.candidate);
+            then((state) => {
+                console.log("Got state response", state);
+                setCandidates(state.state);
             })
-    }, [isOpen, firstlast])
+    }, [isOpen, state])
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Button
                     onClick={() => setIsOpen(!isOpen)}
-                    aria-controls={`collapse-${firstlast}`}
+                    aria-controls={`collapse-${state}`}
                     aria-expanded={isOpen}
                 >
-                    {state}
-                    {/* ^^ or firstlast? indicate candidate US state here ideally */}
+                    <h4>{state}</h4>
                 </ReactBootstrap.Button>
             </ReactBootstrap.Card.Header>
-            {orgs.orgs &&
+            {candidates.candidates &&
                 <ReactBootstrap.Collapse in={isOpen}>
                     <ReactBootstrap.Card.Body>
-                        {orgs.orgs.map(org => {
-                            return (
-                                <Candidate key={org.firstlast} firstlast={org.firstlast} state={org.state} party={org.party} ></Candidate>
+                    {candidates.candidates.map(candidate => {
+                        return (
+                                <Candidate key={candidate.firstlast} firstlast={candidate.firstlast} state={candidate.state} party={candidate.party}></Candidate>
                             )
                         })}
                     </ReactBootstrap.Card.Body>
@@ -196,20 +204,21 @@ function CandidateState({ firstlast, state, party }) {
     )
 }
 
-function AllCandidates() {
-    const [candidates, setCandidates] = React.useState([]);
+
+function AllStates() {
+    const [states, setStates] = React.useState([]);
     React.useEffect(() => {
-        fetch('/api/candidates').
+        fetch('/api/states').
             then((response) => response.json()).
-            then((candidates) => setCandidates(candidates.candidates));
+            then((states) => setStates(states.states));
     }, [])
-    if (candidates.length === 0) return <div>Loading...</div>
+    if (states.length === 0) return <div>Loading...</div>
     const content = []
-    for (const candidate of candidates) {
-        content.push(<Candidate key={candidate.firstlast}
-            firstlast={candidate.firstlast}
-            party={candidate.catname}
-            state={candidate.state} />);
+    for (const state of states) {
+        content.push(<CandidateState key={state.state}
+            firstlast={state.firstlast}
+            party={state.party}
+            state={state.state} />);
     }
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
@@ -255,7 +264,7 @@ function App() {
                     <AllIndustries />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/candidates" exact>
-                    <AllCandidates />
+                    <AllStates />
                 </ReactRouterDOM.Route>
             </ReactRouterDOM.Switch>
         </ReactRouterDOM.BrowserRouter>

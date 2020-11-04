@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import db, connect_to_db, Candidate, Organization
+from model import db, connect_to_db, Candidate, Organization, Industry
 import crud
 
 from jinja2 import StrictUndefined
@@ -16,6 +16,37 @@ def pages():
     """View pages."""
 
     return render_template('industries.html')
+
+
+@app.route('/api/states')
+def states():
+    states_list = []
+    candidates = (db.session.query(Candidate.state).
+        join(Organization, Organization.recip_id == Candidate.cid).
+        distinct().order_by(Candidate.state))
+    for candidate in candidates:
+        states_list.append({'state': candidate.state})
+    return jsonify({'states': states_list})
+
+
+@app.route('/api/states/<state>')
+def state_candidate(state):
+    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast,
+        Organization.orgname, Organization.amount).
+        join(Organization, Organization.recip_id == Candidate.cid).
+        filter(Candidate.state == state).
+        distinct().order_by(Candidate.firstlast).all())
+    candidate_list = []
+    for candidate in candidates:
+        info = {
+            'firstlast': candidate.firstlast,
+            'party': candidate.party
+        }
+        if info not in candidate_list:
+            candidate_list.append(info)
+    return jsonify({'state': {
+        'candidates': candidate_list,
+    }})
 
 
 @app.route('/api/candidates')
@@ -36,6 +67,7 @@ def candidate(firstlast):
     candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast,
         Organization.orgname, Organization.amount).
         join(Organization, Organization.recip_id == Candidate.cid).
+        join(Industry, Organization.realcode == Industry.catcode).
         filter(Candidate.firstlast == firstlast).
         distinct().order_by(Candidate.firstlast).all())
     organization_list = []
@@ -50,7 +82,8 @@ def candidate(firstlast):
             organization_list.append(info)
         else:
             existing_orgs[0]['amount'] += int(candidate.amount)
-    orgs = sorted(organization_list, key=lambda i: i['amount'], reverse=True)
+    all_orgs = sorted(organization_list, key=lambda i: i['amount'], reverse=True)
+    orgs = [o for o in all_orgs if o['amount'] > 2800]
     return jsonify({'candidate': {
         'orgs': orgs,
     }})
@@ -87,20 +120,10 @@ def donor(orgname):
     totals['d_perc'] = round((totals['D']/totals['all'])*100)
     totals['r_perc'] = round((totals['R']/totals['all'])*100)
     totals['i_perc'] = round((totals['I']/totals['all'])*100)
-    # candidates = [c for c in candidates if c['total'] > 2000]
     return jsonify({'donor': {
         'candidates': candidates,
         'totals': totals,
     }})
-
-
-# @app.route('/api/donors/<orgname>')
-# def donor(orgname):
-#     donor = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
-#         Candidate.firstlast, Organization.orgname, Organization.amount).\
-#         join(Candidate, Candidate.cid == Organization.recip_id).\
-#         filter(Organization.orgname == orgname).\
-#         order_by(Organization.cycle, Organization.amount).all()
 
 
 @app.route('/api/donors')

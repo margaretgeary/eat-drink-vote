@@ -1,4 +1,3 @@
-//hihi
 function Donor({ orgname, totalAmount }) {
     const [isOpen, setIsOpen] = React.useState(false);
     const [candidates, setCandidates] = React.useState({});
@@ -17,7 +16,7 @@ function Donor({ orgname, totalAmount }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
-                    <h5>{`${orgname} gave $${totalAmount.toLocaleString()}`}</h5>
+                    <h5>{`${orgname} gave $${totalAmount.toLocaleString()}`}</h5> <button type="button">Add Star</button>
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
@@ -53,9 +52,9 @@ function Donor({ orgname, totalAmount }) {
 }
 
 
-function Industry({ catcode, catname }) {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [donors, setDonors] = React.useState({}); //donors is being set to: industry: organizations: orgname
+function Industry({ catcode, catname, openCatname, setOpenCatname }) {
+    const [donors, setDonors] = React.useState({}); 
+    const isOpen = catname==openCatname;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -74,7 +73,7 @@ function Industry({ catcode, catname }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Button 
-                    onClick={() => setIsOpen(!isOpen) }
+                    onClick={() => setOpenCatname(catname) }
                     aria-controls={`collapse-${catcode}`}
                     aria-expanded={isOpen}
                     >
@@ -99,6 +98,7 @@ function Industry({ catcode, catname }) {
 
 function AllIndustries() {
     const [industries, setIndustries] = React.useState([]);
+    const [openCatname, setOpenCatname] = React.useState(null)
     React.useEffect(() => {
         fetch('/api/industries').
         then((response) => response.json()).
@@ -107,7 +107,7 @@ function AllIndustries() {
     if (industries.length === 0) return <div>Loading...</div>
     const content = []
     for (const industry of industries) {
-        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname}/>);
+        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} />);
     }
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }

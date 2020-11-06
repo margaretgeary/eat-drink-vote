@@ -131,7 +131,7 @@ function Candidate({ firstlast, state, party }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={firstlast}>
-                    <h5>{firstlast}</h5>
+                    <h5>{firstlast} ({party})</h5>
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {orgs.orgs &&
@@ -164,9 +164,10 @@ function Candidate({ firstlast, state, party }) {
 }
 
 
-function CandidateState({ firstlast, state, party }) {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [candidates, setCandidates] = React.useState({}); //donors is being set to: industry: organizations: orgname
+function CandidateState({ firstlast, state, party, openState, setOpenState }) {
+
+    const [candidates, setCandidates] = React.useState({});
+    const isOpen = state == openState;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -183,6 +184,7 @@ function CandidateState({ firstlast, state, party }) {
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Button
                     onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => setOpenState(state)}
                     aria-controls={`collapse-${state}`}
                     aria-expanded={isOpen}
                 >
@@ -192,8 +194,8 @@ function CandidateState({ firstlast, state, party }) {
             {candidates.candidates &&
                 <ReactBootstrap.Collapse in={isOpen}>
                     <ReactBootstrap.Card.Body>
-                    {candidates.candidates.map(candidate => {
-                        return (
+                        {candidates.candidates.map(candidate => {
+                            return (
                                 <Candidate key={candidate.firstlast} firstlast={candidate.firstlast} state={candidate.state} party={candidate.party}></Candidate>
                             )
                         })}
@@ -207,6 +209,7 @@ function CandidateState({ firstlast, state, party }) {
 
 function AllStates() {
     const [states, setStates] = React.useState([]);
+    const [openState, setOpenState] = React.useState(null);
     React.useEffect(() => {
         fetch('/api/states').
             then((response) => response.json()).
@@ -218,7 +221,9 @@ function AllStates() {
         content.push(<CandidateState key={state.state}
             firstlast={state.firstlast}
             party={state.party}
-            state={state.state} />);
+            state={state.state}
+            openState={openState}
+            setOpenState={setOpenState} />);
     }
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
@@ -273,44 +278,3 @@ function App() {
 
 
 ReactDOM.render(<App />, document.getElementById('root'))
-
-// function NavBar() {
-//     return (
-//         <div>
-//             <ReactBootstrap.Navbar bg="dark" variant="dark">
-//             <ReactBootstrap.Navbar.Brand href="#home">Campaign Finance App</ReactBootstrap.Navbar.Brand>
-//             <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
-//             <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
-//                 <ReactBootstrap.Nav className="mr-auto">
-//                     <ReactBootstrap.Nav.Link href="#home">Home</ReactBootstrap.Nav.Link>
-//                     <ReactRouterDOM.Link to="/industries" className="nav-link" >Industries</ReactRouterDOM.Link> 
-//                 </ReactBootstrap.Nav>
-//                 <ReactBootstrap.Form inline>
-//                     <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
-//                     <ReactBootstrap.Button variant="outline-success">Search</ReactBootstrap.Button>
-//                 </ReactBootstrap.Form>
-//             </ReactBootstrap.Navbar.Collapse>
-//         </ReactBootstrap.Navbar> 
-//         </div>
-//     )
-// }
-
-// function App() {
-//     return (
-//             <ReactRouterDOM.BrowserRouter>
-//                 <NavBar />
-//                 <ReactRouterDOM.Switch>
-//                     <ReactRouterDOM.Route path="/industries" exact>
-//                         <AllIndustries />
-//                     </ReactRouterDOM.Route>
-//                     {/* <ReactRouterDOM.Route path="/about" exact>
-//                         <AllDonors />
-//                     </ReactRouterDOM.Route> */}
-//                 </ReactRouterDOM.Switch>
-//             </ReactRouterDOM.BrowserRouter>
-//     );
-// }
-
-
-// ReactDOM.render(<App />, document.getElementById('root'))
-

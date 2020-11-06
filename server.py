@@ -35,7 +35,7 @@ def state_candidate(state):
         Organization.orgname, Organization.amount).
         join(Organization, Organization.recip_id == Candidate.cid).
         filter(Candidate.state == state).
-        distinct().order_by(Candidate.firstlast).all())
+        distinct().order_by(Candidate.state).all())
     candidate_list = []
     for candidate in candidates:
         info = {

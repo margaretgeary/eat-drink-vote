@@ -96,7 +96,8 @@ function Industry({ catcode, catname, openCatname, setOpenCatname }) {
 }
 
 
-function AllIndustries() {
+function AllIndustries({ searchResult }) {
+    console.log("hi margaret search result is:", searchResult)
     const [industries, setIndustries] = React.useState([]);
     const [openCatname, setOpenCatname] = React.useState(null)
     React.useEffect(() => {
@@ -218,10 +219,8 @@ function AllStates() {
     if (states.length === 0) return <div>Loading...</div>
     const content = []
     for (const state of states) {
-        content.push(<CandidateState key={state.state}
-            firstlast={state.firstlast}
-            party={state.party}
-            state={state.state}
+        content.push(<CandidateState key={state}
+            state={state}
             openState={openState}
             setOpenState={setOpenState} />);
     }
@@ -235,7 +234,7 @@ function Home() {
 }
 
 
-function NavBar() {
+function NavBar({ searchResult, setSearchResult }) {
     return (
         <div>
             <ReactBootstrap.Navbar bg="dark" variant="dark">
@@ -248,7 +247,8 @@ function NavBar() {
                         <ReactRouterDOM.Link to="/candidates" className="nav-link" >Candidates</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
-                        <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                        <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" /> 
+                        {/* <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
                         <ReactBootstrap.Button variant="outline-success">Search</ReactBootstrap.Button>
                     </ReactBootstrap.Form>
                 </ReactBootstrap.Navbar.Collapse>
@@ -258,15 +258,16 @@ function NavBar() {
 }
 
 function App() {
+    const [searchResult, setSearchResult] = React.useState('')
     return (
         <ReactRouterDOM.BrowserRouter>
-            <NavBar />
+            <NavBar searchResult={searchResult} setSearchResult={setSearchResult} /> 
             <ReactRouterDOM.Switch>
                 <ReactRouterDOM.Route path="/home" exact>
                     <Home />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/industries" exact>
-                    <AllIndustries />
+                    <AllIndustries searchResult={searchResult} />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/candidates" exact>
                     <AllStates />

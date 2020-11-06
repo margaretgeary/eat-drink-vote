@@ -19,13 +19,11 @@ def pages():
 
 
 @app.route('/api/states')
-def states():
-    states_list = []
-    candidates = (db.session.query(Candidate.state).
-        join(Organization, Organization.recip_id == Candidate.cid).
-        distinct().order_by(Candidate.state))
-    for candidate in candidates:
-        states_list.append({'state': candidate.state})
+def get_states():
+
+    states_list = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
+        "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+
     return jsonify({'states': states_list})
 
 

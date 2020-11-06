@@ -11,7 +11,7 @@ class Candidate(db.Model):
     __tablename__ = 'candidates'
 
     cid = db.Column(db.String, primary_key=True)
-    firstlast = db.Column(db.String, unique=True)
+    firstlast = db.Column(db.String)
     party = db.Column(db.String)
     state = db.Column(db.String)
 

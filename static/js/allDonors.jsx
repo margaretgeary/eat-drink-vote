@@ -52,7 +52,7 @@ function Donor({ orgname, totalAmount }) {
 }
 
 
-function Industry({ catcode, catname, openCatname, setOpenCatname }) {
+function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult }) {
     const [donors, setDonors] = React.useState({}); 
     const isOpen = catname==openCatname;
     React.useEffect(() => {
@@ -67,8 +67,11 @@ function Industry({ catcode, catname, openCatname, setOpenCatname }) {
             })
     }, [isOpen, catcode]) // dependency list (if these change, the function gets called)
     const sortedDonation = donors.total_donated ? Object.entries(donors.total_donated)
+        .filter(entry => entry[0].toLowerCase().includes(searchResult))
         .sort(([, amount1], [, amount2]) => amount2 - amount1)
         .reduce((r, [orgname, amount]) => ({ ...r, [orgname]: amount }), {}) : {};
+
+    
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -84,6 +87,7 @@ function Industry({ catcode, catname, openCatname, setOpenCatname }) {
                 <ReactBootstrap.Collapse in={isOpen}> 
                     <ReactBootstrap.Card.Body>
                     {Object.keys(sortedDonation).map(organization => {
+
                         return (
                             <Donor key={organization} orgname={organization} totalAmount={sortedDonation[organization]}></Donor>
                         )
@@ -108,7 +112,7 @@ function AllIndustries({ searchResult }) {
     if (industries.length === 0) return <div>Loading...</div>
     const content = []
     for (const industry of industries) {
-        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} />);
+        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult}/>);
     }
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }

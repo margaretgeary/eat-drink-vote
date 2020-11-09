@@ -13,7 +13,7 @@ MO,1,Aye,Lacy Clay Jr.,Democrat,Raise the Wage Act
 SC,6,Aye,Jim Clyburn,Democrat,Raise the Wage Act
 OK,4,No,Tom Cole,Republican,Raise the Wage Act
 TN,5,Aye,Jim Cooper,Democrat,Raise the Wage Act
-MD,7,Aye,Elijah Cummings [D,1996-2019],Democrat,Raise the Wage Act
+MD,7,Aye,Elijah Cummings,Democrat,Raise the Wage Act
 IL,7,Aye,Danny Davis,Democrat,Raise the Wage Act
 CA,53,Aye,Susan Davis,Democrat,Raise the Wage Act
 OR,4,Aye,Peter DeFazio,Democrat,Raise the Wage Act
@@ -35,11 +35,11 @@ OH,9,Aye,Marcy Kaptur,Democrat,Raise the Wage Act
 WI,3,Aye,Ron Kind,Democrat,Raise the Wage Act
 NY,2,No,Pete King,Republican,Raise the Wage Act
 IA,4,No,Steve King,Republican,Raise the Wage Act
-RI,2,Aye,James “Jim” Langevin,Democrat,Raise the Wage Act
+RI,2,Aye,Jim Langevin,Democrat,Raise the Wage Act
 WA,2,Aye,Rick Larsen,Democrat,Raise the Wage Act
 CT,1,Aye,John Larson,Democrat,Raise the Wage Act
 CA,13,Aye,Barbara Lee,Democrat,Raise the Wage Act
-GA,5,Aye,John Lewis [D,1987-2020],Democrat,Raise the Wage Act
+GA,5,Aye,John Lewis,Democrat,Raise the Wage Act
 CA,19,Aye,Zoe Lofgren,Democrat,Raise the Wage Act
 NY,17,Aye,Nita Lowey,Democrat,Raise the Wage Act
 OK,3,No,Frank Lucas,Republican,Raise the Wage Act
@@ -171,7 +171,7 @@ LA,2,Aye,Cedric Richmond,Democrat,Raise the Wage Act
 MD,1,No,Andy Harris,Republican,Raise the Wage Act
 MA,9,Aye,William Keating,Democrat,Raise the Wage Act
 MI,2,No,Bill Huizenga,Republican,Raise the Wage Act
-MI,3,No,Justin Amash [L],Independent,Raise the Wage Act
+MI,3,No,Justin Amash,Independent,Raise the Wage Act
 MS,4,No,Steven Palazzo,Republican,Raise the Wage Act
 MO,4,No,Vicky Hartzler,Republican,Raise the Wage Act
 MO,7,No,Billy Long,Republican,Raise the Wage Act
@@ -187,7 +187,7 @@ TX,17,No,Bill Flores,Republican,Raise the Wage Act
 VA,9,No,Morgan Griffith,Republican,Raise the Wage Act
 WA,3,No,Jaime Herrera Beutler,Republican,Raise the Wage Act
 WV,1,No,David McKinley,Republican,Raise the Wage Act
-WI,7,No,Sean Duffy [R,2011-2019],Republican,Raise the Wage Act
+WI,7,No,Sean Duffy,Republican,Raise the Wage Act
 NV,2,No,Mark Amodei,Republican,Raise the Wage Act
 OR,1,Aye,Suzanne Bonamici,Democrat,Raise the Wage Act
 KY,4,No,Thomas Massie,Republican,Raise the Wage Act
@@ -219,14 +219,14 @@ MA,4,Aye,Joseph Kennedy III,Democrat,Raise the Wage Act
 MI,5,Aye,Daniel Kildee,Democrat,Raise the Wage Act
 MO,2,No,Ann Wagner,Republican,Raise the Wage Act
 NC,8,No,Richard Hudson,Republican,Raise the Wage Act
-NC,11,No,Mark Meadows [R,2013-2020],Republican,Raise the Wage Act
+NC,11,No,Mark Meadows,Republican,Raise the Wage Act
 NC,2,No,George Holding,Republican,Raise the Wage Act
 NH,2,Aye,Ann Kuster,Democrat,Raise the Wage Act
 NV,4,Aye,Steven Horsford,Democrat,Raise the Wage Act
 NY,6,Aye,Grace Meng,Democrat,Raise the Wage Act
 NY,8,Aye,Hakeem Jeffries,Democrat,Raise the Wage Act
 NY,18,Aye,Sean Maloney,Democrat,Raise the Wage Act
-NY,27,No,Chris Collins [R,2013-2019],Republican,Raise the Wage Act
+NY,27,No,Chris Collins,Republican,Raise the Wage Act
 OH,2,No,Brad Wenstrup,Republican,Raise the Wage Act
 OH,3,Aye,Joyce Beatty,Democrat,Raise the Wage Act
 OH,14,No,David Joyce,Republican,Raise the Wage Act
@@ -277,7 +277,7 @@ NY,4,Aye,Kathleen Rice,Democrat,Raise the Wage Act
 NY,21,No,Elise Stefanik,Republican,Raise the Wage Act
 NY,24,No,John Katko,Republican,Raise the Wage Act
 PA,2,Aye,Brendan Boyle,Democrat,Raise the Wage Act
-TX,4,No,John Ratcliffe [R,2015-2020],Republican,Raise the Wage Act
+TX,4,No,John Ratcliffe,Republican,Raise the Wage Act
 TX,23,No,Will Hurd,Republican,Raise the Wage Act
 TX,36,No,Brian Babin,Republican,Raise the Wage Act
 VA,8,Aye,Donald Beyer,Democrat,Raise the Wage Act
@@ -349,7 +349,7 @@ PA,7,Aye,Susan Wild,Democrat,Raise the Wage Act
 AZ,9,Aye,Greg Stanton,Democrat,Raise the Wage Act
 CA,10,Aye,Josh Harder,Democrat,Raise the Wage Act
 CA,21,Aye,TJ Cox,Democrat,Raise the Wage Act
-CA,25,Aye,Katie Hill [D,2019-2019],Democrat,Raise the Wage Act
+CA,25,Aye,Katie Hill,Democrat,Raise the Wage Act
 CA,39,Aye,Gilbert Cisneros,Democrat,Raise the Wage Act
 CA,45,Aye,Katie Porter,Democrat,Raise the Wage Act
 CA,48,Aye,Harley Rouda,Democrat,Raise the Wage Act
@@ -432,435 +432,435 @@ WI,1,No,Bryan Steil,Republican,Raise the Wage Act
 WV,3,No,Carol Miller,Republican,Raise the Wage Act
 ME,2,Aye,Jared Golden,Democrat,Raise the Wage Act
 PA,12,No,Fred Keller,Republican,Raise the Wage Act
-AL,4,Yea,Robert Aderholt [R,1997-2020],Republican,Agriculture Improvement Act
-TX,6,Not Voting,Joe Barton [R,1985-2018],Republican,Agriculture Improvement Act
-UT,1,Yea,Rob Bishop [R,2003-2020],Republican,Agriculture Improvement Act
-GA,2,Yea,Sanford Bishop Jr. [D,1993-2020],Democrat,Agriculture Improvement Act
-TN,7,Yea,Marsha Blackburn [R,2003-2018],Republican,Agriculture Improvement Act
-OR,3,Nay,Earl Blumenauer [D,1996-2020],Democrat,Agriculture Improvement Act
-TX,8,Yea,Kevin Brady [R,1997-2020],Republican,Agriculture Improvement Act
-PA,1,Yea,Robert Brady [D,1998-2018],Democrat,Agriculture Improvement Act
-TX,26,Yea,Michael Burgess [R,2003-2020],Republican,Agriculture Improvement Act
-CA,42,Yea,Ken Calvert [R,2013-2020],Republican,Agriculture Improvement Act
-MA,7,Yea,Michael Capuano [D,2013-2018],Democrat,Agriculture Improvement Act
-TX,31,Yea,John Carter [R,2003-2020],Republican,Agriculture Improvement Act
-OH,1,Nay,Steve Chabot [R,2011-2020],Republican,Agriculture Improvement Act
-MO,1,Yea,Lacy Clay Jr. [D,2001-2020],Democrat,Agriculture Improvement Act
-SC,6,Yea,James Clyburn [D,1993-2020],Democrat,Agriculture Improvement Act
-OK,4,Yea,Tom Cole [R,2003-2020],Republican,Agriculture Improvement Act
-TN,5,Yea,Jim Cooper [D,2003-2020],Democrat,Agriculture Improvement Act
-NY,14,Yea,Joe Crowley [D,2013-2018],Democrat,Agriculture Improvement Act
-TX,7,Yea,John Culberson [R,2001-2018],Republican,Agriculture Improvement Act
-MD,7,Yea,Elijah Cummings [D,1996-2019],Democrat,Agriculture Improvement Act
-IL,7,Yea,Danny Davis [D,1997-2020],Democrat,Agriculture Improvement Act
-CA,53,Yea,Susan Davis [D,2003-2020],Democrat,Agriculture Improvement Act
-OR,4,Yea,Peter DeFazio [D,1987-2020],Democrat,Agriculture Improvement Act
-CO,1,Yea,Diana DeGette [D,1997-2020],Democrat,Agriculture Improvement Act
-CT,3,Yea,Rosa DeLauro [D,1991-2020],Democrat,Agriculture Improvement Act
-FL,25,Yea,Mario Diaz-Balart [R,2013-2020],Republican,Agriculture Improvement Act
-TX,35,Nay,Lloyd Doggett [D,2013-2020],Democrat,Agriculture Improvement Act
-PA,14,Yea,Mike Doyle Jr. [D,2003-2018],Democrat,Agriculture Improvement Act
-TN,2,Nay,John “Jimmy” Duncan Jr. [R,1988-2018],Republican,Agriculture Improvement Act
-NY,16,Yea,Eliot Engel [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,18,Yea,Anna Eshoo [D,2013-2020],Democrat,Agriculture Improvement Act
-NJ,11,Nay,Rodney Frelinghuysen [R,1995-2018],Republican,Agriculture Improvement Act
-VA,6,Yea,Bob Goodlatte [R,1993-2018],Republican,Agriculture Improvement Act
-TX,12,Yea,Kay Granger [R,1997-2020],Republican,Agriculture Improvement Act
-MO,6,Yea,Sam Graves [R,2001-2020],Republican,Agriculture Improvement Act
-TX,29,Yea,Gene Green [D,1993-2018],Democrat,Agriculture Improvement Act
-AZ,3,Yea,Raúl Grijalva [D,2013-2020],Democrat,Agriculture Improvement Act
-IL,4,Yea,Luis Gutiérrez [D,1993-2018],Democrat,Agriculture Improvement Act
-FL,20,Yea,Alcee Hastings [D,2013-2020],Democrat,Agriculture Improvement Act
-TX,5,Nay,Jeb Hensarling [R,2003-2018],Republican,Agriculture Improvement Act
-MD,5,Yea,Steny Hoyer [D,1981-2020],Democrat,Agriculture Improvement Act
-CA,49,Yea,Darrell Issa [R,2003-2018],Republican,Agriculture Improvement Act
-TX,18,Yea,Sheila Jackson Lee [D,1995-2020],Democrat,Agriculture Improvement Act
-TX,30,Yea,Eddie Johnson [D,1993-2020],Democrat,Agriculture Improvement Act
-TX,3,Nay,Sam Johnson [R,1991-2018],Republican,Agriculture Improvement Act
-NC,3,Not Voting,Walter Jones Jr. [R,1995-2019],Republican,Agriculture Improvement Act
-OH,9,Yea,Marcy Kaptur [D,1983-2020],Democrat,Agriculture Improvement Act
-WI,3,Nay,Ron Kind [D,1997-2020],Democrat,Agriculture Improvement Act
-NY,2,Yea,Pete King [R,2013-2020],Republican,Agriculture Improvement Act
-IA,4,Yea,Steve King [R,2013-2020],Republican,Agriculture Improvement Act
-RI,2,Yea,Jim Langevin [D,2001-2020],Democrat,Agriculture Improvement Act
-WA,2,Yea,Rick Larsen [D,2001-2020],Democrat,Agriculture Improvement Act
-CT,1,Yea,John Larson [D,1999-2020],Democrat,Agriculture Improvement Act
-CA,13,Yea,Barbara Lee [D,2013-2020],Democrat,Agriculture Improvement Act
-MI,9,Yea,Sander Levin [D,2013-2018],Democrat,Agriculture Improvement Act
-GA,5,Yea,John Lewis [D,1987-2020],Democrat,Agriculture Improvement Act
-NJ,2,Yea,Frank LoBiondo [R,1995-2018],Republican,Agriculture Improvement Act
-CA,19,Yea,Zoe Lofgren [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,17,Yea,Nita Lowey [D,2013-2020],Democrat,Agriculture Improvement Act
-OK,3,Yea,Frank Lucas [R,2003-2020],Republican,Agriculture Improvement Act
-MA,8,Yea,Stephen Lynch [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,12,Yea,Carolyn Maloney [D,2013-2020],Democrat,Agriculture Improvement Act
-MN,4,Yea,Betty McCollum [D,2001-2020],Democrat,Agriculture Improvement Act
-MA,2,Yea,Jim McGovern [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,5,Yea,Gregory Meeks [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,10,Yea,Jerrold Nadler [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,32,Yea,Grace Napolitano [D,2013-2020],Democrat,Agriculture Improvement Act
-MA,1,Yea,Richard Neal [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,22,Yea,Devin Nunes [R,2013-2020],Republican,Agriculture Improvement Act
-NJ,6,Yea,Frank Pallone Jr. [D,1993-2020],Democrat,Agriculture Improvement Act
-NJ,9,Yea,Bill Pascrell Jr. [D,2013-2020],Democrat,Agriculture Improvement Act
-NM,2,Yea,Steve Pearce [R,2011-2018],Republican,Agriculture Improvement Act
-CA,12,Yea,Nancy Pelosi [D,2013-2020],Democrat,Agriculture Improvement Act
-MN,7,Yea,Collin Peterson [D,1991-2020],Democrat,Agriculture Improvement Act
-NC,4,Yea,David Price [D,1997-2020],Democrat,Agriculture Improvement Act
-KY,5,Yea,Hal Rogers [R,1981-2020],Republican,Agriculture Improvement Act
-AL,3,Yea,Mike Rogers [R,2003-2020],Republican,Agriculture Improvement Act
-CA,48,Yea,Dana Rohrabacher [R,2013-2018],Republican,Agriculture Improvement Act
-FL,27,Yea,Ileana Ros-Lehtinen [R,2013-2018],Republican,Agriculture Improvement Act
-CA,40,Yea,Lucille Roybal-Allard [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,39,Yea,Ed Royce [R,2013-2018],Republican,Agriculture Improvement Act
-MD,2,Yea,A. Dutch Ruppersberger [D,2003-2020],Democrat,Agriculture Improvement Act
-IL,1,Yea,Bobby Rush [D,1993-2020],Democrat,Agriculture Improvement Act
-OH,13,Yea,Tim Ryan [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,38,Yea,Linda Sánchez [D,2013-2020],Democrat,Agriculture Improvement Act
-IL,9,Yea,Jan Schakowsky [D,1999-2020],Democrat,Agriculture Improvement Act
-CA,28,Yea,Adam Schiff [D,2013-2020],Democrat,Agriculture Improvement Act
-GA,13,Yea,David Scott [D,2003-2020],Democrat,Agriculture Improvement Act
-VA,3,Yea,Bobby Scott [D,1993-2020],Democrat,Agriculture Improvement Act
-WI,5,Nay,James Sensenbrenner Jr. [R,2003-2020],Republican,Agriculture Improvement Act
-NY,15,Yea,José Serrano [D,2013-2020],Democrat,Agriculture Improvement Act
-TX,32,Yea,Pete Sessions [R,2003-2018],Republican,Agriculture Improvement Act
-CA,30,Yea,Brad Sherman [D,2013-2020],Democrat,Agriculture Improvement Act
-IL,15,Yea,John Shimkus [R,2013-2020],Republican,Agriculture Improvement Act
-ID,2,Yea,Mike Simpson [R,1999-2020],Republican,Agriculture Improvement Act
-WA,9,Yea,Adam Smith [D,1997-2020],Democrat,Agriculture Improvement Act
-NJ,4,Yea,Chris Smith [R,1981-2020],Republican,Agriculture Improvement Act
-TX,21,Yea,Lamar Smith [R,1987-2018],Republican,Agriculture Improvement Act
-MS,2,Yea,Bennie Thompson [D,1993-2020],Democrat,Agriculture Improvement Act
-CA,5,Yea,Mike Thompson [D,2013-2020],Democrat,Agriculture Improvement Act
-TX,13,Yea,Mac Thornberry [R,1995-2020],Republican,Agriculture Improvement Act
-OH,10,Yea,Michael Turner [R,2013-2020],Republican,Agriculture Improvement Act
-MI,6,Yea,Fred Upton [R,1993-2020],Republican,Agriculture Improvement Act
-NY,7,Yea,Nydia Velázquez [D,2013-2020],Democrat,Agriculture Improvement Act
-IN,1,Yea,Peter Visclosky [D,1985-2020],Democrat,Agriculture Improvement Act
-OR,2,Yea,Greg Walden [R,1999-2020],Republican,Agriculture Improvement Act
-CA,43,Yea,Maxine Waters [D,2013-2020],Democrat,Agriculture Improvement Act
-SC,2,Yea,Joe Wilson [R,2001-2020],Republican,Agriculture Improvement Act
-AK,0,Yea,Don Young [R,1973-2020],Republican,Agriculture Improvement Act
-SC,1,Nay,Mark Sanford [R,2013-2018],Republican,Agriculture Improvement Act
-NC,1,Yea,G.K. Butterfield Jr. [D,2004-2020],Democrat,Agriculture Improvement Act
-CA,16,Yea,Jim Costa [D,2013-2020],Democrat,Agriculture Improvement Act
-FL,23,Yea,Debbie Wasserman Schultz [D,2013-2020],Democrat,Agriculture Improvement Act
-IL,3,Yea,Daniel Lipinski [D,2005-2020],Democrat,Agriculture Improvement Act
-MO,5,Yea,Emanuel Cleaver II [D,2005-2020],Democrat,Agriculture Improvement Act
-NE,1,Yea,Jeff Fortenberry [R,2005-2020],Republican,Agriculture Improvement Act
-NY,26,Yea,Brian Higgins [D,2013-2020],Democrat,Agriculture Improvement Act
-NC,5,Nay,Virginia Foxx [R,2005-2020],Republican,Agriculture Improvement Act
-NC,10,Yea,Patrick McHenry [R,2005-2020],Republican,Agriculture Improvement Act
-TX,1,Nay,Louie Gohmert Jr. [R,2005-2020],Republican,Agriculture Improvement Act
-TX,2,Yea,Ted Poe [R,2005-2018],Republican,Agriculture Improvement Act
-TX,9,Yea,Al Green [D,2005-2020],Democrat,Agriculture Improvement Act
-TX,10,Yea,Michael McCaul [R,2005-2020],Republican,Agriculture Improvement Act
-TX,11,Yea,Michael Conaway [R,2005-2020],Republican,Agriculture Improvement Act
-TX,24,Yea,Kenny Marchant [R,2005-2020],Republican,Agriculture Improvement Act
-TX,28,Yea,Henry Cuellar [D,2005-2020],Democrat,Agriculture Improvement Act
-WA,5,Yea,Cathy McMorris Rodgers [R,2005-2020],Republican,Agriculture Improvement Act
-WA,8,Yea,David Reichert [R,2005-2018],Republican,Agriculture Improvement Act
-WI,4,Not Voting,Gwen Moore [D,2005-2020],Democrat,Agriculture Improvement Act
-CA,6,Yea,Doris Matsui [D,2013-2020],Democrat,Agriculture Improvement Act
-MN,8,Yea,Richard Nolan [D,2013-2018],Democrat,Agriculture Improvement Act
-PA,9,Yea,Bill Shuster [R,2001-2018],Republican,Agriculture Improvement Act
-NJ,8,Yea,Albio Sires [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,9,Yea,Jerry McNerney [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,23,Yea,Kevin McCarthy [R,2013-2020],Republican,Agriculture Improvement Act
-CO,5,Nay,Doug Lamborn [R,2007-2020],Republican,Agriculture Improvement Act
-CO,7,Yea,Ed Perlmutter [D,2007-2020],Democrat,Agriculture Improvement Act
-CT,2,Yea,Joe Courtney [D,2007-2020],Democrat,Agriculture Improvement Act
-FL,14,Yea,Kathy Castor [D,2013-2020],Democrat,Agriculture Improvement Act
-FL,16,Not Voting,Vern Buchanan [R,2013-2020],Republican,Agriculture Improvement Act
-GA,4,Yea,Henry “Hank” Johnson Jr. [D,2007-2020],Democrat,Agriculture Improvement Act
-IL,6,Yea,Peter Roskam [R,2007-2018],Republican,Agriculture Improvement Act
-IA,2,Yea,David Loebsack [D,2007-2020],Democrat,Agriculture Improvement Act
-KY,3,Yea,John Yarmuth [D,2007-2020],Democrat,Agriculture Improvement Act
-MD,3,Yea,John Sarbanes [D,2007-2020],Democrat,Agriculture Improvement Act
-MI,7,Yea,Tim Walberg [R,2011-2020],Republican,Agriculture Improvement Act
-MN,1,Not Voting,Timothy Walz [D,2007-2018],Democrat,Agriculture Improvement Act
-MN,5,Not Voting,Keith Ellison [D,2007-2018],Democrat,Agriculture Improvement Act
-NE,3,Yea,Adrian Smith [R,2007-2020],Republican,Agriculture Improvement Act
-NH,1,Yea,Carol Shea-Porter [D,2017-2018],Democrat,Agriculture Improvement Act
-NY,9,Yea,Yvette Clarke [D,2013-2020],Democrat,Agriculture Improvement Act
-OH,4,Nay,Jim Jordan [R,2007-2020],Republican,Agriculture Improvement Act
-TN,9,Yea,Steve Cohen [D,2007-2020],Democrat,Agriculture Improvement Act
-VT,0,Yea,Peter Welch [D,2007-2020],Democrat,Agriculture Improvement Act
-FL,12,Yea,Gus Bilirakis [R,2013-2020],Republican,Agriculture Improvement Act
-MA,3,Yea,Niki Tsongas [D,2013-2018],Democrat,Agriculture Improvement Act
-VA,1,Yea,Robert Wittman [R,2007-2020],Republican,Agriculture Improvement Act
-OH,5,Yea,Robert Latta [R,2007-2020],Republican,Agriculture Improvement Act
-IL,11,Yea,Bill Foster [D,2013-2020],Democrat,Agriculture Improvement Act
-IN,7,Yea,André Carson [D,2008-2020],Democrat,Agriculture Improvement Act
-CA,14,Yea,Jackie Speier [D,2013-2020],Democrat,Agriculture Improvement Act
-LA,1,Yea,Steve Scalise [R,2008-2020],Republican,Agriculture Improvement Act
-CO,6,Nay,Mike Coffman [R,2009-2018],Republican,Agriculture Improvement Act
-VA,11,Yea,Gerald Connolly [D,2009-2020],Democrat,Agriculture Improvement Act
-KY,2,Yea,Brett Guthrie [R,2009-2020],Republican,Agriculture Improvement Act
-MS,3,Yea,Gregg Harper [R,2009-2018],Republican,Agriculture Improvement Act
-CT,4,Yea,James Himes [D,2009-2020],Democrat,Agriculture Improvement Act
-CA,50,Yea,Duncan Hunter [R,2013-2020],Republican,Agriculture Improvement Act
-KS,2,Yea,Lynn Jenkins [R,2009-2018],Republican,Agriculture Improvement Act
-NJ,7,Nay,Leonard Lance [R,2009-2018],Republican,Agriculture Improvement Act
-MO,3,Yea,Blaine Luetkemeyer [R,2013-2020],Republican,Agriculture Improvement Act
-NM,3,Yea,Ben Luján [D,2009-2020],Democrat,Agriculture Improvement Act
-CA,4,Nay,Tom McClintock [R,2009-2020],Republican,Agriculture Improvement Act
-TX,22,Yea,Pete Olson [R,2009-2020],Republican,Agriculture Improvement Act
-MN,3,Yea,Erik Paulsen [R,2009-2018],Republican,Agriculture Improvement Act
-ME,1,Yea,Chellie Pingree [D,2009-2020],Democrat,Agriculture Improvement Act
-CO,2,Not Voting,Jared Polis [D,2009-2018],Democrat,Agriculture Improvement Act
-FL,8,Nay,Bill Posey [R,2013-2020],Republican,Agriculture Improvement Act
-TN,1,Yea,David “Phil” Roe [R,2009-2020],Republican,Agriculture Improvement Act
-FL,17,Yea,Thomas Rooney [R,2013-2018],Republican,Agriculture Improvement Act
-OR,5,Yea,Kurt Schrader [D,2009-2020],Democrat,Agriculture Improvement Act
-PA,5,Yea,Glenn Thompson [R,2009-2018],Republican,Agriculture Improvement Act
-NV,1,Yea,Dina Titus [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,20,Yea,Paul Tonko [D,2013-2020],Democrat,Agriculture Improvement Act
-OH,11,Yea,Marcia Fudge [D,2008-2020],Democrat,Agriculture Improvement Act
-IL,5,Yea,Mike Quigley [D,2009-2020],Democrat,Agriculture Improvement Act
-CA,27,Yea,Judy Chu [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,3,Yea,John Garamendi [D,2013-2020],Democrat,Agriculture Improvement Act
-FL,22,Yea,Ted Deutch [D,2017-2020],Democrat,Agriculture Improvement Act
-GA,14,Yea,Tom Graves [R,2013-2020],Republican,Agriculture Improvement Act
-NY,23,Yea,Tom Reed II [R,2013-2020],Republican,Agriculture Improvement Act
-AL,2,Yea,Martha Roby [R,2011-2020],Republican,Agriculture Improvement Act
-AL,5,Yea,Mo Brooks [R,2011-2020],Republican,Agriculture Improvement Act
-AL,7,Yea,Terri Sewell [D,2011-2020],Democrat,Agriculture Improvement Act
-AZ,4,Nay,Paul Gosar [R,2013-2020],Republican,Agriculture Improvement Act
-AZ,6,Nay,David Schweikert [R,2013-2020],Republican,Agriculture Improvement Act
-AR,1,Yea,Eric “Rick” Crawford [R,2011-2020],Republican,Agriculture Improvement Act
-AR,3,Yea,Steve Womack [R,2011-2020],Republican,Agriculture Improvement Act
-CA,10,Yea,Jeff Denham [R,2013-2018],Republican,Agriculture Improvement Act
-CA,37,Yea,Karen Bass [D,2013-2020],Democrat,Agriculture Improvement Act
-CO,3,Yea,Scott Tipton [R,2011-2020],Republican,Agriculture Improvement Act
-FL,11,Yea,Daniel Webster [R,2017-2020],Republican,Agriculture Improvement Act
-FL,15,Yea,Dennis Ross [R,2013-2018],Republican,Agriculture Improvement Act
-FL,24,Yea,Frederica Wilson [D,2013-2020],Democrat,Agriculture Improvement Act
-GA,7,Yea,Rob Woodall [R,2011-2020],Republican,Agriculture Improvement Act
-GA,8,Yea,Austin Scott [R,2011-2020],Republican,Agriculture Improvement Act
-HI,1,Yea,Colleen Hanabusa [D,2016-2018],Democrat,Agriculture Improvement Act
-ID,1,Not Voting,Raúl Labrador [R,2011-2018],Republican,Agriculture Improvement Act
-IL,16,Yea,Adam Kinzinger [R,2013-2020],Republican,Agriculture Improvement Act
-IL,14,Yea,Randy Hultgren [R,2011-2018],Republican,Agriculture Improvement Act
-IN,4,Yea,Todd Rokita [R,2011-2018],Republican,Agriculture Improvement Act
-IN,8,Yea,Larry Bucshon [R,2011-2020],Republican,Agriculture Improvement Act
-KS,3,Yea,Kevin Yoder [R,2011-2018],Republican,Agriculture Improvement Act
-LA,2,Yea,Cedric Richmond [D,2011-2020],Democrat,Agriculture Improvement Act
-MD,1,Nay,Andy Harris [R,2011-2020],Republican,Agriculture Improvement Act
-MA,9,Not Voting,William Keating [D,2013-2020],Democrat,Agriculture Improvement Act
-MI,2,Yea,Bill Huizenga [R,2011-2020],Republican,Agriculture Improvement Act
-MI,3,Nay,Justin Amash [R,2011-2020],Republican,Agriculture Improvement Act
-MS,4,Yea,Steven Palazzo [R,2011-2020],Republican,Agriculture Improvement Act
-MO,4,Not Voting,Vicky Hartzler [R,2011-2020],Republican,Agriculture Improvement Act
-MO,7,Yea,Billy Long [R,2011-2020],Republican,Agriculture Improvement Act
-OH,6,Yea,Bill Johnson [R,2011-2020],Republican,Agriculture Improvement Act
-OH,15,Yea,Steve Stivers [R,2011-2020],Republican,Agriculture Improvement Act
-OH,16,Yea,James Renacci [R,2011-2018],Republican,Agriculture Improvement Act
-OH,7,Yea,Bob Gibbs [R,2013-2020],Republican,Agriculture Improvement Act
-PA,3,Yea,Mike Kelly [R,2011-2018],Republican,Agriculture Improvement Act
-PA,10,Yea,Tom Marino [R,2011-2018],Republican,Agriculture Improvement Act
-PA,11,Not Voting,Lou Barletta [R,2011-2018],Republican,Agriculture Improvement Act
-RI,1,Yea,David Cicilline [D,2011-2020],Democrat,Agriculture Improvement Act
-SC,3,Nay,Jeff Duncan [R,2011-2020],Republican,Agriculture Improvement Act
-SC,4,Yea,Trey Gowdy [R,2011-2018],Republican,Agriculture Improvement Act
-SD,0,Yea,Kristi Noem [R,2011-2018],Republican,Agriculture Improvement Act
-TN,3,Yea,Chuck Fleischmann [R,2011-2020],Republican,Agriculture Improvement Act
-TN,4,Yea,Scott DesJarlais [R,2011-2020],Republican,Agriculture Improvement Act
-TN,6,Yea,Diane Black [R,2011-2018],Republican,Agriculture Improvement Act
-TX,17,Yea,Bill Flores [R,2011-2020],Republican,Agriculture Improvement Act
-VA,9,Yea,Morgan Griffith [R,2011-2020],Republican,Agriculture Improvement Act
-WA,3,Yea,Jaime Herrera Beutler [R,2011-2020],Republican,Agriculture Improvement Act
-WV,1,Yea,David McKinley [R,2011-2020],Republican,Agriculture Improvement Act
-WI,7,Yea,Sean Duffy [R,2011-2019],Republican,Agriculture Improvement Act
-NV,2,Yea,Mark Amodei [R,2011-2020],Republican,Agriculture Improvement Act
-OR,1,Yea,Suzanne Bonamici [D,2012-2020],Democrat,Agriculture Improvement Act
-KY,4,Nay,Thomas Massie [R,2012-2020],Republican,Agriculture Improvement Act
-WA,1,Yea,Suzan DelBene [D,2012-2020],Democrat,Agriculture Improvement Act
-NJ,10,Not Voting,Donald Payne Jr. [D,2012-2020],Democrat,Agriculture Improvement Act
-AZ,9,Yea,Kyrsten Sinema [D,2013-2018],Democrat,Agriculture Improvement Act
-CA,1,Yea,Doug LaMalfa [R,2013-2020],Republican,Agriculture Improvement Act
-CA,2,Yea,Jared Huffman [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,7,Yea,Ami Bera [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,8,Yea,Paul Cook [R,2013-2020],Republican,Agriculture Improvement Act
-CA,15,Yea,Eric Swalwell [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,21,Yea,David Valadao [R,2013-2018],Republican,Agriculture Improvement Act
-CA,26,Yea,Julia Brownley [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,29,Yea,Tony Cárdenas [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,36,Yea,Raul Ruiz [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,41,Yea,Mark Takano [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,47,Yea,Alan Lowenthal [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,51,Yea,Juan Vargas [D,2013-2020],Democrat,Agriculture Improvement Act
-CA,52,Yea,Scott Peters [D,2013-2020],Democrat,Agriculture Improvement Act
-CT,5,Yea,Elizabeth Esty [D,2013-2018],Democrat,Agriculture Improvement Act
-FL,3,Yea,Ted Yoho [R,2013-2020],Republican,Agriculture Improvement Act
-FL,21,Yea,Lois Frankel [D,2017-2020],Democrat,Agriculture Improvement Act
-GA,9,Yea,Doug Collins [R,2013-2020],Republican,Agriculture Improvement Act
-HI,2,Yea,Tulsi Gabbard [D,2013-2020],Democrat,Agriculture Improvement Act
-IL,10,Yea,Brad Schneider [D,2017-2020],Democrat,Agriculture Improvement Act
-IL,13,Yea,Rodney Davis [R,2013-2020],Republican,Agriculture Improvement Act
-IL,17,Yea,Cheri Bustos [D,2013-2020],Democrat,Agriculture Improvement Act
-IN,2,Yea,Jackie Walorski [R,2013-2020],Republican,Agriculture Improvement Act
-IN,5,Yea,Susan Brooks [R,2013-2020],Republican,Agriculture Improvement Act
-IN,6,Yea,Luke Messer [R,2013-2018],Republican,Agriculture Improvement Act
-KY,6,Yea,Andy Barr [R,2013-2020],Republican,Agriculture Improvement Act
-MA,4,Yea,Joseph Kennedy III [D,2013-2020],Democrat,Agriculture Improvement Act
-MD,6,Yea,John Delaney [D,2013-2018],Democrat,Agriculture Improvement Act
-MI,5,Yea,Daniel Kildee [D,2013-2020],Democrat,Agriculture Improvement Act
-MO,2,Yea,Ann Wagner [R,2013-2020],Republican,Agriculture Improvement Act
-NC,8,Yea,Richard Hudson [R,2013-2020],Republican,Agriculture Improvement Act
-NC,9,Yea,Robert Pittenger [R,2013-2018],Republican,Agriculture Improvement Act
-NC,11,Nay,Mark Meadows [R,2013-2020],Republican,Agriculture Improvement Act
-NC,2,Nay,George Holding [R,2017-2020],Republican,Agriculture Improvement Act
-ND,0,Yea,Kevin Cramer [R,2013-2018],Republican,Agriculture Improvement Act
-NH,2,Yea,Ann Kuster [D,2013-2020],Democrat,Agriculture Improvement Act
-NM,1,Not Voting,Michelle Lujan Grisham [D,2013-2018],Democrat,Agriculture Improvement Act
-NY,6,Yea,Grace Meng [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,8,Yea,Hakeem Jeffries [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,18,Yea,Sean Maloney [D,2013-2020],Democrat,Agriculture Improvement Act
-NY,27,Yea,Chris Collins [R,2013-2019],Republican,Agriculture Improvement Act
-OH,2,Yea,Brad Wenstrup [R,2013-2020],Republican,Agriculture Improvement Act
-OH,3,Yea,Joyce Beatty [D,2013-2020],Democrat,Agriculture Improvement Act
-OH,14,Yea,David Joyce [R,2013-2020],Republican,Agriculture Improvement Act
-OK,2,Yea,Markwayne Mullin [R,2013-2020],Republican,Agriculture Improvement Act
-PA,4,Nay,Scott Perry [R,2013-2018],Republican,Agriculture Improvement Act
-PA,12,Nay,Keith Rothfus [R,2013-2018],Republican,Agriculture Improvement Act
-PA,17,Yea,Matthew Cartwright [D,2013-2018],Democrat,Agriculture Improvement Act
-SC,7,Yea,Tom Rice [R,2013-2020],Republican,Agriculture Improvement Act
-TX,14,Yea,Randy Weber [R,2013-2020],Republican,Agriculture Improvement Act
-TX,16,Yea,Beto O’Rourke [D,2013-2018],Democrat,Agriculture Improvement Act
-TX,20,Yea,Joaquin Castro [D,2013-2020],Democrat,Agriculture Improvement Act
-TX,25,Yea,Roger Williams [R,2013-2020],Republican,Agriculture Improvement Act
-TX,33,Yea,Marc Veasey [D,2013-2020],Democrat,Agriculture Improvement Act
-TX,34,Yea,Filemon Vela [D,2013-2020],Democrat,Agriculture Improvement Act
-UT,2,Not Voting,Chris Stewart [R,2013-2020],Republican,Agriculture Improvement Act
-WA,6,Yea,Derek Kilmer [D,2013-2020],Democrat,Agriculture Improvement Act
-WA,10,Yea,Denny Heck [D,2013-2020],Democrat,Agriculture Improvement Act
-WI,2,Yea,Mark Pocan [D,2013-2020],Democrat,Agriculture Improvement Act
-IL,2,Yea,Robin Kelly [D,2013-2020],Democrat,Agriculture Improvement Act
-MO,8,Yea,Jason Smith [R,2013-2020],Republican,Agriculture Improvement Act
-MA,5,Yea,Katherine Clark [D,2013-2020],Democrat,Agriculture Improvement Act
-AL,1,Yea,Bradley Byrne [R,2014-2020],Republican,Agriculture Improvement Act
-VA,7,Nay,Dave Brat [R,2014-2018],Republican,Agriculture Improvement Act
-NJ,1,Yea,Donald Norcross [D,2014-2020],Democrat,Agriculture Improvement Act
-NC,12,Yea,Alma Adams [D,2014-2020],Democrat,Agriculture Improvement Act
-AL,6,Yea,Gary Palmer [R,2015-2020],Republican,Agriculture Improvement Act
-AR,2,Yea,French Hill [R,2015-2020],Republican,Agriculture Improvement Act
-AR,4,Yea,Bruce Westerman [R,2015-2020],Republican,Agriculture Improvement Act
-AZ,2,Nay,Martha McSally [R,2015-2018],Republican,Agriculture Improvement Act
-AZ,7,Yea,Ruben Gallego [D,2015-2020],Democrat,Agriculture Improvement Act
-CA,11,Yea,Mark DeSaulnier [D,2015-2020],Democrat,Agriculture Improvement Act
-CA,25,Not Voting,Steve Knight [R,2015-2018],Republican,Agriculture Improvement Act
-CA,31,Yea,Pete Aguilar [D,2015-2020],Democrat,Agriculture Improvement Act
-CA,33,Yea,Ted Lieu [D,2015-2020],Democrat,Agriculture Improvement Act
-CA,35,Yea,Norma Torres [D,2015-2020],Democrat,Agriculture Improvement Act
-CA,45,Yea,Mimi Walters [R,2015-2018],Republican,Agriculture Improvement Act
-CO,4,Nay,Ken Buck [R,2015-2020],Republican,Agriculture Improvement Act
-FL,26,Yea,Carlos Curbelo [R,2015-2018],Republican,Agriculture Improvement Act
-GA,1,Nay,Buddy Carter [R,2015-2020],Republican,Agriculture Improvement Act
-GA,10,Nay,Jody Hice [R,2015-2020],Republican,Agriculture Improvement Act
-GA,11,Nay,Barry Loudermilk [R,2015-2020],Republican,Agriculture Improvement Act
-GA,12,Yea,Rick Allen [R,2015-2020],Republican,Agriculture Improvement Act
-IA,1,Yea,Rod Blum [R,2015-2018],Republican,Agriculture Improvement Act
-IA,3,Yea,David Young [R,2015-2018],Republican,Agriculture Improvement Act
-IL,12,Yea,Mike Bost [R,2015-2020],Republican,Agriculture Improvement Act
-LA,5,Yea,Ralph Abraham [R,2015-2020],Republican,Agriculture Improvement Act
-LA,6,Yea,Garret Graves [R,2015-2020],Republican,Agriculture Improvement Act
-MA,6,Yea,Seth Moulton [D,2015-2020],Democrat,Agriculture Improvement Act
-ME,2,Yea,Bruce Poliquin [R,2015-2018],Republican,Agriculture Improvement Act
-MI,4,Yea,John Moolenaar [R,2015-2020],Republican,Agriculture Improvement Act
-MI,8,Yea,Mike Bishop [R,2015-2018],Republican,Agriculture Improvement Act
-MI,11,Yea,Dave Trott [R,2015-2018],Republican,Agriculture Improvement Act
-MI,12,Yea,Debbie Dingell [D,2015-2020],Democrat,Agriculture Improvement Act
-MI,14,Yea,Brenda Lawrence [D,2015-2020],Democrat,Agriculture Improvement Act
-MN,6,Yea,Tom Emmer [R,2015-2020],Republican,Agriculture Improvement Act
-NC,7,Yea,David Rouzer [R,2015-2020],Republican,Agriculture Improvement Act
-NJ,3,Yea,Tom MacArthur [R,2015-2018],Republican,Agriculture Improvement Act
-NJ,12,Yea,Bonnie Watson Coleman [D,2015-2020],Democrat,Agriculture Improvement Act
-NY,1,Yea,Lee Zeldin [R,2015-2020],Republican,Agriculture Improvement Act
-NY,4,Yea,Kathleen Rice [D,2015-2020],Democrat,Agriculture Improvement Act
-NY,21,Yea,Elise Stefanik [R,2015-2020],Republican,Agriculture Improvement Act
-NY,24,Yea,John Katko [R,2015-2020],Republican,Agriculture Improvement Act
-OK,5,Yea,Steve Russell [R,2015-2018],Republican,Agriculture Improvement Act
-PA,6,Yea,Ryan Costello [R,2015-2018],Republican,Agriculture Improvement Act
-PA,13,Yea,Brendan Boyle [D,2015-2018],Democrat,Agriculture Improvement Act
-TX,4,Nay,John Ratcliffe [R,2015-2020],Republican,Agriculture Improvement Act
-TX,23,Yea,Will Hurd [R,2015-2020],Republican,Agriculture Improvement Act
-TX,36,Yea,Brian Babin [R,2015-2020],Republican,Agriculture Improvement Act
-UT,4,Yea,Mia Love [R,2015-2018],Republican,Agriculture Improvement Act
-VA,8,Yea,Donald Beyer [D,2015-2020],Democrat,Agriculture Improvement Act
-VA,10,Yea,Barbara Comstock [R,2015-2018],Republican,Agriculture Improvement Act
-WA,4,Yea,Dan Newhouse [R,2015-2020],Republican,Agriculture Improvement Act
-WI,6,Yea,Glenn Grothman [R,2015-2020],Republican,Agriculture Improvement Act
-WV,2,Nay,Alex Mooney [R,2015-2020],Republican,Agriculture Improvement Act
-NC,6,Yea,Mark Walker [R,2015-2020],Republican,Agriculture Improvement Act
-NY,11,Not Voting,Daniel Donovan Jr. [R,2015-2018],Republican,Agriculture Improvement Act
-MS,1,Yea,Trent Kelly [R,2015-2020],Republican,Agriculture Improvement Act
-IL,18,Yea,Darin LaHood [R,2015-2020],Republican,Agriculture Improvement Act
-OH,8,Nay,Warren Davidson [R,2016-2020],Republican,Agriculture Improvement Act
-KY,1,Yea,James Comer [R,2016-2020],Republican,Agriculture Improvement Act
-PA,2,Yea,Dwight Evans [D,2016-2018],Democrat,Agriculture Improvement Act
-AZ,1,Yea,Tom O’Halleran [D,2017-2020],Democrat,Agriculture Improvement Act
-AZ,5,Nay,Andy Biggs [R,2017-2020],Republican,Agriculture Improvement Act
-CA,17,Yea,Ro Khanna [D,2017-2020],Democrat,Agriculture Improvement Act
-CA,20,Yea,Jimmy Panetta [D,2017-2020],Democrat,Agriculture Improvement Act
-CA,24,Yea,Salud Carbajal [D,2017-2020],Democrat,Agriculture Improvement Act
-CA,44,Yea,Nanette Barragán [D,2017-2020],Democrat,Agriculture Improvement Act
-CA,46,Yea,Luis Correa [D,2017-2020],Democrat,Agriculture Improvement Act
-DE,0,Yea,Lisa Blunt Rochester [D,2017-2020],Democrat,Agriculture Improvement Act
-FL,1,Nay,Matt Gaetz [R,2017-2020],Republican,Agriculture Improvement Act
-FL,2,Yea,Neal Dunn [R,2017-2020],Republican,Agriculture Improvement Act
-FL,4,Yea,John Rutherford [R,2017-2020],Republican,Agriculture Improvement Act
-FL,5,Yea,Al Lawson [D,2017-2020],Democrat,Agriculture Improvement Act
-FL,7,Yea,Stephanie Murphy [D,2017-2020],Democrat,Agriculture Improvement Act
-FL,9,Yea,Darren Soto [D,2017-2020],Democrat,Agriculture Improvement Act
-FL,10,Yea,Val Demings [D,2017-2020],Democrat,Agriculture Improvement Act
-FL,13,Yea,Charlie Crist [D,2017-2020],Democrat,Agriculture Improvement Act
-FL,18,Nay,Brian Mast [R,2017-2020],Republican,Agriculture Improvement Act
-FL,19,Nay,Francis Rooney [R,2017-2020],Republican,Agriculture Improvement Act
-GA,3,Yea,Drew Ferguson IV [R,2017-2020],Republican,Agriculture Improvement Act
-IL,8,Yea,Raja Krishnamoorthi [D,2017-2020],Democrat,Agriculture Improvement Act
-IN,3,Yea,Jim Banks [R,2017-2020],Republican,Agriculture Improvement Act
-IN,9,Yea,Trey Hollingsworth [R,2017-2020],Republican,Agriculture Improvement Act
-KS,1,Yea,Roger Marshall [R,2017-2020],Republican,Agriculture Improvement Act
-LA,3,Yea,Clay Higgins [R,2017-2020],Republican,Agriculture Improvement Act
-LA,4,Yea,Mike Johnson [R,2017-2020],Republican,Agriculture Improvement Act
-MD,4,Yea,Anthony Brown [D,2017-2020],Democrat,Agriculture Improvement Act
-MD,8,Yea,Jamie Raskin [D,2017-2020],Democrat,Agriculture Improvement Act
-MI,1,Yea,Jack Bergman [R,2017-2020],Republican,Agriculture Improvement Act
-MI,10,Yea,Paul Mitchell [R,2017-2020],Republican,Agriculture Improvement Act
-MN,2,Nay,Jason Lewis [R,2017-2018],Republican,Agriculture Improvement Act
-NC,13,Nay,Ted Budd [R,2017-2020],Republican,Agriculture Improvement Act
-NE,2,Yea,Don Bacon [R,2017-2020],Republican,Agriculture Improvement Act
-NJ,5,Yea,Josh Gottheimer [D,2017-2020],Democrat,Agriculture Improvement Act
-NV,3,Yea,Jacky Rosen [D,2017-2018],Democrat,Agriculture Improvement Act
-NV,4,Yea,Ruben Kihuen [D,2017-2018],Democrat,Agriculture Improvement Act
-NY,3,Yea,Thomas Suozzi [D,2017-2020],Democrat,Agriculture Improvement Act
-NY,13,Yea,Adriano Espaillat [D,2017-2020],Democrat,Agriculture Improvement Act
-NY,19,Yea,John Faso [R,2017-2018],Republican,Agriculture Improvement Act
-NY,22,Yea,Claudia Tenney [R,2017-2018],Republican,Agriculture Improvement Act
-PA,8,Yea,Brian Fitzpatrick [R,2017-2018],Republican,Agriculture Improvement Act
-PA,16,Yea,Lloyd Smucker [R,2017-2018],Republican,Agriculture Improvement Act
-TN,8,Yea,David Kustoff [R,2017-2020],Republican,Agriculture Improvement Act
-TX,15,Yea,Vicente Gonzalez [D,2017-2020],Democrat,Agriculture Improvement Act
-TX,19,Yea,Jodey Arrington [R,2017-2020],Republican,Agriculture Improvement Act
-VA,2,Yea,Scott Taylor [R,2017-2018],Republican,Agriculture Improvement Act
-VA,4,Yea,Donald McEachin [D,2017-2020],Democrat,Agriculture Improvement Act
-VA,5,Nay,Thomas Garrett [R,2017-2018],Republican,Agriculture Improvement Act
-WA,7,Yea,Pramila Jayapal [D,2017-2020],Democrat,Agriculture Improvement Act
-WI,8,Nay,Mike Gallagher [R,2017-2020],Republican,Agriculture Improvement Act
-WY,0,Yea,Liz Cheney [R,2017-2020],Republican,Agriculture Improvement Act
-KS,4,Yea,Ron Estes [R,2017-2020],Republican,Agriculture Improvement Act
-MT,0,Yea,Greg Gianforte [R,2017-2020],Republican,Agriculture Improvement Act
-GA,6,Yea,Karen Handel [R,2017-2018],Republican,Agriculture Improvement Act
-SC,5,Nay,Ralph Norman Jr. [R,2017-2020],Republican,Agriculture Improvement Act
-CA,34,Yea,Jimmy Gomez [D,2017-2020],Democrat,Agriculture Improvement Act
-UT,3,Yea,John Curtis [R,2017-2020],Republican,Agriculture Improvement Act
-PA,18,Yea,Conor Lamb [D,2018-2018],Democrat,Agriculture Improvement Act
-AZ,8,Nay,Debbie Lesko [R,2018-2020],Republican,Agriculture Improvement Act
-TX,27,Yea,Michael Cloud [R,2018-2020],Republican,Agriculture Improvement Act
-OH,12,Yea,Troy Balderson [R,2018-2020],Republican,Agriculture Improvement Act
-OK,1,Yea,Kevin Hern [R,2018-2020],Republican,Agriculture Improvement Act
-NY,25,Yea,Joseph Morelle [D,2018-2020],Democrat,Agriculture Improvement Act
-PA,7,Yea,Mary Scanlon [D,2018-2018],Democrat,Agriculture Improvement Act
-PA,15,Yea,Susan Wild [D,2018-2018],Democrat,Agriculture Improvement Act
-MI,13,Yea,Brenda Jones [D,2018-2018],Democrat,Agriculture Improvement Act
+AL,4,Yea,Robert Aderholt,Republican,Agriculture Improvement Act
+TX,6,Not Voting,Joe Barton,Republican,Agriculture Improvement Act
+UT,1,Yea,Rob Bishop,Republican,Agriculture Improvement Act
+GA,2,Yea,Sanford Bishop Jr.,Democrat,Agriculture Improvement Act
+TN,7,Yea,Marsha Blackburn,Republican,Agriculture Improvement Act
+OR,3,Nay,Earl Blumenauer,Democrat,Agriculture Improvement Act
+TX,8,Yea,Kevin Brady,Republican,Agriculture Improvement Act
+PA,1,Yea,Robert Brady,Democrat,Agriculture Improvement Act
+TX,26,Yea,Michael Burgess,Republican,Agriculture Improvement Act
+CA,42,Yea,Ken Calvert,Republican,Agriculture Improvement Act
+MA,7,Yea,Michael Capuano,Democrat,Agriculture Improvement Act
+TX,31,Yea,John Carter,Republican,Agriculture Improvement Act
+OH,1,Nay,Steve Chabot,Republican,Agriculture Improvement Act
+MO,1,Yea,Lacy Clay Jr.,Democrat,Agriculture Improvement Act
+SC,6,Yea,James Clyburn,Democrat,Agriculture Improvement Act
+OK,4,Yea,Tom Cole,Republican,Agriculture Improvement Act
+TN,5,Yea,Jim Cooper,Democrat,Agriculture Improvement Act
+NY,14,Yea,Joe Crowley,Democrat,Agriculture Improvement Act
+TX,7,Yea,John Culberson,Republican,Agriculture Improvement Act
+MD,7,Yea,Elijah Cummings,Democrat,Agriculture Improvement Act
+IL,7,Yea,Danny Davis,Democrat,Agriculture Improvement Act
+CA,53,Yea,Susan Davis,Democrat,Agriculture Improvement Act
+OR,4,Yea,Peter DeFazio,Democrat,Agriculture Improvement Act
+CO,1,Yea,Diana DeGette,Democrat,Agriculture Improvement Act
+CT,3,Yea,Rosa DeLauro,Democrat,Agriculture Improvement Act
+FL,25,Yea,Mario Diaz-Balart,Republican,Agriculture Improvement Act
+TX,35,Nay,Lloyd Doggett,Democrat,Agriculture Improvement Act
+PA,14,Yea,Mike Doyle Jr.,Democrat,Agriculture Improvement Act
+TN,2,Nay,John “Jimmy” Duncan Jr.,Republican,Agriculture Improvement Act
+NY,16,Yea,Eliot Engel,Democrat,Agriculture Improvement Act
+CA,18,Yea,Anna Eshoo,Democrat,Agriculture Improvement Act
+NJ,11,Nay,Rodney Frelinghuysen,Republican,Agriculture Improvement Act
+VA,6,Yea,Bob Goodlatte,Republican,Agriculture Improvement Act
+TX,12,Yea,Kay Granger,Republican,Agriculture Improvement Act
+MO,6,Yea,Sam Graves,Republican,Agriculture Improvement Act
+TX,29,Yea,Gene Green,Democrat,Agriculture Improvement Act
+AZ,3,Yea,Raúl Grijalva,Democrat,Agriculture Improvement Act
+IL,4,Yea,Luis Gutiérrez,Democrat,Agriculture Improvement Act
+FL,20,Yea,Alcee Hastings,Democrat,Agriculture Improvement Act
+TX,5,Nay,Jeb Hensarling,Republican,Agriculture Improvement Act
+MD,5,Yea,Steny Hoyer,Democrat,Agriculture Improvement Act
+CA,49,Yea,Darrell Issa,Republican,Agriculture Improvement Act
+TX,18,Yea,Sheila Jackson Lee,Democrat,Agriculture Improvement Act
+TX,30,Yea,Eddie Johnson,Democrat,Agriculture Improvement Act
+TX,3,Nay,Sam Johnson,Republican,Agriculture Improvement Act
+NC,3,Not Voting,Walter Jones Jr.,Republican,Agriculture Improvement Act
+OH,9,Yea,Marcy Kaptur,Democrat,Agriculture Improvement Act
+WI,3,Nay,Ron Kind,Democrat,Agriculture Improvement Act
+NY,2,Yea,Pete King,Republican,Agriculture Improvement Act
+IA,4,Yea,Steve King,Republican,Agriculture Improvement Act
+RI,2,Yea,Jim Langevin,Democrat,Agriculture Improvement Act
+WA,2,Yea,Rick Larsen,Democrat,Agriculture Improvement Act
+CT,1,Yea,John Larson,Democrat,Agriculture Improvement Act
+CA,13,Yea,Barbara Lee,Democrat,Agriculture Improvement Act
+MI,9,Yea,Sander Levin,Democrat,Agriculture Improvement Act
+GA,5,Yea,John Lewis,Democrat,Agriculture Improvement Act
+NJ,2,Yea,Frank LoBiondo,Republican,Agriculture Improvement Act
+CA,19,Yea,Zoe Lofgren,Democrat,Agriculture Improvement Act
+NY,17,Yea,Nita Lowey,Democrat,Agriculture Improvement Act
+OK,3,Yea,Frank Lucas,Republican,Agriculture Improvement Act
+MA,8,Yea,Stephen Lynch,Democrat,Agriculture Improvement Act
+NY,12,Yea,Carolyn Maloney,Democrat,Agriculture Improvement Act
+MN,4,Yea,Betty McCollum,Democrat,Agriculture Improvement Act
+MA,2,Yea,Jim McGovern,Democrat,Agriculture Improvement Act
+NY,5,Yea,Gregory Meeks,Democrat,Agriculture Improvement Act
+NY,10,Yea,Jerrold Nadler,Democrat,Agriculture Improvement Act
+CA,32,Yea,Grace Napolitano,Democrat,Agriculture Improvement Act
+MA,1,Yea,Richard Neal,Democrat,Agriculture Improvement Act
+CA,22,Yea,Devin Nunes,Republican,Agriculture Improvement Act
+NJ,6,Yea,Frank Pallone Jr.,Democrat,Agriculture Improvement Act
+NJ,9,Yea,Bill Pascrell Jr.,Democrat,Agriculture Improvement Act
+NM,2,Yea,Steve Pearce,Republican,Agriculture Improvement Act
+CA,12,Yea,Nancy Pelosi,Democrat,Agriculture Improvement Act
+MN,7,Yea,Collin Peterson,Democrat,Agriculture Improvement Act
+NC,4,Yea,David Price,Democrat,Agriculture Improvement Act
+KY,5,Yea,Hal Rogers,Republican,Agriculture Improvement Act
+AL,3,Yea,Mike Rogers,Republican,Agriculture Improvement Act
+CA,48,Yea,Dana Rohrabacher,Republican,Agriculture Improvement Act
+FL,27,Yea,Ileana Ros-Lehtinen,Republican,Agriculture Improvement Act
+CA,40,Yea,Lucille Roybal-Allard,Democrat,Agriculture Improvement Act
+CA,39,Yea,Ed Royce,Republican,Agriculture Improvement Act
+MD,2,Yea,A. Dutch Ruppersberger,Democrat,Agriculture Improvement Act
+IL,1,Yea,Bobby Rush,Democrat,Agriculture Improvement Act
+OH,13,Yea,Tim Ryan,Democrat,Agriculture Improvement Act
+CA,38,Yea,Linda Sánchez,Democrat,Agriculture Improvement Act
+IL,9,Yea,Jan Schakowsky,Democrat,Agriculture Improvement Act
+CA,28,Yea,Adam Schiff,Democrat,Agriculture Improvement Act
+GA,13,Yea,David Scott,Democrat,Agriculture Improvement Act
+VA,3,Yea,Bobby Scott,Democrat,Agriculture Improvement Act
+WI,5,Nay,James Sensenbrenner Jr.,Republican,Agriculture Improvement Act
+NY,15,Yea,José Serrano,Democrat,Agriculture Improvement Act
+TX,32,Yea,Pete Sessions,Republican,Agriculture Improvement Act
+CA,30,Yea,Brad Sherman,Democrat,Agriculture Improvement Act
+IL,15,Yea,John Shimkus,Republican,Agriculture Improvement Act
+ID,2,Yea,Mike Simpson,Republican,Agriculture Improvement Act
+WA,9,Yea,Adam Smith,Democrat,Agriculture Improvement Act
+NJ,4,Yea,Chris Smith,Republican,Agriculture Improvement Act
+TX,21,Yea,Lamar Smith,Republican,Agriculture Improvement Act
+MS,2,Yea,Bennie Thompson,Democrat,Agriculture Improvement Act
+CA,5,Yea,Mike Thompson,Democrat,Agriculture Improvement Act
+TX,13,Yea,Mac Thornberry,Republican,Agriculture Improvement Act
+OH,10,Yea,Michael Turner,Republican,Agriculture Improvement Act
+MI,6,Yea,Fred Upton,Republican,Agriculture Improvement Act
+NY,7,Yea,Nydia Velázquez,Democrat,Agriculture Improvement Act
+IN,1,Yea,Peter Visclosky,Democrat,Agriculture Improvement Act
+OR,2,Yea,Greg Walden,Republican,Agriculture Improvement Act
+CA,43,Yea,Maxine Waters,Democrat,Agriculture Improvement Act
+SC,2,Yea,Joe Wilson,Republican,Agriculture Improvement Act
+AK,0,Yea,Don Young,Republican,Agriculture Improvement Act
+SC,1,Nay,Mark Sanford,Republican,Agriculture Improvement Act
+NC,1,Yea,G.K. Butterfield Jr.,Democrat,Agriculture Improvement Act
+CA,16,Yea,Jim Costa,Democrat,Agriculture Improvement Act
+FL,23,Yea,Debbie Wasserman Schultz,Democrat,Agriculture Improvement Act
+IL,3,Yea,Daniel Lipinski,Democrat,Agriculture Improvement Act
+MO,5,Yea,Emanuel Cleaver II,Democrat,Agriculture Improvement Act
+NE,1,Yea,Jeff Fortenberry,Republican,Agriculture Improvement Act
+NY,26,Yea,Brian Higgins,Democrat,Agriculture Improvement Act
+NC,5,Nay,Virginia Foxx,Republican,Agriculture Improvement Act
+NC,10,Yea,Patrick McHenry,Republican,Agriculture Improvement Act
+TX,1,Nay,Louie Gohmert Jr.,Republican,Agriculture Improvement Act
+TX,2,Yea,Ted Poe,Republican,Agriculture Improvement Act
+TX,9,Yea,Al Green,Democrat,Agriculture Improvement Act
+TX,10,Yea,Michael McCaul,Republican,Agriculture Improvement Act
+TX,11,Yea,Michael Conaway,Republican,Agriculture Improvement Act
+TX,24,Yea,Kenny Marchant,Republican,Agriculture Improvement Act
+TX,28,Yea,Henry Cuellar,Democrat,Agriculture Improvement Act
+WA,5,Yea,Cathy McMorris Rodgers,Republican,Agriculture Improvement Act
+WA,8,Yea,David Reichert,Republican,Agriculture Improvement Act
+WI,4,Not Voting,Gwen Moore,Democrat,Agriculture Improvement Act
+CA,6,Yea,Doris Matsui,Democrat,Agriculture Improvement Act
+MN,8,Yea,Richard Nolan,Democrat,Agriculture Improvement Act
+PA,9,Yea,Bill Shuster,Republican,Agriculture Improvement Act
+NJ,8,Yea,Albio Sires,Democrat,Agriculture Improvement Act
+CA,9,Yea,Jerry McNerney,Democrat,Agriculture Improvement Act
+CA,23,Yea,Kevin McCarthy,Republican,Agriculture Improvement Act
+CO,5,Nay,Doug Lamborn,Republican,Agriculture Improvement Act
+CO,7,Yea,Ed Perlmutter,Democrat,Agriculture Improvement Act
+CT,2,Yea,Joe Courtney,Democrat,Agriculture Improvement Act
+FL,14,Yea,Kathy Castor,Democrat,Agriculture Improvement Act
+FL,16,Not Voting,Vern Buchanan,Republican,Agriculture Improvement Act
+GA,4,Yea,Henry “Hank” Johnson Jr.,Democrat,Agriculture Improvement Act
+IL,6,Yea,Peter Roskam,Republican,Agriculture Improvement Act
+IA,2,Yea,David Loebsack,Democrat,Agriculture Improvement Act
+KY,3,Yea,John Yarmuth,Democrat,Agriculture Improvement Act
+MD,3,Yea,John Sarbanes,Democrat,Agriculture Improvement Act
+MI,7,Yea,Tim Walberg,Republican,Agriculture Improvement Act
+MN,1,Not Voting,Timothy Walz,Democrat,Agriculture Improvement Act
+MN,5,Not Voting,Keith Ellison,Democrat,Agriculture Improvement Act
+NE,3,Yea,Adrian Smith,Republican,Agriculture Improvement Act
+NH,1,Yea,Carol Shea-Porter,Democrat,Agriculture Improvement Act
+NY,9,Yea,Yvette Clarke,Democrat,Agriculture Improvement Act
+OH,4,Nay,Jim Jordan,Republican,Agriculture Improvement Act
+TN,9,Yea,Steve Cohen,Democrat,Agriculture Improvement Act
+VT,0,Yea,Peter Welch,Democrat,Agriculture Improvement Act
+FL,12,Yea,Gus Bilirakis,Republican,Agriculture Improvement Act
+MA,3,Yea,Niki Tsongas,Democrat,Agriculture Improvement Act
+VA,1,Yea,Robert Wittman,Republican,Agriculture Improvement Act
+OH,5,Yea,Robert Latta,Republican,Agriculture Improvement Act
+IL,11,Yea,Bill Foster,Democrat,Agriculture Improvement Act
+IN,7,Yea,André Carson,Democrat,Agriculture Improvement Act
+CA,14,Yea,Jackie Speier,Democrat,Agriculture Improvement Act
+LA,1,Yea,Steve Scalise,Republican,Agriculture Improvement Act
+CO,6,Nay,Mike Coffman,Republican,Agriculture Improvement Act
+VA,11,Yea,Gerald Connolly,Democrat,Agriculture Improvement Act
+KY,2,Yea,Brett Guthrie,Republican,Agriculture Improvement Act
+MS,3,Yea,Gregg Harper,Republican,Agriculture Improvement Act
+CT,4,Yea,James Himes,Democrat,Agriculture Improvement Act
+CA,50,Yea,Duncan Hunter,Republican,Agriculture Improvement Act
+KS,2,Yea,Lynn Jenkins,Republican,Agriculture Improvement Act
+NJ,7,Nay,Leonard Lance,Republican,Agriculture Improvement Act
+MO,3,Yea,Blaine Luetkemeyer,Republican,Agriculture Improvement Act
+NM,3,Yea,Ben Luján,Democrat,Agriculture Improvement Act
+CA,4,Nay,Tom McClintock,Republican,Agriculture Improvement Act
+TX,22,Yea,Pete Olson,Republican,Agriculture Improvement Act
+MN,3,Yea,Erik Paulsen,Republican,Agriculture Improvement Act
+ME,1,Yea,Chellie Pingree,Democrat,Agriculture Improvement Act
+CO,2,Not Voting,Jared Polis,Democrat,Agriculture Improvement Act
+FL,8,Nay,Bill Posey,Republican,Agriculture Improvement Act
+TN,1,Yea,David “Phil” Roe,Republican,Agriculture Improvement Act
+FL,17,Yea,Thomas Rooney,Republican,Agriculture Improvement Act
+OR,5,Yea,Kurt Schrader,Democrat,Agriculture Improvement Act
+PA,5,Yea,Glenn Thompson,Republican,Agriculture Improvement Act
+NV,1,Yea,Dina Titus,Democrat,Agriculture Improvement Act
+NY,20,Yea,Paul Tonko,Democrat,Agriculture Improvement Act
+OH,11,Yea,Marcia Fudge,Democrat,Agriculture Improvement Act
+IL,5,Yea,Mike Quigley,Democrat,Agriculture Improvement Act
+CA,27,Yea,Judy Chu,Democrat,Agriculture Improvement Act
+CA,3,Yea,John Garamendi,Democrat,Agriculture Improvement Act
+FL,22,Yea,Ted Deutch,Democrat,Agriculture Improvement Act
+GA,14,Yea,Tom Graves,Republican,Agriculture Improvement Act
+NY,23,Yea,Tom Reed II,Republican,Agriculture Improvement Act
+AL,2,Yea,Martha Roby,Republican,Agriculture Improvement Act
+AL,5,Yea,Mo Brooks,Republican,Agriculture Improvement Act
+AL,7,Yea,Terri Sewell,Democrat,Agriculture Improvement Act
+AZ,4,Nay,Paul Gosar,Republican,Agriculture Improvement Act
+AZ,6,Nay,David Schweikert,Republican,Agriculture Improvement Act
+AR,1,Yea,Eric “Rick” Crawford,Republican,Agriculture Improvement Act
+AR,3,Yea,Steve Womack,Republican,Agriculture Improvement Act
+CA,10,Yea,Jeff Denham,Republican,Agriculture Improvement Act
+CA,37,Yea,Karen Bass,Democrat,Agriculture Improvement Act
+CO,3,Yea,Scott Tipton,Republican,Agriculture Improvement Act
+FL,11,Yea,Daniel Webster,Republican,Agriculture Improvement Act
+FL,15,Yea,Dennis Ross,Republican,Agriculture Improvement Act
+FL,24,Yea,Frederica Wilson,Democrat,Agriculture Improvement Act
+GA,7,Yea,Rob Woodall,Republican,Agriculture Improvement Act
+GA,8,Yea,Austin Scott,Republican,Agriculture Improvement Act
+HI,1,Yea,Colleen Hanabusa,Democrat,Agriculture Improvement Act
+ID,1,Not Voting,Raúl Labrador,Republican,Agriculture Improvement Act
+IL,16,Yea,Adam Kinzinger,Republican,Agriculture Improvement Act
+IL,14,Yea,Randy Hultgren,Republican,Agriculture Improvement Act
+IN,4,Yea,Todd Rokita,Republican,Agriculture Improvement Act
+IN,8,Yea,Larry Bucshon,Republican,Agriculture Improvement Act
+KS,3,Yea,Kevin Yoder,Republican,Agriculture Improvement Act
+LA,2,Yea,Cedric Richmond,Democrat,Agriculture Improvement Act
+MD,1,Nay,Andy Harris,Republican,Agriculture Improvement Act
+MA,9,Not Voting,William Keating,Democrat,Agriculture Improvement Act
+MI,2,Yea,Bill Huizenga,Republican,Agriculture Improvement Act
+MI,3,Nay,Justin Amash,Republican,Agriculture Improvement Act
+MS,4,Yea,Steven Palazzo,Republican,Agriculture Improvement Act
+MO,4,Not Voting,Vicky Hartzler,Republican,Agriculture Improvement Act
+MO,7,Yea,Billy Long,Republican,Agriculture Improvement Act
+OH,6,Yea,Bill Johnson,Republican,Agriculture Improvement Act
+OH,15,Yea,Steve Stivers,Republican,Agriculture Improvement Act
+OH,16,Yea,James Renacci,Republican,Agriculture Improvement Act
+OH,7,Yea,Bob Gibbs,Republican,Agriculture Improvement Act
+PA,3,Yea,Mike Kelly,Republican,Agriculture Improvement Act
+PA,10,Yea,Tom Marino,Republican,Agriculture Improvement Act
+PA,11,Not Voting,Lou Barletta,Republican,Agriculture Improvement Act
+RI,1,Yea,David Cicilline,Democrat,Agriculture Improvement Act
+SC,3,Nay,Jeff Duncan,Republican,Agriculture Improvement Act
+SC,4,Yea,Trey Gowdy,Republican,Agriculture Improvement Act
+SD,0,Yea,Kristi Noem,Republican,Agriculture Improvement Act
+TN,3,Yea,Chuck Fleischmann,Republican,Agriculture Improvement Act
+TN,4,Yea,Scott DesJarlais,Republican,Agriculture Improvement Act
+TN,6,Yea,Diane Black,Republican,Agriculture Improvement Act
+TX,17,Yea,Bill Flores,Republican,Agriculture Improvement Act
+VA,9,Yea,Morgan Griffith,Republican,Agriculture Improvement Act
+WA,3,Yea,Jaime Herrera Beutler,Republican,Agriculture Improvement Act
+WV,1,Yea,David McKinley,Republican,Agriculture Improvement Act
+WI,7,Yea,Sean Duffy,Republican,Agriculture Improvement Act
+NV,2,Yea,Mark Amodei,Republican,Agriculture Improvement Act
+OR,1,Yea,Suzanne Bonamici,Democrat,Agriculture Improvement Act
+KY,4,Nay,Thomas Massie,Republican,Agriculture Improvement Act
+WA,1,Yea,Suzan DelBene,Democrat,Agriculture Improvement Act
+NJ,10,Not Voting,Donald Payne Jr.,Democrat,Agriculture Improvement Act
+AZ,9,Yea,Kyrsten Sinema,Democrat,Agriculture Improvement Act
+CA,1,Yea,Doug LaMalfa,Republican,Agriculture Improvement Act
+CA,2,Yea,Jared Huffman,Democrat,Agriculture Improvement Act
+CA,7,Yea,Ami Bera,Democrat,Agriculture Improvement Act
+CA,8,Yea,Paul Cook,Republican,Agriculture Improvement Act
+CA,15,Yea,Eric Swalwell,Democrat,Agriculture Improvement Act
+CA,21,Yea,David Valadao,Republican,Agriculture Improvement Act
+CA,26,Yea,Julia Brownley,Democrat,Agriculture Improvement Act
+CA,29,Yea,Tony Cárdenas,Democrat,Agriculture Improvement Act
+CA,36,Yea,Raul Ruiz,Democrat,Agriculture Improvement Act
+CA,41,Yea,Mark Takano,Democrat,Agriculture Improvement Act
+CA,47,Yea,Alan Lowenthal,Democrat,Agriculture Improvement Act
+CA,51,Yea,Juan Vargas,Democrat,Agriculture Improvement Act
+CA,52,Yea,Scott Peters,Democrat,Agriculture Improvement Act
+CT,5,Yea,Elizabeth Esty,Democrat,Agriculture Improvement Act
+FL,3,Yea,Ted Yoho,Republican,Agriculture Improvement Act
+FL,21,Yea,Lois Frankel,Democrat,Agriculture Improvement Act
+GA,9,Yea,Doug Collins,Republican,Agriculture Improvement Act
+HI,2,Yea,Tulsi Gabbard,Democrat,Agriculture Improvement Act
+IL,10,Yea,Brad Schneider,Democrat,Agriculture Improvement Act
+IL,13,Yea,Rodney Davis,Republican,Agriculture Improvement Act
+IL,17,Yea,Cheri Bustos,Democrat,Agriculture Improvement Act
+IN,2,Yea,Jackie Walorski,Republican,Agriculture Improvement Act
+IN,5,Yea,Susan Brooks,Republican,Agriculture Improvement Act
+IN,6,Yea,Luke Messer,Republican,Agriculture Improvement Act
+KY,6,Yea,Andy Barr,Republican,Agriculture Improvement Act
+MA,4,Yea,Joseph Kennedy III,Democrat,Agriculture Improvement Act
+MD,6,Yea,John Delaney,Democrat,Agriculture Improvement Act
+MI,5,Yea,Daniel Kildee,Democrat,Agriculture Improvement Act
+MO,2,Yea,Ann Wagner,Republican,Agriculture Improvement Act
+NC,8,Yea,Richard Hudson,Republican,Agriculture Improvement Act
+NC,9,Yea,Robert Pittenger,Republican,Agriculture Improvement Act
+NC,11,Nay,Mark Meadows,Republican,Agriculture Improvement Act
+NC,2,Nay,George Holding,Republican,Agriculture Improvement Act
+ND,0,Yea,Kevin Cramer,Republican,Agriculture Improvement Act
+NH,2,Yea,Ann Kuster,Democrat,Agriculture Improvement Act
+NM,1,Not Voting,Michelle Lujan Grisham,Democrat,Agriculture Improvement Act
+NY,6,Yea,Grace Meng,Democrat,Agriculture Improvement Act
+NY,8,Yea,Hakeem Jeffries,Democrat,Agriculture Improvement Act
+NY,18,Yea,Sean Maloney,Democrat,Agriculture Improvement Act
+NY,27,Yea,Chris Collins,Republican,Agriculture Improvement Act
+OH,2,Yea,Brad Wenstrup,Republican,Agriculture Improvement Act
+OH,3,Yea,Joyce Beatty,Democrat,Agriculture Improvement Act
+OH,14,Yea,David Joyce,Republican,Agriculture Improvement Act
+OK,2,Yea,Markwayne Mullin,Republican,Agriculture Improvement Act
+PA,4,Nay,Scott Perry,Republican,Agriculture Improvement Act
+PA,12,Nay,Keith Rothfus,Republican,Agriculture Improvement Act
+PA,17,Yea,Matthew Cartwright,Democrat,Agriculture Improvement Act
+SC,7,Yea,Tom Rice,Republican,Agriculture Improvement Act
+TX,14,Yea,Randy Weber,Republican,Agriculture Improvement Act
+TX,16,Yea,Beto O’Rourke,Democrat,Agriculture Improvement Act
+TX,20,Yea,Joaquin Castro,Democrat,Agriculture Improvement Act
+TX,25,Yea,Roger Williams,Republican,Agriculture Improvement Act
+TX,33,Yea,Marc Veasey,Democrat,Agriculture Improvement Act
+TX,34,Yea,Filemon Vela,Democrat,Agriculture Improvement Act
+UT,2,Not Voting,Chris Stewart,Republican,Agriculture Improvement Act
+WA,6,Yea,Derek Kilmer,Democrat,Agriculture Improvement Act
+WA,10,Yea,Denny Heck,Democrat,Agriculture Improvement Act
+WI,2,Yea,Mark Pocan,Democrat,Agriculture Improvement Act
+IL,2,Yea,Robin Kelly,Democrat,Agriculture Improvement Act
+MO,8,Yea,Jason Smith,Republican,Agriculture Improvement Act
+MA,5,Yea,Katherine Clark,Democrat,Agriculture Improvement Act
+AL,1,Yea,Bradley Byrne,Republican,Agriculture Improvement Act
+VA,7,Nay,Dave Brat,Republican,Agriculture Improvement Act
+NJ,1,Yea,Donald Norcross,Democrat,Agriculture Improvement Act
+NC,12,Yea,Alma Adams,Democrat,Agriculture Improvement Act
+AL,6,Yea,Gary Palmer,Republican,Agriculture Improvement Act
+AR,2,Yea,French Hill,Republican,Agriculture Improvement Act
+AR,4,Yea,Bruce Westerman,Republican,Agriculture Improvement Act
+AZ,2,Nay,Martha McSally,Republican,Agriculture Improvement Act
+AZ,7,Yea,Ruben Gallego,Democrat,Agriculture Improvement Act
+CA,11,Yea,Mark DeSaulnier,Democrat,Agriculture Improvement Act
+CA,25,Not Voting,Steve Knight,Republican,Agriculture Improvement Act
+CA,31,Yea,Pete Aguilar,Democrat,Agriculture Improvement Act
+CA,33,Yea,Ted Lieu,Democrat,Agriculture Improvement Act
+CA,35,Yea,Norma Torres,Democrat,Agriculture Improvement Act
+CA,45,Yea,Mimi Walters,Republican,Agriculture Improvement Act
+CO,4,Nay,Ken Buck,Republican,Agriculture Improvement Act
+FL,26,Yea,Carlos Curbelo,Republican,Agriculture Improvement Act
+GA,1,Nay,Buddy Carter,Republican,Agriculture Improvement Act
+GA,10,Nay,Jody Hice,Republican,Agriculture Improvement Act
+GA,11,Nay,Barry Loudermilk,Republican,Agriculture Improvement Act
+GA,12,Yea,Rick Allen,Republican,Agriculture Improvement Act
+IA,1,Yea,Rod Blum,Republican,Agriculture Improvement Act
+IA,3,Yea,David Young,Republican,Agriculture Improvement Act
+IL,12,Yea,Mike Bost,Republican,Agriculture Improvement Act
+LA,5,Yea,Ralph Abraham,Republican,Agriculture Improvement Act
+LA,6,Yea,Garret Graves,Republican,Agriculture Improvement Act
+MA,6,Yea,Seth Moulton,Democrat,Agriculture Improvement Act
+ME,2,Yea,Bruce Poliquin,Republican,Agriculture Improvement Act
+MI,4,Yea,John Moolenaar,Republican,Agriculture Improvement Act
+MI,8,Yea,Mike Bishop,Republican,Agriculture Improvement Act
+MI,11,Yea,Dave Trott,Republican,Agriculture Improvement Act
+MI,12,Yea,Debbie Dingell,Democrat,Agriculture Improvement Act
+MI,14,Yea,Brenda Lawrence,Democrat,Agriculture Improvement Act
+MN,6,Yea,Tom Emmer,Republican,Agriculture Improvement Act
+NC,7,Yea,David Rouzer,Republican,Agriculture Improvement Act
+NJ,3,Yea,Tom MacArthur,Republican,Agriculture Improvement Act
+NJ,12,Yea,Bonnie Watson Coleman,Democrat,Agriculture Improvement Act
+NY,1,Yea,Lee Zeldin,Republican,Agriculture Improvement Act
+NY,4,Yea,Kathleen Rice,Democrat,Agriculture Improvement Act
+NY,21,Yea,Elise Stefanik,Republican,Agriculture Improvement Act
+NY,24,Yea,John Katko,Republican,Agriculture Improvement Act
+OK,5,Yea,Steve Russell,Republican,Agriculture Improvement Act
+PA,6,Yea,Ryan Costello,Republican,Agriculture Improvement Act
+PA,13,Yea,Brendan Boyle,Democrat,Agriculture Improvement Act
+TX,4,Nay,John Ratcliffe,Republican,Agriculture Improvement Act
+TX,23,Yea,Will Hurd,Republican,Agriculture Improvement Act
+TX,36,Yea,Brian Babin,Republican,Agriculture Improvement Act
+UT,4,Yea,Mia Love,Republican,Agriculture Improvement Act
+VA,8,Yea,Donald Beyer,Democrat,Agriculture Improvement Act
+VA,10,Yea,Barbara Comstock,Republican,Agriculture Improvement Act
+WA,4,Yea,Dan Newhouse,Republican,Agriculture Improvement Act
+WI,6,Yea,Glenn Grothman,Republican,Agriculture Improvement Act
+WV,2,Nay,Alex Mooney,Republican,Agriculture Improvement Act
+NC,6,Yea,Mark Walker,Republican,Agriculture Improvement Act
+NY,11,Not Voting,Daniel Donovan Jr.,Republican,Agriculture Improvement Act
+MS,1,Yea,Trent Kelly,Republican,Agriculture Improvement Act
+IL,18,Yea,Darin LaHood,Republican,Agriculture Improvement Act
+OH,8,Nay,Warren Davidson,Republican,Agriculture Improvement Act
+KY,1,Yea,James Comer,Republican,Agriculture Improvement Act
+PA,2,Yea,Dwight Evans,Democrat,Agriculture Improvement Act
+AZ,1,Yea,Tom O’Halleran,Democrat,Agriculture Improvement Act
+AZ,5,Nay,Andy Biggs,Republican,Agriculture Improvement Act
+CA,17,Yea,Ro Khanna,Democrat,Agriculture Improvement Act
+CA,20,Yea,Jimmy Panetta,Democrat,Agriculture Improvement Act
+CA,24,Yea,Salud Carbajal,Democrat,Agriculture Improvement Act
+CA,44,Yea,Nanette Barragán,Democrat,Agriculture Improvement Act
+CA,46,Yea,Luis Correa,Democrat,Agriculture Improvement Act
+DE,0,Yea,Lisa Blunt Rochester,Democrat,Agriculture Improvement Act
+FL,1,Nay,Matt Gaetz,Republican,Agriculture Improvement Act
+FL,2,Yea,Neal Dunn,Republican,Agriculture Improvement Act
+FL,4,Yea,John Rutherford,Republican,Agriculture Improvement Act
+FL,5,Yea,Al Lawson,Democrat,Agriculture Improvement Act
+FL,7,Yea,Stephanie Murphy,Democrat,Agriculture Improvement Act
+FL,9,Yea,Darren Soto,Democrat,Agriculture Improvement Act
+FL,10,Yea,Val Demings,Democrat,Agriculture Improvement Act
+FL,13,Yea,Charlie Crist,Democrat,Agriculture Improvement Act
+FL,18,Nay,Brian Mast,Republican,Agriculture Improvement Act
+FL,19,Nay,Francis Rooney,Republican,Agriculture Improvement Act
+GA,3,Yea,Drew Ferguson IV,Republican,Agriculture Improvement Act
+IL,8,Yea,Raja Krishnamoorthi,Democrat,Agriculture Improvement Act
+IN,3,Yea,Jim Banks,Republican,Agriculture Improvement Act
+IN,9,Yea,Trey Hollingsworth,Republican,Agriculture Improvement Act
+KS,1,Yea,Roger Marshall,Republican,Agriculture Improvement Act
+LA,3,Yea,Clay Higgins,Republican,Agriculture Improvement Act
+LA,4,Yea,Mike Johnson,Republican,Agriculture Improvement Act
+MD,4,Yea,Anthony Brown,Democrat,Agriculture Improvement Act
+MD,8,Yea,Jamie Raskin,Democrat,Agriculture Improvement Act
+MI,1,Yea,Jack Bergman,Republican,Agriculture Improvement Act
+MI,10,Yea,Paul Mitchell,Republican,Agriculture Improvement Act
+MN,2,Nay,Jason Lewis,Republican,Agriculture Improvement Act
+NC,13,Nay,Ted Budd,Republican,Agriculture Improvement Act
+NE,2,Yea,Don Bacon,Republican,Agriculture Improvement Act
+NJ,5,Yea,Josh Gottheimer,Democrat,Agriculture Improvement Act
+NV,3,Yea,Jacky Rosen,Democrat,Agriculture Improvement Act
+NV,4,Yea,Ruben Kihuen,Democrat,Agriculture Improvement Act
+NY,3,Yea,Thomas Suozzi,Democrat,Agriculture Improvement Act
+NY,13,Yea,Adriano Espaillat,Democrat,Agriculture Improvement Act
+NY,19,Yea,John Faso,Republican,Agriculture Improvement Act
+NY,22,Yea,Claudia Tenney,Republican,Agriculture Improvement Act
+PA,8,Yea,Brian Fitzpatrick,Republican,Agriculture Improvement Act
+PA,16,Yea,Lloyd Smucker,Republican,Agriculture Improvement Act
+TN,8,Yea,David Kustoff,Republican,Agriculture Improvement Act
+TX,15,Yea,Vicente Gonzalez,Democrat,Agriculture Improvement Act
+TX,19,Yea,Jodey Arrington,Republican,Agriculture Improvement Act
+VA,2,Yea,Scott Taylor,Republican,Agriculture Improvement Act
+VA,4,Yea,Donald McEachin,Democrat,Agriculture Improvement Act
+VA,5,Nay,Thomas Garrett,Republican,Agriculture Improvement Act
+WA,7,Yea,Pramila Jayapal,Democrat,Agriculture Improvement Act
+WI,8,Nay,Mike Gallagher,Republican,Agriculture Improvement Act
+WY,0,Yea,Liz Cheney,Republican,Agriculture Improvement Act
+KS,4,Yea,Ron Estes,Republican,Agriculture Improvement Act
+MT,0,Yea,Greg Gianforte,Republican,Agriculture Improvement Act
+GA,6,Yea,Karen Handel,Republican,Agriculture Improvement Act
+SC,5,Nay,Ralph Norman Jr.,Republican,Agriculture Improvement Act
+CA,34,Yea,Jimmy Gomez,Democrat,Agriculture Improvement Act
+UT,3,Yea,John Curtis,Republican,Agriculture Improvement Act
+PA,18,Yea,Conor Lamb,Democrat,Agriculture Improvement Act
+AZ,8,Nay,Debbie Lesko,Republican,Agriculture Improvement Act
+TX,27,Yea,Michael Cloud,Republican,Agriculture Improvement Act
+OH,12,Yea,Troy Balderson,Republican,Agriculture Improvement Act
+OK,1,Yea,Kevin Hern,Republican,Agriculture Improvement Act
+NY,25,Yea,Joseph Morelle,Democrat,Agriculture Improvement Act
+PA,7,Yea,Mary Scanlon,Democrat,Agriculture Improvement Act
+PA,15,Yea,Susan Wild,Democrat,Agriculture Improvement Act
+MI,13,Yea,Brenda Jones,Democrat,Agriculture Improvement Act

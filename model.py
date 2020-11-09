@@ -73,10 +73,11 @@ class Vote(db.Model):
 
     __tablename__ = 'votes'
 
+    vote_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     state = db.Column(db.String)
     district = db.Column(db.Integer)
     vote = db.Column(db.String)
-    name = db.Column(db.String)
+    first_last = db.Column(db.String)
     party = db.Column(db.String)
     bill = db.Column(db.String)
 

@@ -64,7 +64,7 @@ def get_industries():
                     "Poultry & eggs",
                     "Restaurants & drinking establishments",
                     # "Retail trade",
-                    "Schools & colleges",
+                    # "Schools & colleges",
                     "Search Engine/Email Services",
                     "Shoes & leather products",
                     "Social Media",

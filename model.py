@@ -68,6 +68,21 @@ class Industry(db.Model):
         return f'<Industry catcode={self.catcode} catname={self.catname}>'
 
 
+class Vote(db.Model):
+    """A vote."""
+
+    __tablename__ = 'votes'
+
+    state = db.Column(db.String)
+    district = db.Column(db.Integer)
+    vote = db.Column(db.String)
+    name = db.Column(db.String)
+    party = db.Column(db.String)
+    bill = db.Column(db.String)
+
+    def __repr__(self):
+        return f'<Vote name={self.name} bill={self.bill}'
+
 
 def connect_to_db(flask_app, db_uri='postgresql:///donations', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri

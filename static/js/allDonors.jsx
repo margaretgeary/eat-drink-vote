@@ -16,7 +16,9 @@ function Donor({ orgname, totalAmount }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
-                    <h5>{`${orgname} gave $${totalAmount.toLocaleString()}`}</h5> <button type="button">Add Star</button>
+                    <h5>{orgname}</h5>
+                    {/* <h5>{`${orgname} gave $${totalAmount.toLocaleString()}`}</h5>  */}
+                    {/* <button type="button">Add Star</button> */}
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
@@ -54,7 +56,8 @@ function Donor({ orgname, totalAmount }) {
 
 function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult }) {
     const [donors, setDonors] = React.useState({}); 
-    const isOpen = catname==openCatname;
+    // const isOpen = catname==openCatname;
+    const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -70,7 +73,9 @@ function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult 
         .filter(entry => entry[0].toLowerCase().includes(searchResult))
         .sort(([, amount1], [, amount2]) => amount2 - amount1)
         .reduce((r, [orgname, amount]) => ({ ...r, [orgname]: amount }), {}) : {};
-
+    if (sortedDonation.length >= 0) {
+        return <div></div>;
+    }
     
     return (
         <ReactBootstrap.Card>
@@ -173,6 +178,7 @@ function CandidateState({ firstlast, state, party, openState, setOpenState }) {
 
     const [candidates, setCandidates] = React.useState({});
     const isOpen = state == openState;
+    // const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
             return;

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import db, connect_to_db, Candidate, Organization, Industry
+from model import db, connect_to_db, Candidate, Organization, Industry, Vote
+from crud import catname_list
 import crud
 
 from jinja2 import StrictUndefined
@@ -18,126 +19,8 @@ def pages():
     return render_template('industries.html')
 
 
-@app.route('/api/states')
-def get_states():
-
-    states_list = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
-        "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
-
-    return jsonify({'states': states_list})
-
-
-@app.route('/api/states/<state>')
-def state_candidate(state):
-    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast,
-        Organization.orgname, Organization.amount).
-        join(Organization, Organization.recip_id == Candidate.cid).
-        filter(Candidate.state == state).
-        distinct().order_by(Candidate.state).all())
-    candidate_list = []
-    for candidate in candidates:
-        info = {
-            'firstlast': candidate.firstlast,
-            'party': candidate.party
-        }
-        if info not in candidate_list:
-            candidate_list.append(info)
-    return jsonify({'state': {
-        'candidates': candidate_list,
-    }})
-
-
-@app.route('/api/candidates')
-def candidates():
-    candidate_list = []
-    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast).\
-        join(Organization, Organization.recip_id == Candidate.cid).\
-        distinct().order_by(Candidate.state, Candidate.party, Candidate.firstlast))
-    for candidate in candidates:
-        candidate_list.append({'firstlast': candidate.firstlast,
-        'party': candidate.party,
-        'state': candidate.state})
-    return jsonify({'candidates': candidate_list})
-
-
-@app.route('/api/candidates/<firstlast>')
-def candidate(firstlast):
-    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast,
-        Organization.orgname, Organization.amount).
-        join(Organization, Organization.recip_id == Candidate.cid).
-        join(Industry, Organization.realcode == Industry.catcode).
-        filter(Candidate.firstlast == firstlast).
-        distinct().order_by(Candidate.firstlast).all())
-    organization_list = []
-    for candidate in candidates:
-        info = {
-            'orgname': candidate.orgname,
-            'amount': int(candidate.amount)
-        }
-        existing_orgs = list(
-            organization for organization in organization_list if organization['orgname'] == candidate.orgname)
-        if existing_orgs == []:
-            organization_list.append(info)
-        else:
-            existing_orgs[0]['amount'] += int(candidate.amount)
-    all_orgs = sorted(organization_list, key=lambda i: i['amount'], reverse=True)
-    orgs = [o for o in all_orgs if o['amount'] > 2800]
-    return jsonify({'candidate': {
-        'orgs': orgs,
-    }})
-
-
-@app.route('/api/donors/<orgname>')
-def donor(orgname):
-    donor = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
-    Candidate.firstlast, Organization.orgname, Organization.amount).\
-    join(Candidate, Candidate.cid == Organization.recip_id).\
-    filter(Organization.orgname == orgname).\
-    order_by(Organization.cycle, Organization.amount).all()
-    candidate_list = []
-    totals = {
-        'D': 0,
-        'R': 0,
-        'I': 0,
-    }
-    for donation in donor:
-        totals[donation.party] += int(donation.amount)
-        info = {
-            'firstlast': donation.firstlast,
-            'party': donation.party,
-            'state': donation.state,
-            'total': int(donation.amount)
-        }
-        existing_candidates = list(candidate for candidate in candidate_list if candidate['firstlast'] == donation.firstlast)
-        if existing_candidates == []:
-            candidate_list.append(info)
-        else:
-            existing_candidates[0]['total'] += int(donation.amount)
-    candidates = sorted(candidate_list, key = lambda i: i['total'],reverse=True)
-    totals['all'] = sum(totals.values())
-    totals['d_perc'] = round((totals['D']/totals['all'])*100)
-    totals['r_perc'] = round((totals['R']/totals['all'])*100)
-    totals['i_perc'] = round((totals['I']/totals['all'])*100)
-    return jsonify({'donor': {
-        'candidates': candidates,
-        'totals': totals,
-    }})
-
-
-@app.route('/api/donors')
-def donors():
-    donor_list = []
-    donors = (db.session.query(Organization.cycle, Candidate.party, Candidate.state,
-    Candidate.firstlast, Organization.orgname, Organization.amount).
-    join(Candidate, Candidate.cid == Organization.recip_id).
-    distinct().order_by(Organization.cycle, Organization.amount))
-    for donor in donors:
-        donor_list.append({'orgname': donor.orgname})
-    return jsonify({'donors': donor_list})
-
-
 @app.route('/api/industries')
-def industries():
+def get_industries():
     industry_list = []
     for industry in crud.get_industries():
         industry_list.append({'catcode': industry.catcode, 'catname': industry.catname})
@@ -145,7 +28,7 @@ def industries():
 
 
 @app.route('/api/industries/<catcode>')
-def industry(catcode):
+def get_industries_by_catcode(catcode):
     organizations = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
         Candidate.firstlast, Organization.orgname, Organization.fec_trans_id, Organization.amount).\
         join(Candidate, Candidate.cid == Organization.recip_id).\
@@ -171,6 +54,152 @@ def industry(catcode):
     return jsonify({'industry': {
         'organizations': organization_list,
         'total_donated': total_donated
+    }})
+
+
+@app.route('/api/donors')
+def get_donors():
+    donor_list = []
+    donors = (db.session.query(Organization.cycle, Candidate.party, Candidate.state,
+    Candidate.firstlast, Organization.orgname, Organization.amount).
+    join(Candidate, Candidate.cid == Organization.recip_id).
+    distinct().order_by(Organization.cycle, Organization.amount))
+    for donor in donors:
+        donor_list.append({'orgname': donor.orgname})
+    return jsonify({'donors': donor_list})
+
+
+@app.route('/api/donors/<orgname>')
+def get_donors_by_orgname(orgname):
+    donor = db.session.query(Organization.cycle, Candidate.party, Candidate.state,
+        Candidate.firstlast, Organization.orgname, Organization.amount).\
+        join(Candidate, Candidate.cid == Organization.recip_id).\
+        filter(Organization.orgname == orgname).\
+        order_by(Organization.cycle, Organization.amount).all()
+    candidate_list = []
+    totals = {
+        'D': 0,
+        'R': 0,
+        'I': 0,
+    }
+    for donation in donor:
+        totals[donation.party] += int(donation.amount)
+        info = {
+            'firstlast': donation.firstlast,
+            'party': donation.party,
+            'state': donation.state,
+            'total': int(donation.amount)
+        }
+        existing_candidates = list(
+            candidate for candidate in candidate_list if candidate['firstlast'] == donation.firstlast)
+        if existing_candidates == []:
+            candidate_list.append(info)
+        else:
+            existing_candidates[0]['total'] += int(donation.amount)
+    candidates = sorted(candidate_list, key=lambda i: i['total'], reverse=True)
+    totals['all'] = sum(totals.values())
+    totals['d_perc'] = round((totals['D']/totals['all'])*100)
+    totals['r_perc'] = round((totals['R']/totals['all'])*100)
+    totals['i_perc'] = round((totals['I']/totals['all'])*100)
+    return jsonify({'donor': {
+        'candidates': candidates,
+        'totals': totals,
+    }})
+
+
+@app.route('/api/vote/<bill>/<vote>')
+def get_candidates_by_bill_and_vote(bill, vote):
+    votes_list = []
+    votes = (db.session.query(Candidate.firstlast, Vote.bill, Vote.vote,
+        Organization.orgname, Organization.amount).
+        join(Organization, Organization.recip_id == Candidate.cid).
+        join(Vote, Vote.first_last == Candidate.firstlast).
+        join(Industry, Organization.realcode == Industry.catcode).
+        filter(Vote.bill == bill).filter(Vote.vote == vote).
+        filter(Industry.catname.in_(catname_list)).all())
+    for vote in votes:
+        info = {
+            'firstlast': vote.firstlast,
+            'amount': int(vote.amount)
+        }
+        existing_votes = list(vote_event for vote_event in votes_list if vote_event['firstlast'] == vote.firstlast)
+        if existing_votes == []:
+            votes_list.append(info)
+        else:
+            existing_votes[0]['amount'] += int(vote.amount)
+    votes = sorted(votes_list, key=lambda i: i['amount'], reverse=True)
+    return jsonify({'donor': {
+        'votes': votes,
+        }})
+
+
+@app.route('/api/states')
+def get_states():
+
+    states_list = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN",
+                   "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"]
+
+    return jsonify({'states': states_list})
+
+
+@app.route('/api/states/<state>')
+def get_candidates_by_statename(state):
+    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast,
+        Organization.orgname, Organization.amount).
+        join(Organization, Organization.recip_id == Candidate.cid).
+        filter(Candidate.state == state).
+        distinct().order_by(Candidate.state).all())
+    candidate_list = []
+    for candidate in candidates:
+        info = {
+            'firstlast': candidate.firstlast,
+            'party': candidate.party
+        }
+        if info not in candidate_list:
+            candidate_list.append(info)
+    return jsonify({'state': {
+        'candidates': candidate_list,
+    }})
+
+
+@app.route('/api/candidates')
+def get_candidates():
+    candidate_list = []
+    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast).
+                  join(Organization, Organization.recip_id == Candidate.cid).
+                  distinct().order_by(Candidate.state, Candidate.party, Candidate.firstlast))
+    for candidate in candidates:
+        candidate_list.append({'firstlast': candidate.firstlast,
+                               'party': candidate.party,
+                               'state': candidate.state})
+    return jsonify({'candidates': candidate_list})
+
+
+@app.route('/api/candidates/<firstlast>')
+def get_candidates_by_name(firstlast):
+    candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast,
+                                   Organization.orgname, Organization.amount).
+                  join(Organization, Organization.recip_id == Candidate.cid).
+                  join(Industry, Organization.realcode == Industry.catcode).
+                  filter(Candidate.firstlast == firstlast).
+                  distinct().order_by(Candidate.firstlast).all())
+    organization_list = []
+    for candidate in candidates:
+        info = {
+            'orgname': candidate.orgname,
+            'amount': int(candidate.amount)
+        }
+        existing_orgs = list(
+            organization for organization in organization_list if organization['orgname'] == candidate.orgname)
+        if existing_orgs == []:
+            organization_list.append(info)
+        else:
+            existing_orgs[0]['amount'] += int(candidate.amount)
+    all_orgs = sorted(organization_list,
+                      key=lambda i: i['amount'], reverse=True)
+    orgs = [o for o in all_orgs if o['amount'] > 2800]
+    return jsonify({'candidate': {
+        'orgs': orgs,
     }})
 
 

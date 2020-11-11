@@ -138,6 +138,7 @@ def get_candidates_by_bill_and_vote(bill, vote):
 def get_quiz_result(bill, vote, brand):
     answers_list = []
     total_received = {'total_received': 0}
+    candidate_list = {'candidate_list': []}
     answers = (db.session.query(Candidate.firstlast, Candidate.party, Candidate.state,
         Vote.bill, Vote.vote, Organization.orgname, Organization.amount).
         join(Organization, Organization.recip_id == Candidate.cid).
@@ -162,10 +163,15 @@ def get_quiz_result(bill, vote, brand):
             answers_list.append(info)
         else:
             existing_answers[0]['amount'] += int(answer.amount)
+        if answer.firstlast not in candidate_list['candidate_list']: 
+            candidate_list['candidate_list'].append(answer.firstlast)
+    candidate_count = {'candidate_count': len(candidate_list['candidate_list'])}
     answers = sorted(answers_list, key=lambda i: i['amount'], reverse=True)
     return jsonify({'response': {
         'answers': answers,
-        'total_received': total_received
+        'total_received': total_received,
+        'candidate_list': candidate_list,
+        'candidate_count': candidate_count
         }})
 
 

@@ -120,6 +120,7 @@ def get_candidates_by_bill_and_vote(bill, vote):
     for vote in votes:
         info = {
             'firstlast': vote.firstlast,
+            'orgname': vote.orgname,
             'amount': int(vote.amount)
         }
         existing_votes = list(vote_event for vote_event in votes_list if vote_event['firstlast'] == vote.firstlast)
@@ -130,6 +131,41 @@ def get_candidates_by_bill_and_vote(bill, vote):
     votes = sorted(votes_list, key=lambda i: i['amount'], reverse=True)
     return jsonify({'donor': {
         'votes': votes,
+        }})
+
+
+@app.route('/api/answer/<bill>/<vote>/<brand>')
+def get_quiz_result(bill, vote, brand):
+    answers_list = []
+    total_received = {'total_received': 0}
+    answers = (db.session.query(Candidate.firstlast, Candidate.party, Candidate.state,
+        Vote.bill, Vote.vote, Organization.orgname, Organization.amount).
+        join(Organization, Organization.recip_id == Candidate.cid).
+        join(Vote, Vote.first_last == Candidate.firstlast).
+        join(Industry, Organization.realcode == Industry.catcode).
+        filter(Vote.bill == bill).filter(Vote.vote == vote).filter(Organization.orgname == brand).
+        filter(Industry.catname.in_(catname_list)).all())
+    for answer in answers:
+        total_received['total_received'] += int(answer.amount)
+        info = {
+            'firstlast': answer.firstlast,
+            'party': answer.party,
+            'vote': answer.vote,
+            'bill': answer.bill,
+            'state': answer.state,
+            'orgname': answer.orgname,
+            'amount': int(answer.amount)
+        }
+        existing_answers = list(
+            answer_event for answer_event in answers_list if answer_event['firstlast'] == answer.firstlast)
+        if existing_answers == []:
+            answers_list.append(info)
+        else:
+            existing_answers[0]['amount'] += int(answer.amount)
+    answers = sorted(answers_list, key=lambda i: i['amount'], reverse=True)
+    return jsonify({'response': {
+        'answers': answers,
+        'total_received': total_received
         }})
 
 

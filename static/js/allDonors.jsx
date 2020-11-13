@@ -237,6 +237,52 @@ function AllStates() {
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
 
+
+function Quiz() {
+    const [quizResult, setQuizResult] = React.useState({});
+    const [yesNo, setYesNo] = React.useState(null);
+    const [selectedCompany, setSelectedCompany] = React.useState(null);
+    const [answer, setAnswer] = React.useState({});
+    const billName = "Raise the Wage Act";
+    const billText = "Do you think the federal minimum wage should be raised to $15/hr?";
+
+
+    React.useEffect(() => {
+        console.log("Quiz useEffect yesNo", yesNo, "selectedCompany", selectedCompany)
+        if (!yesNo || !selectedCompany) {
+            return;
+        }
+        fetch(`/api/answer/${billName}/${yesNo}/${selectedCompany}`).
+            then((response) => response.json()).
+            then((response) => {
+                console.log("Got answer response", response);
+                setAnswer(response.response);
+            })
+    }, [yesNo, selectedCompany])
+
+    function handleSubmit(event) {
+        event.preventDefault();
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <br></br>
+            <p>{billText}</p>
+            <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo(e.target.value)} />
+                <label>Yes</label><br></br>
+            <input type="radio" name="vote" value="No" onChange={(e) => setYesNo(e.target.value)} />
+                <label>No</label> <br></br><br></br>
+            <p>Next, choose which of these brands you like:</p>
+            <input type="checkbox" name="brand" value="McDonald's Corp" onChange={(e) => setSelectedCompany(e.target.value)} />
+                <label>McDonalds*</label><br></br>
+            <input type="submit" value="Submit" />
+            {answer && <p>{selectedCompany} donated {answer.total_received} to {answer.candidate_count} candidates who voted {yesNo} on {billName}</p>}
+        </form>
+    );
+}
+
+
+
 function Home() {
     return(
         <h1>Welcome to Campaign Finance App</h1>
@@ -253,8 +299,9 @@ function NavBar({ searchResult, setSearchResult }) {
                 <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
                     <ReactBootstrap.Nav className="mr-auto">
                         <ReactRouterDOM.Link to="/home" className="nav-link" >Home</ReactRouterDOM.Link>
-                        <ReactRouterDOM.Link to="/industries" className="nav-link" >Industries</ReactRouterDOM.Link>
-                        <ReactRouterDOM.Link to="/candidates" className="nav-link" >Candidates</ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/quiz" className="nav-link" >Take the Quiz</ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/industries" className="nav-link" >Browse Companies</ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/candidates" className="nav-link" >Browse Candidates</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
                         <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" /> 
@@ -281,6 +328,9 @@ function App() {
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/candidates" exact>
                     <AllStates />
+                </ReactRouterDOM.Route>
+                <ReactRouterDOM.Route path="/quiz" exact>
+                    <Quiz />
                 </ReactRouterDOM.Route>
             </ReactRouterDOM.Switch>
         </ReactRouterDOM.BrowserRouter>

@@ -13,10 +13,11 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/')
 @app.route('/industries')
 @app.route('/candidates')
-def pages():
+@app.route('/quiz')
+def get_pages():
     """View pages."""
 
-    return render_template('industries.html')
+    return render_template('campaignfinance.html')
 
 
 @app.route('/api/industries')
@@ -137,8 +138,8 @@ def get_candidates_by_bill_and_vote(bill, vote):
 @app.route('/api/answer/<bill>/<vote>/<brand>')
 def get_quiz_result(bill, vote, brand):
     answers_list = []
-    total_received = {'total_received': 0}
-    candidate_list = {'candidate_list': []}
+    total_received = 0
+    candidate_list = []
     answers = (db.session.query(Candidate.firstlast, Candidate.party, Candidate.state,
         Vote.bill, Vote.vote, Organization.orgname, Organization.amount).
         join(Organization, Organization.recip_id == Candidate.cid).
@@ -147,7 +148,7 @@ def get_quiz_result(bill, vote, brand):
         filter(Vote.bill == bill).filter(Vote.vote == vote).filter(Organization.orgname == brand).
         filter(Industry.catname.in_(catname_list)).all())
     for answer in answers:
-        total_received['total_received'] += int(answer.amount)
+        total_received += int(answer.amount)
         info = {
             'firstlast': answer.firstlast,
             'party': answer.party,
@@ -163,9 +164,9 @@ def get_quiz_result(bill, vote, brand):
             answers_list.append(info)
         else:
             existing_answers[0]['amount'] += int(answer.amount)
-        if answer.firstlast not in candidate_list['candidate_list']: 
-            candidate_list['candidate_list'].append(answer.firstlast)
-    candidate_count = {'candidate_count': len(candidate_list['candidate_list'])}
+        if answer.firstlast not in candidate_list: 
+            candidate_list.append(answer.firstlast)
+    candidate_count = len(candidate_list)
     answers = sorted(answers_list, key=lambda i: i['amount'], reverse=True)
     return jsonify({'response': {
         'answers': answers,

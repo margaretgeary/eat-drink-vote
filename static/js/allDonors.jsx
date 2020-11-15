@@ -218,6 +218,8 @@ function CandidateState({ firstlast, state, party, openState, setOpenState }) {
 }
 
 
+// make list of bill names and bill texts and loop over that, then makelistof quizzes and loop overthat
+
 function AllStates() {
     const [states, setStates] = React.useState([]);
     const [openState, setOpenState] = React.useState(null);
@@ -238,14 +240,28 @@ function AllStates() {
 }
 
 
-function Quiz() {
+function QuizContainer() {
+    const [quizzes, setQuizzes] = React.useState([]);
+    React.useEffect(() => {
+        fetch(`/api/answer/${billName}/${yesNo}/${selectedCompany}`).
+            then((response) => response.json()).
+            then((response) => setQuizzes(response.response));
+    }, [])
+    if (response.length === 0) return <div>Loading...</div>
+    const content = []
+    for (const quizContent of quizContents) {
+        content.push(
+            <Quiz billName={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult} />);
+    }
+    return <div>{content}</div>
+}
+
+
+function Quiz({ billName, billText, companies }) {
     const [quizResult, setQuizResult] = React.useState({});
     const [yesNo, setYesNo] = React.useState(null);
     const [selectedCompany, setSelectedCompany] = React.useState(null);
-    const [answer, setAnswer] = React.useState({});
-    const billName = "Raise the Wage Act";
-    const billText = "Do you think the federal minimum wage should be raised to $15/hr?";
-
+    const [answer, setAnswer] = React.useState(null);
 
     React.useEffect(() => {
         console.log("Quiz useEffect yesNo", yesNo, "selectedCompany", selectedCompany)
@@ -263,20 +279,29 @@ function Quiz() {
     function handleSubmit(event) {
         event.preventDefault();
     }
-
+    const companiesContent = []
+    for (const company of companies) {
+        companiesContent.push(
+            <div>
+                <input type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
+                <label>{company}</label><br></br>
+            </div>
+        );
+    }
+    console.log("Quiz() answer", answer);
     return (
         <form onSubmit={handleSubmit}>
             <br></br>
             <p>{billText}</p>
-            <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo(e.target.value)} />
+            <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo("No")} />
                 <label>Yes</label><br></br>
-            <input type="radio" name="vote" value="No" onChange={(e) => setYesNo(e.target.value)} />
+            <input type="radio" name="vote" value="No" onChange={(e) => setYesNo("Yes")} />
                 <label>No</label> <br></br><br></br>
             <p>Next, choose which of these brands you like:</p>
-            <input type="checkbox" name="brand" value="McDonald's Corp" onChange={(e) => setSelectedCompany(e.target.value)} />
-                <label>McDonalds*</label><br></br>
+            {companiesContent}
             <input type="submit" value="Submit" />
-            {answer && <p>{selectedCompany} donated {answer.total_received} to {answer.candidate_count} candidates who voted {yesNo} on {billName}</p>}
+            {answer && yesNo == "No" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
+            {answer && yesNo == "Yes" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
         </form>
     );
 }
@@ -330,7 +355,10 @@ function App() {
                     <AllStates />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/quiz" exact>
-                    <Quiz />
+                    <Quiz billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />
+                    <Quiz billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />
+                    <Quiz billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />
+                    {/* <Quiz billName="CURD Act" billText="Do you think that plant-based cheese alternatives should be allowed to be legally labeled as cheese?" companies={["Kraft Group", "Land O'Lakes", "Leprino Foods", "PepsiCo Inc"]} /> */}
                 </ReactRouterDOM.Route>
             </ReactRouterDOM.Switch>
         </ReactRouterDOM.BrowserRouter>

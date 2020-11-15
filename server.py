@@ -221,10 +221,11 @@ def get_candidates():
 @app.route('/api/candidates/<firstlast>')
 def get_candidates_by_name(firstlast):
     candidates = (db.session.query(Candidate.party, Candidate.state, Candidate.firstlast,
-                                   Organization.orgname, Organization.amount).
+                    Organization.orgname, Organization.amount).
                   join(Organization, Organization.recip_id == Candidate.cid).
                   join(Industry, Organization.realcode == Industry.catcode).
                   filter(Candidate.firstlast == firstlast).
+                #   filter(Industry.catname.in_(catname_list)).
                   distinct().order_by(Candidate.firstlast).all())
     organization_list = []
     for candidate in candidates:

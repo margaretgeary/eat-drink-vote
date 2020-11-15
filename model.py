@@ -80,6 +80,7 @@ class Vote(db.Model):
     first_last = db.Column(db.String)
     party = db.Column(db.String)
     bill = db.Column(db.String)
+    bill_text = db.Column(db.String)
 
     def __repr__(self):
         return f'<Vote name={self.name} bill={self.bill}'

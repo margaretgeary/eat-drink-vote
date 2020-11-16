@@ -239,26 +239,27 @@ function AllStates() {
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
 
+// function shareResults()
+    // const [quizResult, setQuizResult] = React.useState([] or {} depending on what API will return)
+    // function shareMyResult() {
+        // ????
+    // }
 
 function QuizContainer() {
-    const [quizzes, setQuizzes] = React.useState([]);
-    React.useEffect(() => {
-        fetch(`/api/answer/${billName}/${yesNo}/${selectedCompany}`).
-            then((response) => response.json()).
-            then((response) => setQuizzes(response.response));
-    }, [])
-    if (response.length === 0) return <div>Loading...</div>
-    const content = []
-    for (const quizContent of quizContents) {
-        content.push(
-            <Quiz billName={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult} />);
+    const [questionNum, setQuestionNum] = React.useState(1);
+    function goToNextQuestion() {
+        setQuestionNum(questionNum + 1);
     }
-    return <div>{content}</div>
+    return (<div>
+        {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
+        {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
+        {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
+        </div>)
 }
 
 
-function Quiz({ billName, billText, companies }) {
-    const [quizResult, setQuizResult] = React.useState({});
+function Quiz({ billName, billText, companies, goToNextQuestion }) {
+    // shareMyResult will also be a prop^^
     const [yesNo, setYesNo] = React.useState(null);
     const [selectedCompany, setSelectedCompany] = React.useState(null);
     const [answer, setAnswer] = React.useState(null);
@@ -273,6 +274,8 @@ function Quiz({ billName, billText, companies }) {
             then((response) => {
                 console.log("Got answer response", response);
                 setAnswer(response.response);
+                goToNextQuestion();
+                // shareMyResult() will be called here at the very end;
             })
     }, [yesNo, selectedCompany])
 
@@ -299,7 +302,6 @@ function Quiz({ billName, billText, companies }) {
                 <label>No</label> <br></br><br></br>
             <p>Next, choose which of these brands you like:</p>
             {companiesContent}
-            <input type="submit" value="Submit" />
             {answer && yesNo == "No" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
             {answer && yesNo == "Yes" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
         </form>
@@ -355,10 +357,7 @@ function App() {
                     <AllStates />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/quiz" exact>
-                    <Quiz billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />
-                    <Quiz billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />
-                    <Quiz billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />
-                    {/* <Quiz billName="CURD Act" billText="Do you think that plant-based cheese alternatives should be allowed to be legally labeled as cheese?" companies={["Kraft Group", "Land O'Lakes", "Leprino Foods", "PepsiCo Inc"]} /> */}
+                    <QuizContainer />
                 </ReactRouterDOM.Route>
             </ReactRouterDOM.Switch>
         </ReactRouterDOM.BrowserRouter>

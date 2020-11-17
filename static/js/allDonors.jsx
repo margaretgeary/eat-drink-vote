@@ -177,8 +177,8 @@ function Candidate({ firstlast, state, party }) {
 function CandidateState({ firstlast, state, party, openState, setOpenState }) {
 
     const [candidates, setCandidates] = React.useState({});
-    const isOpen = state == openState;
-    // const isOpen = true;
+    // const isOpen = state == openState;
+    const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -194,7 +194,7 @@ function CandidateState({ firstlast, state, party, openState, setOpenState }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Button
-                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={() => setIsOpen(!isOpen)}
                     onClick={() => setOpenState(state)}
                     aria-controls={`collapse-${state}`}
                     aria-expanded={isOpen}
@@ -239,6 +239,7 @@ function AllStates() {
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
 
+
 // function shareResults()
     // const [quizResult, setQuizResult] = React.useState([] or {} depending on what API will return)
     // function shareMyResult() {
@@ -250,15 +251,21 @@ function QuizContainer() {
     function goToNextQuestion() {
         setQuestionNum(questionNum + 1);
     }
+    const [quizResults, setQuizResults] = React.useState({});
+    function quizFinished(quizResult, billName) {
+        setQuizResults({[billName]: quizResult, ...quizResults})
+    }
+    console.log("quizResult is", quizResults)
+
     return (<div>
-        {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
-        {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
-        {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
+        {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
+        {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
+        {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
         </div>)
 }
 
 
-function Quiz({ billName, billText, companies, goToNextQuestion }) {
+function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished }) {
     // shareMyResult will also be a prop^^
     const [yesNo, setYesNo] = React.useState(null);
     const [selectedCompany, setSelectedCompany] = React.useState(null);
@@ -275,7 +282,15 @@ function Quiz({ billName, billText, companies, goToNextQuestion }) {
                 console.log("Got answer response", response);
                 setAnswer(response.response);
                 goToNextQuestion();
-                // shareMyResult() will be called here at the very end;
+
+                const quizResult = {
+                    billName: billName,
+                    billText: billText,
+                    yesNo: yesNo,
+                    selectedCompany: selectedCompany,
+                }
+                
+                quizFinished(quizResult, billName);
             })
     }, [yesNo, selectedCompany])
 
@@ -286,7 +301,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion }) {
     for (const company of companies) {
         companiesContent.push(
             <div>
-                <input type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
+                <input type="checkbox" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
                 <label>{company}</label><br></br>
             </div>
         );
@@ -309,7 +324,6 @@ function Quiz({ billName, billText, companies, goToNextQuestion }) {
 }
 
 
-
 function Home() {
     return(
         <h1>Welcome to Campaign Finance App</h1>
@@ -321,7 +335,7 @@ function NavBar({ searchResult, setSearchResult }) {
     return (
         <div>
             <ReactBootstrap.Navbar bg="dark" variant="dark">
-                <ReactBootstrap.Navbar.Brand href="#home">Campaign Finance App</ReactBootstrap.Navbar.Brand>
+                <ReactBootstrap.Navbar.Brand href="/">Campaign Finance App</ReactBootstrap.Navbar.Brand>
                 <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
                     <ReactBootstrap.Nav className="mr-auto">
@@ -333,7 +347,6 @@ function NavBar({ searchResult, setSearchResult }) {
                     <ReactBootstrap.Form inline>
                         <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" /> 
                         {/* <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
-                        <ReactBootstrap.Button variant="outline-success">Search</ReactBootstrap.Button>
                     </ReactBootstrap.Form>
                 </ReactBootstrap.Navbar.Collapse>
             </ReactBootstrap.Navbar>

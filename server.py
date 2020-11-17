@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
-from model import db, connect_to_db, Candidate, Organization, Industry, Vote
+from model import db, connect_to_db, Candidate, Organization, Industry, Vote, Result
 from crud import catname_list
 import crud
+import json
 
 from jinja2 import StrictUndefined
 
@@ -11,6 +12,7 @@ app.jinja_env.undefined = StrictUndefined
 
 
 @app.route('/')
+@app.route('/about')
 @app.route('/industries')
 @app.route('/candidates')
 @app.route('/quiz')
@@ -245,6 +247,26 @@ def get_candidates_by_name(firstlast):
     return jsonify({'candidate': {
         'orgs': orgs,
     }})
+
+
+@app.route('/api/quiz_result', methods=['POST'])
+def get_result_id():
+    
+    payload = request.get_json();
+    results_json = payload["result"];
+    full_name = payload["full_name"];
+    
+    result = Result(full_name=full_name, results_json=json.loads(results_json))
+    db.session.add(result)
+    db.session.commit()
+
+    db.session.add(result)
+    db.session.flush()
+
+    result_id = result.result_id
+
+    return jsonify({'result_id': result_id})
+
 
 
 if __name__ == '__main__':

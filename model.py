@@ -86,6 +86,15 @@ class Vote(db.Model):
         return f'<Vote name={self.name} bill={self.bill}'
 
 
+class Result(db.Model):
+
+    __tablename__ = 'results'
+
+    result_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    full_name = db.Column(db.String)
+    results_json = db.Column(db.JSON)
+
+
 def connect_to_db(flask_app, db_uri='postgresql:///donations', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     flask_app.config['SQLALCHEMY_ECHO'] = echo

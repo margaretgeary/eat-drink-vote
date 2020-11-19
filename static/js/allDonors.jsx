@@ -11,7 +11,7 @@ function Donor({ orgname, totalAmount }) {
                 console.log("Got donor response", donor);
                 setCandidates(donor.donor);
             })
-    }, [isOpen, orgname]) // dependency list (if these change, the function gets called)  
+    }, [isOpen, orgname]) 
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -68,7 +68,7 @@ function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult 
                 console.log("Got industry response", industry);
                 setDonors(industry.industry);
             })
-    }, [isOpen, catcode]) // dependency list (if these change, the function gets called)
+    }, [isOpen, catcode]) 
     const sortedDonation = donors.total_donated ? Object.entries(donors.total_donated)
         .filter(entry => entry[0].toLowerCase().includes(searchResult))
         .sort(([, amount1], [, amount2]) => amount2 - amount1)
@@ -218,6 +218,7 @@ function CandidateState({ firstlast, state, party, openState, setOpenState }) {
 }
 
 
+
 // make list of bill names and bill texts and loop over that, then makelistof quizzes and loop overthat
 
 function AllStates() {
@@ -273,10 +274,9 @@ function QuizContainer() {
 }
 
 
-function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished }) {
-    // shareMyResult will also be a prop^^
-    const [yesNo, setYesNo] = React.useState(null);
-    const [selectedCompany, setSelectedCompany] = React.useState(null);
+function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, initialYesNo, initialSelectedCompany }) {
+    const [yesNo, setYesNo] = React.useState(initialYesNo);
+    const [selectedCompany, setSelectedCompany] = React.useState(initialSelectedCompany);
     const [answer, setAnswer] = React.useState(null);
 
     React.useEffect(() => {
@@ -331,6 +331,27 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished })
     );
 }
 
+function Result() {
+    let { resultId } = ReactRouterDOM.useParams();
+    const [result, setResult] = React.useState(null);
+    React.useEffect(() => {
+        fetch(`/api/quiz_result/${resultId}`).
+            then((response) => response.json()).
+            then((result) => {
+                console.log("urrrrrrr got result", result)
+                setResult(result.quiz_result);
+            })
+    }, [])
+    if (!result) return <div>Loading...</div>
+    return(
+        <div>
+            <h1>Here are quiz results for **name**:</h1>
+            <h1>{result.results_json['Equality Act'].selectedCompany}</h1>
+        </div>
+    )
+}
+
+
 
 function Home() {
     return(
@@ -379,6 +400,9 @@ function App() {
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/quiz" exact>
                     <QuizContainer />
+                </ReactRouterDOM.Route>
+                <ReactRouterDOM.Route path="/result/:resultId">
+                    <Result />
                 </ReactRouterDOM.Route>
             </ReactRouterDOM.Switch>
         </ReactRouterDOM.BrowserRouter>

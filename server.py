@@ -16,7 +16,8 @@ app.jinja_env.undefined = StrictUndefined
 @app.route('/industries')
 @app.route('/candidates')
 @app.route('/quiz')
-def get_pages():
+@app.route('/result/<id>')
+def get_pages(id=None):
     """View pages."""
 
     return render_template('campaignfinance.html')
@@ -250,7 +251,7 @@ def get_candidates_by_name(firstlast):
 
 
 @app.route('/api/quiz_result', methods=['POST'])
-def get_quiz_result():
+def get_result_id():
     
     payload = request.get_json();
     results_json = payload["results"];
@@ -268,22 +269,16 @@ def get_quiz_result():
     return jsonify({'result_id': result_id})
 
 
-@app.route('api/quiz_result/<result_id>')
+@app.route('/api/quiz_result/<result_id>')
 def get_quiz_by_result_id(result_id):
-    results = (db.session.query(Result.result_id, Result.full_name, Result.results_json).
-        filter(Result.result_id == result_id).distinct().all())
-    result_list = []
-    for result in results:
-        info = {
-            'result_id': result.result_id,
-            'party': result.full_name,
-            'results_json': result.results_json,
-        }
-        if info not in result_list:
-            result_list.append(info)
-    return jsonify({'state': {
-        'candidates': candidate_list,
-    }})
+    result = (db.session.query(Result.result_id, Result.full_name, Result.results_json).
+        filter(Result.result_id == result_id).first())
+    info = {
+        'result_id': result.result_id,
+        'party': result.full_name,
+        'results_json': result.results_json,
+    }
+    return jsonify({'quiz_result': info})
 
 if __name__ == '__main__':
     connect_to_db(app)

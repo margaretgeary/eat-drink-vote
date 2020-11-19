@@ -240,12 +240,6 @@ function AllStates() {
 }
 
 
-// function shareResults()
-    // const [quizResult, setQuizResult] = React.useState([] or {} depending on what API will return)
-    // function shareMyResult() {
-        // ????
-    // }
-
 function QuizContainer() {
     const [questionNum, setQuestionNum] = React.useState(1);
     function goToNextQuestion() {
@@ -257,10 +251,24 @@ function QuizContainer() {
     }
     console.log("quizResult is", quizResults)
 
+    const [name, setName] = React.useState(null);
+    const [resultId, setResultId] = React.useState(null);
+    function handleSubmit(event) {
+        event.preventDefault();
+        return fetch('/api/quiz_result', {
+            method: 'POST',
+            body: JSON.stringify({results: quizResults, full_name: name}),
+            headers: { 'Content-Type': 'application/json' },
+        }).then(response => response.json())
+            .then(data => console.log(data))
+            .catch((err) => console.log(err))}
+
+
     return (<div>
         {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
         {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
         {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
+        {questionNum >=3 && <button type="button" onClick={handleSubmit}>Share My Quiz Result</button>}
         </div>)
 }
 
@@ -301,7 +309,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished })
     for (const company of companies) {
         companiesContent.push(
             <div>
-                <input type="checkbox" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
+                <input type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
                 <label>{company}</label><br></br>
             </div>
         );

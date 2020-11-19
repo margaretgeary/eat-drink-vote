@@ -250,13 +250,13 @@ def get_candidates_by_name(firstlast):
 
 
 @app.route('/api/quiz_result', methods=['POST'])
-def get_result_id():
+def get_quiz_result():
     
     payload = request.get_json();
-    results_json = payload["result"];
+    results_json = payload["results"];
     full_name = payload["full_name"];
     
-    result = Result(full_name=full_name, results_json=json.loads(results_json))
+    result = Result(full_name=full_name, results_json=results_json)
     db.session.add(result)
     db.session.commit()
 
@@ -268,11 +268,23 @@ def get_result_id():
     return jsonify({'result_id': result_id})
 
 
+@app.route('api/quiz_result/<result_id>')
+def get_quiz_by_result_id(result_id):
+    results = (db.session.query(Result.result_id, Result.full_name, Result.results_json).
+        filter(Result.result_id == result_id).distinct().all())
+    result_list = []
+    for result in results:
+        info = {
+            'result_id': result.result_id,
+            'party': result.full_name,
+            'results_json': result.results_json,
+        }
+        if info not in result_list:
+            result_list.append(info)
+    return jsonify({'state': {
+        'candidates': candidate_list,
+    }})
 
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)
-
-
-# organizations = Organization.query.filter(
-#     Organization.realcode == catcode).distinct(Organization.orgname).all()

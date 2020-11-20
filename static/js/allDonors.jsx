@@ -261,21 +261,26 @@ function QuizContainer() {
             body: JSON.stringify({results: quizResults, full_name: name}),
             headers: { 'Content-Type': 'application/json' },
         }).then(response => response.json())
-            .then(data => console.log(data))
-            .catch((err) => console.log(err))}
-
+            .then(data => {
+                console.log(data);
+                return setResultId(data.result_id);
+                })
+            .catch((err) => console.log(err))
+        }
+        
 
     return (<div>
         {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
         {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
         {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
-        {questionNum > 3 && <form>
+        {questionNum > 3 && <form action="/result/:resultId" method="POST">
             <label>
                 Please enter your name:
-                <input type="text" name="name" />
+                <input type="text" name="name" onChange={(event) => { setName(event.target.value) }}/>
             </label><br></br>
             <button type="button" onClick={handleSubmit}>Share My Quiz Result</button>
         </form>}
+        {resultId && <a href={`/result/${resultId}`}>ur result</a>}
         </div>)
 }
 
@@ -340,24 +345,27 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
 function Result() {
     let { resultId } = ReactRouterDOM.useParams();
     const [result, setResult] = React.useState(null);
+    const [name, setName] = React.useState(null);
     React.useEffect(() => {
         fetch(`/api/quiz_result/${resultId}`).
             then((response) => response.json()).
             then((result) => {
                 console.log("urrrrrrr got result", result)
                 setResult(result.quiz_result);
+                setName(result.quiz_result.full_name);
             })
     }, [])
     if (!result) return <div>Loading...</div>
     return(
         <div>
-            <h1>Here are quiz results for **name**:</h1>
-            <h1>{result.results_json['Equality Act'].selectedCompany}</h1>
+            <h1>Here are {name}'s quiz results:</h1>
+            <h5>#1: Raise the Wage Act</h5>
+            <strong></strong>{result.results_json['Equality Act'].selectedCompany}
         </div>
     )
 }
 
-
+//name should be a state and you can set it using result.name
 
 function Home() {
     return(

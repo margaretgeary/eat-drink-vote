@@ -275,7 +275,7 @@ def get_quiz_by_result_id(result_id):
         filter(Result.result_id == result_id).first())
     info = {
         'result_id': result.result_id,
-        'party': result.full_name,
+        'full_name': result.full_name,
         'results_json': result.results_json,
     }
     return jsonify({'quiz_result': info})

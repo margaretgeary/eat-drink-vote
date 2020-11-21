@@ -17,8 +17,6 @@ function Donor({ orgname, totalAmount }) {
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
                     <h5>{orgname}</h5>
-                    {/* <h5>{`${orgname} gave $${totalAmount.toLocaleString()}`}</h5>  */}
-                    {/* <button type="button">Add Star</button> */}
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
@@ -56,8 +54,8 @@ function Donor({ orgname, totalAmount }) {
 
 function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult }) {
     const [donors, setDonors] = React.useState({}); 
-    // const isOpen = catname==openCatname;
-    const isOpen = true;
+    const isOpen = catname==openCatname;
+    // const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -358,38 +356,70 @@ function Result() {
     if (!result) return <div>Loading...</div>
     return(
         <div>
-            <h1>Here are {name}'s quiz results:</h1>
-            <h5>#1: Raise the Wage Act</h5>
-            <strong></strong>{result.results_json['Equality Act'].selectedCompany}
+            <h1>{name}'s Eat Drink Vote quiz results:</h1>
+            <h3>#1: {result.results_json['Raise the Wage Act'].billName}</h3>
+            <strong>The Issue:</strong><br></br>
+            {result.results_json['Raise the Wage Act'].billText}<br></br>
+            <strong>{name} voted:</strong><br></br>
+            {result.results_json['Raise the Wage Act'].yesNo}<br></br>
+            <strong>{name} likes the brand:</strong><br></br>
+            {result.results_json['Raise the Wage Act'].selectedCompany}<br></br>
+            <strong>The result:</strong><br></br>
+            <h3>#2: {result.results_json['Equality Act'].billName}</h3>
+            <strong>The Issue:</strong><br></br>
+            {result.results_json['Equality Act'].billText}<br></br>
+            <strong>{name} voted:</strong><br></br>
+            {result.results_json['Equality Act'].yesNo}<br></br>
+            <strong>{name} likes the brand:</strong><br></br>
+            {result.results_json['Equality Act'].selectedCompany}<br></br>
+            <strong>The result:</strong><br></br>
+            <h3>#3: {result.results_json['Climate Action Now Act'].billName}</h3>
+            <strong>The Issue:</strong><br></br>
+            {result.results_json['Climate Action Now Act'].billText}<br></br>
+            <strong>{name} voted:</strong><br></br>
+            {result.results_json['Climate Action Now Act'].yesNo}<br></br>
+            <strong>{name} likes the brand:</strong><br></br>
+            {result.results_json['Climate Action Now Act'].selectedCompany}<br></br>
+            <strong>The result:</strong><br></br>
         </div>
     )
 }
 
-//name should be a state and you can set it using result.name
+{/* or try to eat at Black-owned establishments to advance racial equity. Our decisions about what to put on our plates are informed by what issues matter to us. */ }
 
 function Home() {
     return(
-        <h1>Welcome to Campaign Finance App</h1>
+        <React.Fragment>
+            <h3>Welcome to Eat Drink Vote!</h3>
+            <strong>About</strong><br></br>
+            Our food choices are extensions of our identities. We gravitate toward food brands that we know and love, ones that evoke nostalgia and bring comfort. 
+            Our food choices are also reflections of our values. For example, one might try to minimize meat consumption to prioritize animal welfare, or to take action on climate change.
+            As consumers, we strive to balance our health, likings, and values when we make decisions about which to foods to buy.
+            <br></br>
+            But, are our values shared by the food companies that we know, love, and patronize? When we buy our beloved KitKat bar, how is a company like Hershey allocating our money?
+            Food companies, like other big businesses, engage in lobbying practices and funnel tens of thousands of dollars to politicians.
+            OpenSecrets API
+            As consumers, we are entitled to transparency and truth. an understanding of what is really behind the label -- both nutritionally and politically.
+            <h4>Take the Eat Drink Vote Quiz!</h4>
+        </React.Fragment>
     )
 }
-
 
 function NavBar({ searchResult, setSearchResult }) {
     return (
         <div>
             <ReactBootstrap.Navbar bg="dark" variant="dark">
-                <ReactBootstrap.Navbar.Brand href="/">Campaign Finance App</ReactBootstrap.Navbar.Brand>
+                <ReactBootstrap.Navbar.Brand href="/">Eat Drink Vote</ReactBootstrap.Navbar.Brand>
                 <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
                     <ReactBootstrap.Nav className="mr-auto">
-                        <ReactRouterDOM.Link to="/home" className="nav-link" >Home</ReactRouterDOM.Link>
+                        {/* <ReactRouterDOM.Link to="/home" className="nav-link" >Home</ReactRouterDOM.Link> */}
                         <ReactRouterDOM.Link to="/quiz" className="nav-link" >Take the Quiz</ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/industries" className="nav-link" >Browse Companies</ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/candidates" className="nav-link" >Browse Candidates</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
                         <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" /> 
-                        {/* <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
                     </ReactBootstrap.Form>
                 </ReactBootstrap.Navbar.Collapse>
             </ReactBootstrap.Navbar>
@@ -403,7 +433,9 @@ function App() {
         <ReactRouterDOM.BrowserRouter>
             <NavBar searchResult={searchResult} setSearchResult={setSearchResult} /> 
             <ReactRouterDOM.Switch>
-                <ReactRouterDOM.Route path="/home" exact>
+                {/* updates here vv */}
+                <ReactRouterDOM.Route path="/" exact>
+                {/* updates here ^^ */}
                     <Home />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/industries" exact>

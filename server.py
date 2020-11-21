@@ -13,8 +13,8 @@ app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
 @app.route('/about')
-@app.route('/industries')
-@app.route('/candidates')
+@app.route('/companies')
+@app.route('/politicians')
 @app.route('/quiz')
 @app.route('/result/<id>')
 def get_pages(id=None):

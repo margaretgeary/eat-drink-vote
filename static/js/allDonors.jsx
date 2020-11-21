@@ -117,7 +117,13 @@ function AllIndustries({ searchResult }) {
     for (const industry of industries) {
         content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult}/>);
     }
-    return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
+    return (
+        <React.Fragment>
+        <h3>Browse Companies</h3>
+        Select a food industry to get started, then select a company to uncover which political parties and candidates they financed.
+        <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
+        </React.Fragment>
+    )
 }
 
 
@@ -235,7 +241,13 @@ function AllStates() {
             openState={openState}
             setOpenState={setOpenState} />);
     }
-    return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
+    return (
+        <React.Fragment>
+            <h3>Browse Politicians</h3>
+            First select a US state, then select a politician to uncover which food companies financed their campaign.
+            <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
+        </React.Fragment>
+        )
 }
 
 
@@ -325,6 +337,8 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     }
     console.log("Quiz() answer", answer);
     return (
+        <React.Fragment>
+        <h3>Eat Drink Vote Quiz</h3>
         <form onSubmit={handleSubmit}>
             <br></br>
             <p>{billText}</p>
@@ -337,6 +351,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             {answer && yesNo == "No" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
             {answer && yesNo == "Yes" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
         </form>
+        </React.Fragment>
     );
 }
 
@@ -364,7 +379,7 @@ function Result() {
             {result.results_json['Raise the Wage Act'].yesNo}<br></br>
             <strong>{name} likes the brand:</strong><br></br>
             {result.results_json['Raise the Wage Act'].selectedCompany}<br></br>
-            <strong>The result:</strong><br></br>
+            <strong>The result:</strong><br></br><br></br>
             <h3>#2: {result.results_json['Equality Act'].billName}</h3>
             <strong>The Issue:</strong><br></br>
             {result.results_json['Equality Act'].billText}<br></br>
@@ -372,7 +387,7 @@ function Result() {
             {result.results_json['Equality Act'].yesNo}<br></br>
             <strong>{name} likes the brand:</strong><br></br>
             {result.results_json['Equality Act'].selectedCompany}<br></br>
-            <strong>The result:</strong><br></br>
+            <strong>The result:</strong><br></br><br></br>
             <h3>#3: {result.results_json['Climate Action Now Act'].billName}</h3>
             <strong>The Issue:</strong><br></br>
             {result.results_json['Climate Action Now Act'].billText}<br></br>
@@ -391,16 +406,25 @@ function Home() {
     return(
         <React.Fragment>
             <h3>Welcome to Eat Drink Vote!</h3>
-            <strong>About</strong><br></br>
-            Our food choices are extensions of our identities. We gravitate toward food brands that we know and love, ones that evoke nostalgia and bring comfort. 
-            Our food choices are also reflections of our values. For example, one might try to minimize meat consumption to prioritize animal welfare, or to take action on climate change.
-            As consumers, we strive to balance our health, likings, and values when we make decisions about which to foods to buy.
-            <br></br>
-            But, are our values shared by the food companies that we know, love, and patronize? When we buy our beloved KitKat bar, how is a company like Hershey allocating our money?
-            Food companies, like other big businesses, engage in lobbying practices and funnel tens of thousands of dollars to politicians.
-            OpenSecrets API
-            As consumers, we are entitled to transparency and truth. an understanding of what is really behind the label -- both nutritionally and politically.
-            <h4>Take the Eat Drink Vote Quiz!</h4>
+            <p>The Eat Drink Vote app uncovers how big food companies take political stances and use money to shape the policies that matter to us.</p>
+            <p>Our mission is to satisfy you appetite for transparency -- we want you to know what's really behind the food label.</p>
+            <p>Do you align politically with the food companies you know and love?</p>
+            <h4>Take the Quiz!</h4>
+        </React.Fragment>
+    )
+}
+
+function About() {
+    return (
+        <React.Fragment>
+            <h3>About</h3>
+            <p>Our food choices are extensions of our identities. We gravitate toward food brands that we know and love, ones that evoke nostalgia and bring comfort.</p>
+            <p>Our food choices are also reflections of our values. For example, one might try to minimize meat consumption to prioritize animal welfare or to take action on climate change.</p>
+            <p>As consumers, we strive to balance our health, likings, and values when we make decisions about what to put on our table.</p>
+            <p>But, are our values shared by the food companies that we know, love, and patronize? When we buy our beloved KitKat bar, how is a company like Hershey allocating our money?</p>
+            <p>Food companies, like other big businesses, engage in lobbying and funnel tens of thousands of dollars to politicians who shape the policies that regulate their industry.</p>
+            <p>When big food companies use money to influence government agencies, this can be a detriment to public health, the environment, and human rights -- and can grossly misalign with our values.</p>
+            <p>As consumers, we are entitled to transparency and truth -- the Eat Drink Vote app will help you make sense of what is really behind the food label -- both nutritionally and politically.</p>
         </React.Fragment>
     )
 }
@@ -413,10 +437,10 @@ function NavBar({ searchResult, setSearchResult }) {
                 <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
                     <ReactBootstrap.Nav className="mr-auto">
-                        {/* <ReactRouterDOM.Link to="/home" className="nav-link" >Home</ReactRouterDOM.Link> */}
+                        <ReactRouterDOM.Link to="/about" className="nav-link" >About</ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/quiz" className="nav-link" >Take the Quiz</ReactRouterDOM.Link>
-                        <ReactRouterDOM.Link to="/industries" className="nav-link" >Browse Companies</ReactRouterDOM.Link>
-                        <ReactRouterDOM.Link to="/candidates" className="nav-link" >Browse Candidates</ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/companies" className="nav-link" >Browse Companies</ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/politicians" className="nav-link" >Browse Politicians</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
                         <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" /> 
@@ -433,19 +457,20 @@ function App() {
         <ReactRouterDOM.BrowserRouter>
             <NavBar searchResult={searchResult} setSearchResult={setSearchResult} /> 
             <ReactRouterDOM.Switch>
-                {/* updates here vv */}
                 <ReactRouterDOM.Route path="/" exact>
-                {/* updates here ^^ */}
                     <Home />
                 </ReactRouterDOM.Route>
-                <ReactRouterDOM.Route path="/industries" exact>
+                <ReactRouterDOM.Route path="/companies" exact>
                     <AllIndustries searchResult={searchResult} />
                 </ReactRouterDOM.Route>
-                <ReactRouterDOM.Route path="/candidates" exact>
+                <ReactRouterDOM.Route path="/politicians" exact>
                     <AllStates />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/quiz" exact>
                     <QuizContainer />
+                </ReactRouterDOM.Route>
+                <ReactRouterDOM.Route path="/about" exact>
+                    <About />
                 </ReactRouterDOM.Route>
                 <ReactRouterDOM.Route path="/result/:resultId">
                     <Result />

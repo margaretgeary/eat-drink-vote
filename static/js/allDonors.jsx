@@ -179,10 +179,9 @@ function Candidate({ firstlast, state, party }) {
 
 
 function CandidateState({ firstlast, state, party, openState, setOpenState }) {
-
     const [candidates, setCandidates] = React.useState({});
-    // const isOpen = state == openState;
-    const isOpen = true;
+    const isOpen = state == openState;
+    // const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -279,7 +278,10 @@ function QuizContainer() {
         }
         
 
-    return (<div>
+    return (
+        <React.Fragment>
+            <h3>Eat Drink Vote Quiz</h3>
+        <div>
         {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
         {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
         {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
@@ -288,10 +290,12 @@ function QuizContainer() {
                 Please enter your name:
                 <input type="text" name="name" onChange={(event) => { setName(event.target.value) }}/>
             </label><br></br>
-            <button type="button" onClick={handleSubmit}>Share My Quiz Result</button>
+            <button type="button" onClick={handleSubmit}>Want to save and share your result? Click for a link</button>
         </form>}
-        {resultId && <a href={`/result/${resultId}`}>ur result</a>}
-        </div>)
+        {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>}
+        </div>
+        </React.Fragment>
+        )
 }
 
 
@@ -338,7 +342,6 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     console.log("Quiz() answer", answer);
     return (
         <React.Fragment>
-        <h3>Eat Drink Vote Quiz</h3>
         <form onSubmit={handleSubmit}>
             <br></br>
             <p>{billText}</p>
@@ -405,10 +408,10 @@ function Result() {
 function Home() {
     return(
         <React.Fragment>
-            <h3>Welcome to Eat Drink Vote!</h3>
-            <p>The Eat Drink Vote app uncovers how big food companies take political stances and use money to shape the policies that matter to us.</p>
-            <p>Our mission is to satisfy you appetite for transparency -- we want you to know what's really behind the food label.</p>
-            <p>Do you align politically with the food companies you know and love?</p>
+            <h3 class="title-h">Eat Drink Vote</h3>
+            <p class="title-p">Uncover how big food companies take political stances and engage in corporate lobbying.</p>
+            <p class="title-p">Satisfy you appetite for transparency and know what's really behind the food label.</p>
+            <p class="title-p">Do you align politically with the food companies you know and love?</p>
             <h4>Take the Quiz!</h4>
         </React.Fragment>
     )

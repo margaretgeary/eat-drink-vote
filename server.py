@@ -228,7 +228,7 @@ def get_candidates_by_name(firstlast):
                   join(Organization, Organization.recip_id == Candidate.cid).
                   join(Industry, Organization.realcode == Industry.catcode).
                   filter(Candidate.firstlast == firstlast).
-                #   filter(Industry.catname.in_(catname_list)).
+                  filter(Industry.catname.in_(catname_list)).
                   distinct().order_by(Candidate.firstlast).all())
     organization_list = []
     for candidate in candidates:

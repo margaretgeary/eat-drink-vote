@@ -339,20 +339,19 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     }
     console.log("Quiz() answer", answer);
     return (
-        <React.Fragment>
         <form onSubmit={handleSubmit}>
-            <br></br>
-            <p>{billText}</p>
-            <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo("No")} />
-                <label>Yes</label><br></br>
-            <input type="radio" name="vote" value="No" onChange={(e) => setYesNo("Yes")} />
-                <label>No</label> <br></br><br></br>
-            <p>Next, choose which of these brands you like:</p>
-            {companiesContent}
+        <div class="container">
+            <div class="flex-item"><h5>{billText}</h5>
+                <div class="flex-nested-item"><input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo("No")} /><label>Yes</label></div>
+                <div class="flex-nested-item"><input type="radio" name="vote" value="No" onChange={(e) => setYesNo("Yes")} /><label>No</label></div>
+            </div>
+        </div>
+
+            <h2 class="quiz-question">Next, choose which of these brands you like:</h2>
+                <div class="quiz-answer"> {companiesContent} </div>
             {answer && yesNo == "No" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
             {answer && yesNo == "Yes" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
         </form>
-        </React.Fragment>
     );
 }
 

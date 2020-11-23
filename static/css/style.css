@@ -91,3 +91,27 @@ a.nav-link {
     padding-top: 50px;
     padding-bottom: 20px;
 }
+
+.container { 
+  display: flex;
+  flex-direction: column;
+  padding-left: 1000px;
+  padding-right: 1000px;
+  }
+
+.flex-item {
+  background:white;
+  font-family: 'Noto Sans JP', sans-serif;
+  text-align: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-nested-item {
+    padding-top: 10px;
+    flex-direction: row;
+}

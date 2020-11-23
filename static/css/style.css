@@ -1,0 +1,93 @@
+body {
+    background: url("/static/css/cocacola.jpg");
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 70%;
+}
+
+h3.title-h {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 8rem;
+    text-align: center;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    filter: drop-shadow(.05em .05em  #e63946);
+    padding-top: 100px;
+    padding-bottom: 50px;
+}   
+
+
+p.title-p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: white;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
+    font-size: 16pt;
+    padding-left: 100px;
+    padding-right: 100px;
+}  
+
+a.home-button:link, a.home-button:visited {
+  background-color: #e63946;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 20pt;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a.home-button:hover, a.home-button :active {
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+.button-wrap {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #1d3557;
+    width: 100%;  
+    overflow: auto;
+}
+
+.navbar-dark .navbar-brand {
+    color: white;
+    font-family: 'Pacifico', cursive;
+    filter: drop-shadow(.05em .05em  #e63946);
+    border-radius: 30px;  
+    padding-right: 100px;
+}
+
+a.nav-link {
+  color: white !important;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10pt;
+}
+
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+}
+
+.quiz-head {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 50pt;
+    text-align: center;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    filter: drop-shadow(.05em .05em  #e63946);
+    padding-top: 50px;
+    padding-bottom: 20px;
+}

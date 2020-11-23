@@ -279,9 +279,8 @@ function QuizContainer() {
         
 
     return (
-        <React.Fragment>
-            <h3>Eat Drink Vote Quiz</h3>
         <div>
+            <h3 class="quiz-head">Eat Drink Vote Quiz</h3>
         {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
         {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
         {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
@@ -294,7 +293,6 @@ function QuizContainer() {
         </form>}
         {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>}
         </div>
-        </React.Fragment>
         )
 }
 
@@ -407,13 +405,17 @@ function Result() {
 
 function Home() {
     return(
-        <React.Fragment>
-            <h3 class="title-h">Eat Drink Vote</h3>
-            <p class="title-p">Uncover how big food companies take political stances and engage in corporate lobbying.</p>
-            <p class="title-p">Satisfy you appetite for transparency and know what's really behind the food label.</p>
-            <p class="title-p">Do you align politically with the food companies you know and love?</p>
-            <h4>Take the Quiz!</h4>
-        </React.Fragment>
+        <div class="hero flex-center">
+            <div class="hero-message">
+                <h3 class="title-h">Eat Drink Vote</h3>
+                <p class="title-p">Uncover how big food companies take political stances and engage in corporate lobbying.</p>
+                <p class="title-p">Satisfy you appetite for transparency and learn what's behind the food label.</p>
+                {/* <p class="title-p">Do you agree with the brands you know and love?</p> */}
+                <p class="button-wrap">
+                    <a class="home-button" href="/quiz">Take the quiz</a>
+                </p>
+            </div>
+        </div>
     )
 }
 
@@ -435,7 +437,7 @@ function About() {
 function NavBar({ searchResult, setSearchResult }) {
     return (
         <div>
-            <ReactBootstrap.Navbar bg="dark" variant="dark">
+            <ReactBootstrap.Navbar class="nav" variant="dark">
                 <ReactBootstrap.Navbar.Brand href="/">Eat Drink Vote</ReactBootstrap.Navbar.Brand>
                 <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">

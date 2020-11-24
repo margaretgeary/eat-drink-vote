@@ -272,3 +272,71 @@ button, input {
     height: 40px;
     text-align: center;
 }
+
+.submit-button:link, .submit-button:visited {
+  background-color: #e63946;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+  font-size: 20pt;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 25px;
+}
+
+.submit-button:hover, .submit-button :active {
+  background-color: red;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.results-container { 
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 25px;
+  align-items: center;
+  }
+
+.results-flex-item {
+  background: white;
+  border-radius: 25px;
+  border: 25px black;
+  width: 600px;
+  font-family: 'Noto Sans JP', sans-serif;
+  text-align: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-h {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 20pt;
+    text-align: center;
+    color: black !important;
+    /* filter: drop-shadow(.05em .05em  #e63946) !important; */
+    font-family: 'Pacifico', cursive;
+    padding-bottom: 10px;
+    padding-top: 10pt;
+}
+
+.result-name {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 40pt;
+    text-align: center;
+    color: black !important;
+    font-family: 'Pacifico', cursive;
+    padding-bottom: 10px;
+    padding-top: 10pt;
+}
+

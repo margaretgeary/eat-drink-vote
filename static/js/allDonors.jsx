@@ -297,7 +297,7 @@ function QuizContainer() {
                     <label>
                         <input type="text" placeholder="Your name" name="name" onChange={(event) => { setName(event.target.value) }} />
                     </label>
-                    <button type="button" onClick={handleSubmit}>Submit</button>
+                    <button type="button" class="submit-button" onClick={handleSubmit}>Submit</button>
                     {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>}
                 </div>
             </div>
@@ -365,7 +365,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             </div>
         </div>
         <div class="container">
-            <div class="flex-item"><h5>Which of these brands do you think agreed with you?</h5>
+            <div class="flex-item"><h5>Which of these brands do you think agreed with your vote?</h5>
                 <div class="flex-nested-item">   {companiesContent} </div>
             </div>
         </div>
@@ -400,32 +400,35 @@ function Result() {
     }, [])
     if (!result) return <div>Loading...</div>
     return(
-        <div>
-            <h1>{name}'s Eat Drink Vote quiz results:</h1>
-            <h3>#1: {result.results_json['Raise the Wage Act'].billName}</h3>
-            <strong>The Issue:</strong><br></br>
-            {result.results_json['Raise the Wage Act'].billText}<br></br>
-            <strong>{name} voted:</strong><br></br>
-            {result.results_json['Raise the Wage Act'].yesNo}<br></br>
-            <strong>{name} likes the brand:</strong><br></br>
-            {result.results_json['Raise the Wage Act'].selectedCompany}<br></br>
-            <strong>The result:</strong><br></br><br></br>
-            <h3>#2: {result.results_json['Equality Act'].billName}</h3>
-            <strong>The Issue:</strong><br></br>
-            {result.results_json['Equality Act'].billText}<br></br>
-            <strong>{name} voted:</strong><br></br>
-            {result.results_json['Equality Act'].yesNo}<br></br>
-            <strong>{name} likes the brand:</strong><br></br>
-            {result.results_json['Equality Act'].selectedCompany}<br></br>
-            <strong>The result:</strong><br></br><br></br>
-            <h3>#3: {result.results_json['Climate Action Now Act'].billName}</h3>
-            <strong>The Issue:</strong><br></br>
-            {result.results_json['Climate Action Now Act'].billText}<br></br>
-            <strong>{name} voted:</strong><br></br>
-            {result.results_json['Climate Action Now Act'].yesNo}<br></br>
-            <strong>{name} likes the brand:</strong><br></br>
-            {result.results_json['Climate Action Now Act'].selectedCompany}<br></br>
-            <strong>The result:</strong><br></br>
+        <div class="results-container">
+            <div class="results-flex-item">
+                <p class="result-h"> Quiz Result for:</p>
+                <p class="result-name"> {name}</p>
+                <p class="bill-name">#1: {result.results_json['Raise the Wage Act'].billName}</p>
+                The Issue:
+                {result.results_json['Raise the Wage Act'].billText}
+                {name} voted:
+                {result.results_json['Raise the Wage Act'].yesNo}
+                {name} likes the brand:
+                {result.results_json['Raise the Wage Act'].selectedCompany}
+                The result:
+                <h3>#2: {result.results_json['Equality Act'].billName}</h3>
+                <strong>The Issue:</strong><br></br>
+                {result.results_json['Equality Act'].billText}<br></br>
+                <strong>{name} voted:</strong><br></br>
+                {result.results_json['Equality Act'].yesNo}<br></br>
+                <strong>{name} likes the brand:</strong><br></br>
+                {result.results_json['Equality Act'].selectedCompany}<br></br>
+                <strong>The result:</strong><br></br><br></br>
+                <h3>#3: {result.results_json['Climate Action Now Act'].billName}</h3>
+                <strong>The Issue:</strong><br></br>
+                {result.results_json['Climate Action Now Act'].billText}<br></br>
+                <strong>{name} voted:</strong><br></br>
+                {result.results_json['Climate Action Now Act'].yesNo}<br></br>
+                <strong>{name} likes the brand:</strong><br></br>
+                {result.results_json['Climate Action Now Act'].selectedCompany}<br></br>
+                <strong>The result:</strong><br></br>
+            </div>
         </div>
     )
 }

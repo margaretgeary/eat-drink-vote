@@ -281,17 +281,27 @@ function QuizContainer() {
     return (
         <div>
             <h3 class="quiz-head">Eat Drink Vote Quiz</h3>
-        {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={[<div><img src="/static/css/mcdonalds.png"></img> McDonald's Corp</div>, "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
+            {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={[<div
+                ><img class="brand-img" src="/static/css/mcdonalds.png"></img> McDonald's Corp</div>, 
+                <div><img class="brand-img" src="/static/css/tacobell.jpg"></img> Taco Bell</div>, 
+                <div><img class="brand-img" src="/static/css/pepsi.png"></img> PepsiCo Inc</div>, 
+                <div><img class="brand-img" src="/static/css/dominos.jpg"></img> Domino's Pizza</div>, 
+                "Coca-Cola Co"]} />}
         {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
         {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
         {questionNum > 3 && <form action="/result/:resultId" method="POST">
-            <label>
-                Please enter your name:
-                <input type="text" name="name" onChange={(event) => { setName(event.target.value) }}/>
-            </label><br></br>
-            <button type="button" onClick={handleSubmit}>Want to save and share your result? Click for a link</button>
+            <div class="save-results-container">
+                <div class="save-results-flex">
+                    <div class="done">Surprised by what you learned?</div>
+                    <div class="done-text"> Enter your name to get a personalized, shareable results link:</div>
+                    <label>
+                        <input type="text" placeholder="Your name" name="name" onChange={(event) => { setName(event.target.value) }} />
+                    </label>
+                    <button type="button" onClick={handleSubmit}>Submit</button>
+                    {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>}
+                </div>
+            </div>
         </form>}
-        {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>}
         </div>
         )
 }
@@ -332,7 +342,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     for (const company of companies) {
         companiesContent.push(
             <div class="flex-nested-item">
-                <label><input type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
+                <label><input class="brand-radio" type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
                 {company}</label>
             </div>
         );
@@ -359,8 +369,18 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
                 <div class="flex-nested-item">   {companiesContent} </div>
             </div>
         </div>
-            {answer && yesNo == "No" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
-            {answer && yesNo == "Yes" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
+        <div class="answer-container">
+            {answer && yesNo == "No" && 
+                <div class="answer-flex">
+                    <div class="oh-no">You guessed incorrectly!</div>
+                    <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}.</div></div>}
+        <div class="answer-container">
+            {answer && yesNo == "Yes" && 
+                <div class="answer-flex">
+                    <div class="oh-yes">You're right!</div>
+                    <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}.</div></div>}
+        </div>
+        </div>
         </form>
     );
 }

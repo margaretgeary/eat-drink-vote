@@ -24,7 +24,7 @@ body {
   opacity: 20%;
   border-radius: 25px;
   border: 25px black;
-  width: 700px;
+  width: 600px;
   font-family: 'Noto Sans JP', sans-serif;
   text-align: center;
   display: flex;
@@ -131,7 +131,7 @@ a.nav-link {
   background:white;
   border-radius: 25px;
   border: 25px black;
-  width: 700px;
+  width: 600px;
   font-family: 'Noto Sans JP', sans-serif;
   text-align: center;
   padding-right: 70px;
@@ -148,4 +148,127 @@ a.nav-link {
     border: 25px black;
     border-radius: 25px;
     font-size: 18pt;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+    height: 50px;
+    width: 50px;
+}
+
+
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+
+.answer-container { 
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25px;
+  align-items: center;
+  }
+
+.answer-flex {
+  background:white;
+  border-radius: 25px;
+  border: 25px black;
+  width: 600px;
+  font-family: 'Noto Sans JP', sans-serif;
+  text-align: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.oh-no {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 24pt;
+    text-align: center;
+    color: #e63946 !important;
+    font-family: 'Pacifico', cursive;
+    padding-bottom: 10px;
+}
+
+.oh-yes {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 24pt;
+    text-align: center;
+    color: forestgreen !important;
+    font-family: 'Pacifico', cursive;
+    padding-bottom: 10px;
+}
+
+.answer {
+    font-size: 15pt;
+}
+
+.save-results-container { 
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25px;
+  align-items: center;
+  }
+
+.save-results-flex {
+  background:#457b9d;
+  border-radius: 25px;
+  border: 25px black;
+  width: 600px;
+  font-family: 'Noto Sans JP', sans-serif;
+  text-align: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.done {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 40pt;
+    text-align: center;
+    color: white!important;
+    filter: drop-shadow(.05em .05em  #e63946) !important;
+    font-family: 'Pacifico', cursive;
+    padding-bottom: 10px;
+}
+
+.done-text {
+    color: white;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 18pt;
+    padding-bottom: 15pt;
+}
+
+button, input {
+    overflow: visible;
+    border-color: white;
+    border-radius: 25px;
+    height: 40px;
+    text-align: center;
 }

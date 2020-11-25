@@ -340,3 +340,73 @@ button, input {
     padding-top: 10pt;
 }
 
+.bill-name {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 40pt;
+    text-align: center;
+    color: black !important;
+    font-family: 'Pacifico', cursive;
+    padding-bottom: 10px;
+    padding-top: 10pt;
+}
+
+.browse-container { 
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-bottom: 25px;
+  align-items: center;
+  }
+
+  .browse-flex {
+  background: white;
+  border-radius: 25px;
+  border: 25px black;
+  width: 900px;
+  text-align: center;
+  padding-right: 70px;
+  padding-left: 70px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.browse-companies {
+    padding-top: 20px;
+    font-family: 'Pacifico', cursive;
+    /* filter: drop-shadow(.05em .05em ) !important; */
+    font-size: 50px;
+}
+
+
+.select-company {
+    font-size: 10pt;
+    color: gray;
+    font-style: italic;
+    padding-left: 100pt;
+    padding-right: 100pt;
+    padding-bottom: 5pt;
+}
+
+.accordion>.card>.card-header {
+    border-radius: 25px;
+    margin-bottom: -1px;
+    background-color: black;
+    border-radius: 25px;
+}
+
+.btn-primary {
+    color: white !important;
+    background-color: black !important;
+    border-color: black !important;
+    border-radius: 20px !important;
+    font-size: 30px !important;
+    font-family: 'Noto Sans JP', sans-serif !important;
+}
+
+div:focus {
+    background-color:red !important;
+}

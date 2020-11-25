@@ -16,7 +16,7 @@ function Donor({ orgname, totalAmount }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
-                    <h5>{orgname}</h5>
+                    <h5 class ="orgname">{orgname}</h5>
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
@@ -79,6 +79,7 @@ function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult 
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Button 
+                    class="btn-primary"
                     onClick={() => setOpenCatname(catname) }
                     aria-controls={`collapse-${catcode}`}
                     aria-expanded={isOpen}
@@ -118,11 +119,13 @@ function AllIndustries({ searchResult }) {
         content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult}/>);
     }
     return (
-        <React.Fragment>
-        <h3>Browse Companies</h3>
-        Select a food industry to get started, then select a company to uncover which political parties and candidates they financed.
-        <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
-        </React.Fragment>
+        <div class="browse-container">
+            <div class="browse-flex">
+                <p class="browse-companies" >Browse Companies</p>
+                <p class="select-company">Select a food industry to get started, then select a company to uncover which political parties and candidates they financed.</p>
+                <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
+            </div>
+        </div>
     )
 }
 
@@ -281,12 +284,7 @@ function QuizContainer() {
     return (
         <div>
             <h3 class="quiz-head">Eat Drink Vote Quiz</h3>
-            {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={[<div
-                ><img class="brand-img" src="/static/css/mcdonalds.png"></img> McDonald's Corp</div>, 
-                <div><img class="brand-img" src="/static/css/tacobell.jpg"></img> Taco Bell</div>, 
-                <div><img class="brand-img" src="/static/css/pepsi.png"></img> PepsiCo Inc</div>, 
-                <div><img class="brand-img" src="/static/css/dominos.jpg"></img> Domino's Pizza</div>, 
-                "Coca-Cola Co"]} />}
+            {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp","Taco Bell","PepsiCo Inc","Domino's Pizza","Coca-Cola Co"]} />}
         {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
         {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
         {questionNum > 3 && <form action="/result/:resultId" method="POST">
@@ -311,6 +309,14 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     const [yesNo, setYesNo] = React.useState(initialYesNo);
     const [selectedCompany, setSelectedCompany] = React.useState(initialSelectedCompany);
     const [answer, setAnswer] = React.useState(null);
+
+    const companyNameToImage = {
+        "McDonald's Corp": '/static/css/mcdonalds.png',
+        'Taco Bell': '/static/css/tacobell.jpg',
+        'PepsiCo Inc': '/static/css/pepsi.png',
+        "Domino's Pizza": '/static/css/dominos.jpg',
+        "Coca-Cola Co": 'static/css/cocacola.png',
+    }
 
     React.useEffect(() => {
         console.log("Quiz useEffect yesNo", yesNo, "selectedCompany", selectedCompany)
@@ -342,7 +348,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     for (const company of companies) {
         companiesContent.push(
             <div class="flex-nested-item">
-                <label><input class="brand-radio" type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
+                <label><img class="brand-img" src={companyNameToImage[company]}></img><input class="brand-radio" type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
                 {company}</label>
             </div>
         );
@@ -354,12 +360,12 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
                         <label>
-                            <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo("No")} />    Yes
+                            <input type="radio" name="key" value="value" checked onChange={(e) => setYesNo("No")} /><span>Yes</span>
                         </label>
                     </div>
                     <div class="flex-nested-item">
                         <label>
-                            <input type="radio" name="vote" value="No" onChange={(e) => setYesNo("Yes")} />    No
+                            <input type="radio" name="key" value="another-value" onChange={(e) => setYesNo("Yes")} /><span>No</span>
                         </label>
                     </div>
             </div>

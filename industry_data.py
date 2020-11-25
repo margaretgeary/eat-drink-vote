@@ -13,5 +13,3 @@ with open("industry_codes.csv", 'r', encoding='ISO-8859-1') as f:
     cmd = "COPY industries(catcode, catname, catorder, industry, sector, sector_long) FROM STDIN WITH (FORMAT CSV, HEADER FALSE, DELIMITER E'\t');"
     cursor.copy_expert(cmd, f)
     conn.commit()
-
-Industry.query.filter(Industry.catname=='Poultry & eggs')

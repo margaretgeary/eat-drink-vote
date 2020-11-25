@@ -22,20 +22,20 @@ function Donor({ orgname, totalAmount }) {
             {candidates.candidates &&
                 <ReactBootstrap.Accordion.Collapse eventKey={orgname}>
                     <ReactBootstrap.Card.Body>
-                    <p class="orgname-txt"><strong>{orgname}</strong> gave</p>
+                    <p class="orgname-txt">Since 2018, <strong>{orgname}</strong> gave</p>
                         <p class="dems">{candidates.totals.d_perc}% to Democrats</p>
                         <p class="and"> and </p>
                         <p class="reps">{candidates.totals.r_perc}% to Republicans.</p>
                         <div>
-                            <ReactBootstrap.Table striped bordered hover size="sm">
-                                <thead>
+                            <ReactBootstrap.Table class="table" striped bordered hover size="sm">
+                                <thead class="thead">
                                     <tr>
-                                        <td><strong>Amount</strong></td>
-                                        <td><strong>Party-State</strong></td>
-                                        <td><strong>Candidate</strong></td>
+                                        <td class="amount-row"><strong>Amount</strong></td>
+                                        <td class="party-row"><strong>Party-State</strong></td>
+                                        <td class="candidate-row"><strong>Candidate</strong></td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="tbody">
                                 {candidates.candidates.map(candidate => 
                                     <tr key={candidate.firstlast}>
                                         <td>${candidate.total.toLocaleString()}</td>

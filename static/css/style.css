@@ -502,3 +502,32 @@ input[type="radio"]:checked + * {
     font-family: 'Pacifico', cursive !important;
     margin-bottom: 10px;
 }
+
+.table {
+    background-color: white !important;
+    width: 400px !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-color: black !important;
+}
+
+.thead {
+    text-align: left !important;
+}
+
+.tbody {
+    text-align: left !important;
+}
+
+.candidate-row {
+    width: 175px;
+}
+
+.party-row {
+    width: 100px;
+}
+
+.amount-row {
+    width: 100px;
+}

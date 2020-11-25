@@ -40,11 +40,11 @@ catname_list = [
     # "Social Media",
     "Sugar cane & sugar beets",
     # "Telephone utilities",
-    "Tobacco & Tobacco products",
-    "Toiletries & cosmetics",
-    # "Vegetables, fruits and tree nut",
+    # "Tobacco & Tobacco products",
+    # "Toiletries & cosmetics",
+    "Vegetables, fruits and tree nut",
     # "Vendors",
-    # "Wheat, corn, soybeans and cash grain",
+    "Wheat, corn, soybeans and cash grain",
     "Wine & distilled spirits manufacturing"]
 
 

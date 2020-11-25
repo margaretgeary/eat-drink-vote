@@ -403,8 +403,9 @@ button, input {
     background-color: black !important;
     border-color: black !important;
     border-radius: 20px !important;
-    font-size: 40px !important;
+    font-size: 26px !important;
     font-family: 'Noto Sans JP', sans-serif !important;
+    padding-bottom: 10px
 }
 
 /* input[type="radio"] {
@@ -441,6 +442,63 @@ input[type="radio"]:checked + * {
 } */
 
 .orgname {
-    font-family: 'Noto Sans JP' sans-serif;
+    font-family: 'Noto Sans JP' sans-serif !important;
     color: black;
+    font-style: bold;
+}
+
+.card-header {
+    background-color: white;
+}
+
+.orgname-button {
+    font-family: 'Noto Sans JP' sans-serif !important;
+    color: black;
+    font-style: bold;
+}
+
+.btn btn-link {
+    font-family: 'Noto Sans JP' sans-serif !important;
+    color: black;
+    font-style: bold;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    color: black;
+    border-radius: 25px;
+}
+
+.orgname-txt {
+    font-family: 'Noto Sans JP', cursive;
+    font-size: 16px;
+    padding-top: 5px;
+    margin-bottom: 4px;
+}
+
+.card-body {
+    font-family: 'Noto Sans JP', sans-serif !important;
+}
+
+.dems {
+    margin-top: 0;
+    margin-bottom: 0px;
+    font-size: 30px;
+    font-style: bold;
+    color: #0077b6;
+    font-family: 'Pacifico', cursive !important;
+}
+
+.and {
+    margin-bottom: 0px;
+}
+
+.reps {
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-size: 30px;
+    font-style: bold;
+    color:#e63946;
+    font-family: 'Pacifico', cursive !important;
+    margin-bottom: 10px;
 }

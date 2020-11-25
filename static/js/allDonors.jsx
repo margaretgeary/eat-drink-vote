@@ -15,14 +15,17 @@ function Donor({ orgname, totalAmount }) {
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
-                <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
-                    <h5 class ="orgname">{orgname}</h5>
+                <ReactBootstrap.Accordion.Toggle class="orgname-button" as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={orgname}>
+                    <h4 class ="orgname">{orgname}</h4>
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {candidates.candidates &&
                 <ReactBootstrap.Accordion.Collapse eventKey={orgname}>
                     <ReactBootstrap.Card.Body>
-                        <br></br><h5>{orgname} gave {candidates.totals.d_perc}% to Democrats and {candidates.totals.r_perc}% to Republicans.</h5><br></br>
+                    <p class="orgname-txt"><strong>{orgname}</strong> gave</p>
+                        <p class="dems">{candidates.totals.d_perc}% to Democrats</p>
+                        <p class="and"> and </p>
+                        <p class="reps">{candidates.totals.r_perc}% to Republicans.</p>
                         <div>
                             <ReactBootstrap.Table striped bordered hover size="sm">
                                 <thead>
@@ -84,7 +87,7 @@ function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult 
                     aria-controls={`collapse-${catcode}`}
                     aria-expanded={isOpen}
                     >
-                        <h4>{catname}</h4>
+                        <p>{catname}</p>
                 </ReactBootstrap.Button>
             </ReactBootstrap.Card.Header>
             {donors.organizations &&
@@ -122,7 +125,7 @@ function AllIndustries({ searchResult }) {
         <div class="browse-container">
             <div class="browse-flex">
                 <p class="browse-companies" >Browse Companies</p>
-                <p class="select-company">Select a food industry to get started, then select a company to uncover which political parties and candidates they financed.</p>
+                <p class="select-company">Select a food industry to get started, then select a company to uncover which politicians they financed.</p>
                 <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
             </div>
         </div>
@@ -370,15 +373,15 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
                         <div class="radio-item">
-                        <label>
-                            <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo("No")} />    Yes
+                        <label for="rad1" >
+                            <input id="rad1" type="radio" name="rad" onChange={(e) => setYesNo("No")} />    Yes
                         </label>
                     </div>
                     </div>
                     <div class="flex-nested-item">
                     <div class="radio-item">
-                        <label>
-                            <input type="radio" name="vote" value="No" onChange={(e) => setYesNo("Yes")} />    No
+                        <label for="rad2">
+                            <input id="rad2" type="radio" name="rad" onChange={(e) => setYesNo("Yes")} />    No
                         </label>
                     </div>
                     </div>
@@ -481,7 +484,7 @@ function About() {
             <p>As consumers, we strive to balance our health, likings, and values when we make decisions about what to put on our table.</p>
             <p>But, are our values shared by the food companies that we know, love, and patronize? When we buy our beloved KitKat bar, how is a company like Hershey allocating our money?</p>
             <p>Food companies, like other big businesses, engage in lobbying and funnel tens of thousands of dollars to politicians who shape the policies that regulate their industry.</p>
-            <p>When big food companies use money to influence government agencies, this can be a detriment to public health, the environment, and human rights -- and can grossly misalign with our values.</p>
+            <p>When big food companies use money to influence government agencies, this can harm public health, the environment, and human rights -- and can grossly misalign with our values.</p>
             <p>As consumers, we are entitled to transparency and truth -- the Eat Drink Vote app will help you make sense of what is really behind the food label -- both nutritionally and politically.</p>
         </React.Fragment>
     )

@@ -403,10 +403,44 @@ button, input {
     background-color: black !important;
     border-color: black !important;
     border-radius: 20px !important;
-    font-size: 30px !important;
+    font-size: 40px !important;
     font-family: 'Noto Sans JP', sans-serif !important;
 }
 
-div:focus {
-    background-color:red !important;
+/* input[type="radio"] {
+  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+}
+
+input[type="radio"] + *::before {
+  content: "";
+  display: inline-block;
+  vertical-align: bottom;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.3rem;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: gray;
+}
+
+input[type="radio"]:checked + *::before {
+  background: radial-gradient( #e63946 0%, #e63946 40%, transparent 50%, transparent);
+  border-color: #e63946;
+}
+input[type="radio"]:checked + * {
+  background-color: #a8dadc;
+  border-radius: 25px;
+  padding-right: 5px;
+  padding-left: 5px;
+} */
+
+.orgname {
+    font-family: 'Noto Sans JP' sans-serif;
+    color: black;
 }

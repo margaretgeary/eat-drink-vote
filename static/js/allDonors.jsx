@@ -316,6 +316,16 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
         'PepsiCo Inc': '/static/css/pepsi.png',
         "Domino's Pizza": '/static/css/dominos.jpg',
         "Coca-Cola Co": 'static/css/cocacola.png',
+        "Molson Coors Brewing": 'static/css/coors.jpeg',
+        "Target Corp": 'static/css/target.png',
+        "Walmart Inc": 'static/css/walmart.jpg',
+        "Tyson Foods": 'static/css/tyson.png',
+        "Waffle House Inc": 'static/css/waffle.png',
+        "Russell Stover Candies": 'static/css/rsc.png',
+        "Meijer Inc": 'static/css/meijer.png',
+        "Jelly Belly Candy": 'static/css/jelly.jpg',
+        "Trident Seafoods": 'static/css/trident.png',
+        "Starbucks Corp": 'static/css/starbucks.jpg',
     }
 
     React.useEffect(() => {
@@ -359,14 +369,18 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
         <div class="container">
             <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
+                        <div class="radio-item">
                         <label>
-                            <input type="radio" name="key" value="value" checked onChange={(e) => setYesNo("No")} /><span>Yes</span>
+                            <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo("No")} />    Yes
                         </label>
                     </div>
+                    </div>
                     <div class="flex-nested-item">
+                    <div class="radio-item">
                         <label>
-                            <input type="radio" name="key" value="another-value" onChange={(e) => setYesNo("Yes")} /><span>No</span>
+                            <input type="radio" name="vote" value="No" onChange={(e) => setYesNo("Yes")} />    No
                         </label>
+                    </div>
                     </div>
             </div>
         </div>
@@ -379,12 +393,12 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             {answer && yesNo == "No" && 
                 <div class="answer-flex">
                     <div class="oh-no">You guessed incorrectly!</div>
-                    <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}.</div></div>}
+                    <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName} in 2018.</div></div>}
         <div class="answer-container">
             {answer && yesNo == "Yes" && 
                 <div class="answer-flex">
                     <div class="oh-yes">You're right!</div>
-                    <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}.</div></div>}
+                    <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName} in 2018.</div></div>}
         </div>
         </div>
         </form>

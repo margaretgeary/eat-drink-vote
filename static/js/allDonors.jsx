@@ -299,7 +299,10 @@ function QuizContainer() {
                         <input type="text" placeholder="Your name" name="name" onChange={(event) => { setName(event.target.value) }} />
                     </label>
                     <button type="button" class="submit-button" onClick={handleSubmit}>Submit</button>
-                    {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>}
+                    <p class="button-wrap">
+                        {resultId && <a class="home-button" href={`/result/${resultId}`}>Quiz Result for {name}</a>}
+                    </p>
+                    {/* {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>} */}
                 </div>
             </div>
         </form>}
@@ -373,15 +376,15 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
                         <div class="radio-item">
-                        <label for="rad1" >
-                            <input id="rad1" type="radio" name="rad" onChange={(e) => setYesNo("No")} />    Yes
+                        <label>
+                            <input type="radio" onChange={(e) => setYesNo("No")} />    Yes
                         </label>
                     </div>
                     </div>
                     <div class="flex-nested-item">
                     <div class="radio-item">
-                        <label for="rad2">
-                            <input id="rad2" type="radio" name="rad" onChange={(e) => setYesNo("Yes")} />    No
+                        <label>
+                            <input type="radio" onChange={(e) => setYesNo("Yes")} />    No
                         </label>
                     </div>
                     </div>
@@ -504,7 +507,7 @@ function NavBar({ searchResult, setSearchResult }) {
                         <ReactRouterDOM.Link to="/politicians" className="nav-link" >Browse Politicians</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
-                        <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" /> 
+                        <input class="search-bar" value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="  Search" className="mr-sm-2" /> 
                     </ReactBootstrap.Form>
                 </ReactBootstrap.Navbar.Collapse>
             </ReactBootstrap.Navbar>

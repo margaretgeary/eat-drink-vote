@@ -86,6 +86,7 @@ a.home-button:hover, a.home-button :active {
     background-color: #1d3557;
     width: 100%;  
     overflow: auto;
+    height: 50px;
 }
 
 .navbar-dark .navbar-brand {
@@ -273,7 +274,7 @@ button, input {
     text-align: center;
 }
 
-.submit-button:link, .submit-button:visited {
+/* .submit-button:link, .submit-button:visited {
   background-color: #e63946;
   color: white;
   padding: 15px 25px;
@@ -290,7 +291,28 @@ button, input {
   color: white;
   text-align: center;
   border-radius: 25px;
+} */
+
+.submit-button {
+    width: 100px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 15px !important;
+    border-radius: 25px !important;
+    background-color: silver !important;
+    border-color: silver !important;
+    color: white !important;
+    font-family: 'Pacifico', cursive !important;
 }
+}
+
+/* .submit-button:hover, .submit-button :active {
+  background-color: red;
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+
+} */
 
 .results-container { 
   display: flex;
@@ -505,7 +527,7 @@ input[type="radio"]:checked + * {
 
 .table {
     background-color: white !important;
-    width: 400px !important;
+    width: 375px !important;
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -530,4 +552,9 @@ input[type="radio"]:checked + * {
 
 .amount-row {
     width: 100px;
+}
+
+.mr-sm-2 {
+    height: 30px;
+    text-align: left;
 }

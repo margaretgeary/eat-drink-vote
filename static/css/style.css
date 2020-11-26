@@ -498,6 +498,14 @@ input[type="radio"]:checked + * {
     margin-bottom: 4px;
 }
 
+.politician-txt {
+    font-family: 'Noto Sans JP', cursive;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom:10px;
+    margin-bottom: 4px;
+}
+
 .card-body {
     font-family: 'Noto Sans JP', sans-serif !important;
 }

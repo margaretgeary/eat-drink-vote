@@ -11,7 +11,7 @@ function Donor({ orgname, totalAmount }) {
                 console.log("Got donor response", donor);
                 setCandidates(donor.donor);
             })
-    }, [isOpen, orgname])
+    }, [isOpen, orgname]) 
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -35,14 +35,14 @@ function Donor({ orgname, totalAmount }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {candidates.candidates.map(candidate =>
-                                        <tr key={candidate.firstlast}>
-                                            <td>${candidate.total.toLocaleString()}</td>
-                                            <td>{candidate.party}-{candidate.state}</td>
-                                            <td>{candidate.firstlast}</td>
-                                        </tr>
-
-                                    )}
+                                {candidates.candidates.map(candidate => 
+                                    <tr key={candidate.firstlast}>
+                                        <td>${candidate.total.toLocaleString()}</td>
+                                        <td>{candidate.party}-{candidate.state}</td>
+                                        <td>{candidate.firstlast}</td>
+                                    </tr>   
+                            
+                                )}
                                 </tbody>
                             </ReactBootstrap.Table>
                         </div>
@@ -55,7 +55,7 @@ function Donor({ orgname, totalAmount }) {
 
 
 function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult }) {
-    const [donors, setDonors] = React.useState({});
+    const [donors, setDonors] = React.useState({}); 
     // const isOpen = catname==openCatname;
     const isOpen = true;
     React.useEffect(() => {
@@ -68,7 +68,7 @@ function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult 
                 console.log("Got industry response", industry);
                 setDonors(industry.industry);
             })
-    }, [isOpen, catcode])
+    }, [isOpen, catcode]) 
     const sortedDonation = donors.total_donated ? Object.entries(donors.total_donated)
         .filter(entry => entry[0].toLowerCase().includes(searchResult))
         .sort(([, amount1], [, amount2]) => amount2 - amount1)
@@ -76,27 +76,27 @@ function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult 
     if (sortedDonation.length >= 0) {
         return <div></div>;
     }
-
+    
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
-                <ReactBootstrap.Button
-                    onClick={() => setOpenCatname(catname)}
+                <ReactBootstrap.Button 
+                    onClick={() => setOpenCatname(catname) }
                     aria-controls={`collapse-${catcode}`}
                     aria-expanded={isOpen}
-                >
-                    <h4>{catname}</h4>
+                    >
+                        <h4>{catname}</h4>
                 </ReactBootstrap.Button>
             </ReactBootstrap.Card.Header>
             {donors.organizations &&
-                <ReactBootstrap.Collapse in={isOpen}>
+                <ReactBootstrap.Collapse in={isOpen}> 
                     <ReactBootstrap.Card.Body>
-                        {Object.keys(sortedDonation).map(organization => {
+                    {Object.keys(sortedDonation).map(organization => {
 
-                            return (
-                                <Donor key={organization} orgname={organization} totalAmount={sortedDonation[organization]}></Donor>
-                            )
-                        })}
+                        return (
+                            <Donor key={organization} orgname={organization} totalAmount={sortedDonation[organization]}></Donor>
+                        )
+                    })}
                     </ReactBootstrap.Card.Body>
                 </ReactBootstrap.Collapse>
             }
@@ -111,13 +111,13 @@ function AllIndustries({ searchResult }) {
     const [openCatname, setOpenCatname] = React.useState(null)
     React.useEffect(() => {
         fetch('/api/industries').
-            then((response) => response.json()).
-            then((industries) => setIndustries(industries.industries));
+        then((response) => response.json()).
+        then((industries) => setIndustries(industries.industries));
     }, [])
     if (industries.length === 0) return <div>Loading...</div>
     const content = []
     for (const industry of industries) {
-        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult} />);
+        content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult}/>);
     }
     return <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
 }
@@ -157,12 +157,12 @@ function Candidate({ firstlast, state, party }) {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {orgs.orgs.map(org =>
-                                        <tr key={org.orgname}>
-                                            <td>${org.amount.toLocaleString()}</td>
-                                            <td>{org.orgname}</td>
-                                        </tr>
-                                    )}
+                                {orgs.orgs.map(org => 
+                                    <tr key={org.orgname}>
+                                        <td>${org.amount.toLocaleString()}</td>
+                                        <td>{org.orgname}</td>
+                                    </tr>   
+                                )}
                                 </tbody>
                             </ReactBootstrap.Table>
                         </div>
@@ -177,7 +177,7 @@ function Candidate({ firstlast, state, party }) {
 function CandidateState({ firstlast, state, party, openState, setOpenState }) {
 
     const [candidates, setCandidates] = React.useState({});
-    const isOpen = state == openState;
+    // const isOpen = state == openState;
     const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
@@ -194,8 +194,8 @@ function CandidateState({ firstlast, state, party, openState, setOpenState }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Button
-                    onClick={() => setIsOpen(!isOpen)}
-                    // onClick={() => setOpenState(state)}
+                    // onClick={() => setIsOpen(!isOpen)}
+                    onClick={() => setOpenState(state)}
                     aria-controls={`collapse-${state}`}
                     aria-expanded={isOpen}
                 >
@@ -248,7 +248,7 @@ function QuizContainer() {
     }
     const [quizResults, setQuizResults] = React.useState({});
     function quizFinished(quizResult, billName) {
-        setQuizResults({ [billName]: quizResult, ...quizResults })
+        setQuizResults({[billName]: quizResult, ...quizResults})
     }
     console.log("quizResult is", quizResults)
 
@@ -258,16 +258,16 @@ function QuizContainer() {
         event.preventDefault();
         return fetch('/api/quiz_result', {
             method: 'POST',
-            body: JSON.stringify({ results: quizResults, full_name: name }),
+            body: JSON.stringify({results: quizResults, full_name: name}),
             headers: { 'Content-Type': 'application/json' },
         }).then(response => response.json())
             .then(data => {
                 console.log(data);
                 return setResultId(data.result_id);
-            })
+                })
             .catch((err) => console.log(err))
-    }
-
+        }
+        
 
     return (<div>
         {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp", "Taco Bell", "PepsiCo Inc", "Domino's Pizza", "Coca-Cola Co"]} />}
@@ -276,12 +276,12 @@ function QuizContainer() {
         {questionNum > 3 && <form action="/result/:resultId" method="POST">
             <label>
                 Please enter your name:
-                <input type="text" name="name" onChange={(event) => { setName(event.target.value) }} />
+                <input type="text" name="name" onChange={(event) => { setName(event.target.value) }}/>
             </label><br></br>
             <button type="button" onClick={handleSubmit}>Share My Quiz Result</button>
         </form>}
         {resultId && <a href={`/result/${resultId}`}>ur result</a>}
-    </div>)
+        </div>)
 }
 
 
@@ -308,7 +308,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
                     yesNo: yesNo,
                     selectedCompany: selectedCompany,
                 }
-
+                
                 quizFinished(quizResult, billName);
             })
     }, [yesNo, selectedCompany])
@@ -331,9 +331,9 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <br></br>
             <p>{billText}</p>
             <input type="radio" name="vote" value="Yes" onChange={(e) => setYesNo("No")} />
-            <label>Yes</label><br></br>
+                <label>Yes</label><br></br>
             <input type="radio" name="vote" value="No" onChange={(e) => setYesNo("Yes")} />
-            <label>No</label> <br></br><br></br>
+                <label>No</label> <br></br><br></br>
             <p>Next, choose which of these brands you like:</p>
             {companiesContent}
             {answer && yesNo == "No" && <p>Oh no! You disagreed with {selectedCompany}. They donated ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName}</p>}
@@ -356,7 +356,7 @@ function Result() {
             })
     }, [])
     if (!result) return <div>Loading...</div>
-    return (
+    return(
         <div>
             <h1>Here are {name}'s quiz results:</h1>
             <h5>#1: Raise the Wage Act</h5>
@@ -368,7 +368,7 @@ function Result() {
 //name should be a state and you can set it using result.name
 
 function Home() {
-    return (
+    return(
         <h1>Welcome to Campaign Finance App</h1>
     )
 }
@@ -388,7 +388,7 @@ function NavBar({ searchResult, setSearchResult }) {
                         <ReactRouterDOM.Link to="/candidates" className="nav-link" >Browse Candidates</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
-                        <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" />
+                        <input value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="Search" className="mr-sm-2" /> 
                         {/* <ReactBootstrap.FormControl type="text" placeholder="Search" className="mr-sm-2" /> */}
                     </ReactBootstrap.Form>
                 </ReactBootstrap.Navbar.Collapse>
@@ -401,7 +401,7 @@ function App() {
     const [searchResult, setSearchResult] = React.useState('')
     return (
         <ReactRouterDOM.BrowserRouter>
-            <NavBar searchResult={searchResult} setSearchResult={setSearchResult} />
+            <NavBar searchResult={searchResult} setSearchResult={setSearchResult} /> 
             <ReactRouterDOM.Switch>
                 <ReactRouterDOM.Route path="/home" exact>
                     <Home />

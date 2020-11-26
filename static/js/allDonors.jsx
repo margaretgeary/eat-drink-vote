@@ -151,23 +151,23 @@ function Candidate({ firstlast, state, party }) {
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
-                <ReactBootstrap.Accordion.Toggle as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={firstlast}>
-                    <h5>{firstlast} ({party})</h5>
+                <ReactBootstrap.Accordion.Toggle class="orgname-button" as={ReactBootstrap.Button} onClick={() => { setIsOpen(true) }} variant="link" eventKey={firstlast}>
+                    <h4 class="orgname">{firstlast} ({party})</h4>
                 </ReactBootstrap.Accordion.Toggle>
             </ReactBootstrap.Card.Header>
             {orgs.orgs &&
                 <ReactBootstrap.Accordion.Collapse eventKey={firstlast}>
                     <ReactBootstrap.Card.Body>
-                        <h5>{firstlast} received campaign contributions from:</h5>
+                    <p class="politician-txt">Since 2018, <strong>{firstlast}</strong> received campaign contributions from:</p>
                         <div>
-                            <ReactBootstrap.Table striped bordered hover size="sm">
-                                <thead>
+                            <ReactBootstrap.Table class="table" striped bordered hover size="sm">
+                                <thead class="thead">
                                     <tr>
                                         <td><strong>Company</strong></td>
                                         <td><strong>Amount</strong></td>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="tbody">
                                 {orgs.orgs.map(org => 
                                     <tr key={org.orgname}>
                                         <td>${org.amount.toLocaleString()}</td>
@@ -248,11 +248,13 @@ function AllStates() {
             setOpenState={setOpenState} />);
     }
     return (
-        <React.Fragment>
-            <h3>Browse Politicians</h3>
-            First select a US state, then select a politician to uncover which food companies financed their campaign.
+        <div class="browse-container">
+            <div class="browse-flex">
+                <p class="browse-companies">Browse Politicians</p>
+                <p class="select-company">First select a US state, then select a politician to uncover which companies financed their campaign.</p>
             <ReactBootstrap.Accordion>{content}</ReactBootstrap.Accordion>
-        </React.Fragment>
+            </div>
+        </div>
         )
 }
 

@@ -177,7 +177,7 @@ function Candidate({ firstlast, state, party }) {
 function CandidateState({ firstlast, state, party, openState, setOpenState }) {
 
     const [candidates, setCandidates] = React.useState({});
-    // const isOpen = state == openState;
+    const isOpen = state == openState;
     const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
@@ -194,8 +194,8 @@ function CandidateState({ firstlast, state, party, openState, setOpenState }) {
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
                 <ReactBootstrap.Button
-                    // onClick={() => setIsOpen(!isOpen)}
-                    onClick={() => setOpenState(state)}
+                    onClick={() => setIsOpen(!isOpen)}
+                    // onClick={() => setOpenState(state)}
                     aria-controls={`collapse-${state}`}
                     aria-expanded={isOpen}
                 >

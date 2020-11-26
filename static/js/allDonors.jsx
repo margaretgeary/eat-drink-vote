@@ -57,8 +57,9 @@ function Donor({ orgname, totalAmount }) {
 
 function Industry({ catcode, catname, openCatname, setOpenCatname, searchResult }) {
     const [donors, setDonors] = React.useState({}); 
-    const isOpen = catname==openCatname;
-    // const isOpen = true;
+    // const isOpen = catname==openCatname;
+    // ^^ vv just swap these two if you want to expand all candidates
+    const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -186,8 +187,8 @@ function Candidate({ firstlast, state, party }) {
 
 function CandidateState({ firstlast, state, party, openState, setOpenState }) {
     const [candidates, setCandidates] = React.useState({});
-    const isOpen = state == openState;
-    // const isOpen = true;
+    // const isOpen = state == openState;
+    const isOpen = true;
     React.useEffect(() => {
         if (!isOpen) {
             return;
@@ -507,7 +508,7 @@ function NavBar({ searchResult, setSearchResult }) {
                         <ReactRouterDOM.Link to="/politicians" className="nav-link" >Browse Politicians</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
-                        <input class="search-bar" value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder="  Search" className="mr-sm-2" /> 
+                        <input class="search-bar" value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder=" Search" className="mr-sm-2" /> 
                     </ReactBootstrap.Form>
                 </ReactBootstrap.Navbar.Collapse>
             </ReactBootstrap.Navbar>

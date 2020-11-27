@@ -1,15 +1,18 @@
 body {
-    background: url("/static/css/cocacola.jpg");
-    height: 100vh;
+    background: linear-gradient(
+      rgba(179, 35, 35, 0.6),
+      rgba(32, 61, 158, 0.6)
+    ),url("/static/css/cocacola.jpg");
+    /* height: 100vh;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     background-size: cover;
     background-position: 50% 70%;
     background-attachment: fixed;
 }
 
 
-.hero-flex-center {
+/* .hero-flex-center {
     display: flex;
     justify-content: center;
     padding-right: 70px;
@@ -30,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
+} */
 
 h3.title-h {
     margin-bottom: .5rem;
@@ -40,7 +43,7 @@ h3.title-h {
     text-align: center;
     color: white !important;
     font-family: 'Pacifico', cursive;
-    filter: drop-shadow(.05em .05em  #e63946) !important;
+    filter: drop-shadow(.05em .05em #e63946) !important;
     padding-top: 100px;
     padding-bottom: 50px;
 }   
@@ -83,10 +86,10 @@ a.home-button:hover, a.home-button :active {
 }
 
 .navbar {
-    background-color: #1d3557;
+    background-color: black;
     width: 100%;  
     overflow: auto;
-    height: 50px;
+    height: 60px;
 }
 
 .navbar-dark .navbar-brand {
@@ -116,7 +119,7 @@ a.nav-link {
     text-align: center;
     color: white;
     font-family: 'Pacifico', cursive;
-    filter: drop-shadow(.05em .05em  #e63946);
+    filter: drop-shadow(.05em .05em black);
     padding-top: 50px;
     padding-bottom: 40px;
 }
@@ -568,3 +571,11 @@ a.candidate-name {
   top: "50%";
   left: "50%";
 }
+
+/* .bar {
+  height: 100em;
+  opacity: 0.5;
+  background: black;
+  /* border-top: 3px solid #ccc;
+  border-bottom: 3px solid #ccc; */
+} */

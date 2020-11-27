@@ -35,17 +35,20 @@ body {
   justify-content: center;
 } */
 
-h3.title-h {
+.title-h {
     margin-bottom: .5rem;
     font-weight: 500;
     line-height: 1.2;
     font-size: 8rem;
-    text-align: center;
+    text-align: left;
     color: white !important;
     font-family: 'Pacifico', cursive;
-    filter: drop-shadow(.05em .05em #e63946) !important;
+    /* filter: drop-shadow(.05em .05em #4175ce) !important; */
+    filter: drop-shadow(.05em .05em black) !important;
     padding-top: 100px;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
+    padding-left: 90px;
+    /* text-shadow: 0 1px 0 black; */
 }   
 
 
@@ -54,17 +57,18 @@ p.title-p {
     margin-bottom: 1rem;
     color: white;
     font-family: 'Noto Sans JP', sans-serif;
-    text-align: center;
+    text-align: left;
     font-size: 16pt;
     padding-left: 100px;
     padding-right: 100px;
+    text-shadow: 0 1px 0 black;
 }  
 
 a.home-button:link, a.home-button:visited {
   background-color: #e63946;
   color: white;
   padding: 15px 25px;
-  text-align: center;
+  text-align: left;
   font-family: 'Pacifico', cursive;
   font-size: 20pt;
   text-decoration: none;
@@ -75,14 +79,15 @@ a.home-button:link, a.home-button:visited {
 a.home-button:hover, a.home-button :active {
   background-color: red;
   color: white;
-  text-align: center;
+  text-align: left;
   border-radius: 25px;
 
 }
 
 .button-wrap {
-    padding-top: 50px;
-    text-align: center;
+    padding-top: 70px;
+    text-align: left;
+    padding-left: 100px;
 }
 
 .navbar {
@@ -236,7 +241,7 @@ img {
   }
 
 .save-results-flex {
-  background:#457b9d;
+  background: black;
   border-radius: 25px;
   border: 25px black;
   width: 600px;
@@ -553,7 +558,7 @@ input[type="radio"]:checked + * {
 
 a.candidate-name {
     text-decoration: underline !important;
-    color: #37627c;
+    color: black;
 }
 
 .result-button-wrap {

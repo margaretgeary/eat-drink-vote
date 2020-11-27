@@ -314,28 +314,35 @@ button, input {
 
 } */
 
-.results-container { 
-  display: flex;
-  flex-direction: column;
-  padding-top: 50px;
-  padding-bottom: 25px;
+.results-parent {
   align-items: center;
+  display: flex;
+  flex-direction: column
+}
+
+.results-container { 
+  display: flex !important;
+  flex-direction: column !important;
+  padding-top: 50px !important;
+  padding-bottom: 25px !important;
+  align-items: center !important;
+  font-family: 'Noto Sans JP', sans-serif;
   }
 
-.results-flex-item {
-  background: white;
-  border-radius: 25px;
-  border: 25px black;
-  width: 600px;
-  font-family: 'Noto Sans JP', sans-serif;
-  text-align: center;
-  padding-right: 70px;
-  padding-left: 70px;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  display: flex;
-  flex-direction: column;
+  .results-flex-item {
+  background: white !important;
+  border-radius: 25px !important;
+  border: 25px black !important;
+  width: 900px !important;
+  text-align: center !important;
+  padding-right: 70px !important;
+  padding-left: 70px !important;
+  padding-top: 25px !important;
+  padding-bottom: 25px !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
+
 
 .result-h {
     margin-bottom: .5rem;
@@ -346,8 +353,7 @@ button, input {
     color: black !important;
     /* filter: drop-shadow(.05em .05em  #e63946) !important; */
     font-family: 'Pacifico', cursive;
-    padding-bottom: 10px;
-    padding-top: 10pt;
+    padding-top: 20pt;
 }
 
 .result-name {
@@ -357,7 +363,7 @@ button, input {
     font-size: 40pt;
     text-align: center;
     color: black !important;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Pacifico', cursive !important;
     padding-bottom: 10px;
     padding-top: 10pt;
 }
@@ -366,12 +372,13 @@ button, input {
     margin-bottom: .5rem;
     font-weight: 500;
     line-height: 1.2;
-    font-size: 40pt;
+    font-size: 20pt;
     text-align: center;
     color: black !important;
-    font-family: 'Pacifico', cursive;
     padding-bottom: 10px;
     padding-top: 10pt;
+    text-align: left;
+    padding-left: 25px;
 }
 
 .browse-container { 
@@ -571,4 +578,14 @@ input[type="radio"]:checked + * {
 a.candidate-name {
     text-decoration: underline !important;
     color: #37627c;
+}
+
+.result-button-wrap {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.issue, .name-voted, .likes-brand, .user-result {
+  text-align: left;
+  padding-left: 25px;
 }

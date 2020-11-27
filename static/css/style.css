@@ -502,7 +502,7 @@ input[type="radio"]:checked + * {
     font-family: 'Noto Sans JP', cursive;
     font-size: 16px;
     padding-top: 5px;
-    padding-bottom:10px;
+    padding-bottom:20px;
     margin-bottom: 4px;
 }
 
@@ -534,6 +534,7 @@ input[type="radio"]:checked + * {
 }
 
 .table {
+    padding-top:10px;
     background-color: white !important;
     width: 375px !important;
     text-align: center !important;
@@ -551,7 +552,7 @@ input[type="radio"]:checked + * {
 }
 
 .candidate-row {
-    width: 175px;
+    width: 190px !important;
 }
 
 .party-row {
@@ -565,4 +566,9 @@ input[type="radio"]:checked + * {
 .mr-sm-2 {
     height: 30px;
     text-align: left;
+}
+
+a.candidate-name {
+    text-decoration: underline !important;
+    color: #37627c;
 }

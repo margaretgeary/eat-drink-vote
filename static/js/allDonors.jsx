@@ -12,6 +12,7 @@ function Donor({ orgname, totalAmount }) {
                 setCandidates(donor.donor);
             })
     }, [isOpen, orgname]) 
+
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -22,7 +23,7 @@ function Donor({ orgname, totalAmount }) {
             {candidates.candidates &&
                 <ReactBootstrap.Accordion.Collapse eventKey={orgname}>
                     <ReactBootstrap.Card.Body>
-                    <p class="orgname-txt">Since 2018, <strong>{orgname}</strong> gave</p>
+                    <p class="orgname-txt">Since 2018, <strong>{orgname}</strong> has given</p>
                         <p class="dems">{candidates.totals.d_perc}% to Democrats</p>
                         <p class="and"> and </p>
                         <p class="reps">{candidates.totals.r_perc}% to Republicans.</p>
@@ -40,7 +41,7 @@ function Donor({ orgname, totalAmount }) {
                                     <tr key={candidate.firstlast}>
                                         <td>${candidate.total.toLocaleString()}</td>
                                         <td>{candidate.party}-{candidate.state}</td>
-                                        <td>{candidate.firstlast}</td>
+                                        <td><a class="candidate-name" href={`http://www.google.com/search?q=${candidate.firstlast}`}>{candidate.firstlast}</a></td>
                                     </tr>   
                             
                                 )}
@@ -148,6 +149,7 @@ function Candidate({ firstlast, state, party }) {
                 setOrgs(candidate.candidate);
             })
     }, [isOpen, firstlast])
+    
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -158,13 +160,13 @@ function Candidate({ firstlast, state, party }) {
             {orgs.orgs &&
                 <ReactBootstrap.Accordion.Collapse eventKey={firstlast}>
                     <ReactBootstrap.Card.Body>
-                    <p class="politician-txt">Since 2018, <strong>{firstlast}</strong> received campaign contributions from:</p>
+                    <p class="politician-txt">Since 2018, <strong>{firstlast}</strong> has received<br></br>campaign contributions from:</p>
                         <div>
                             <ReactBootstrap.Table class="table" striped bordered hover size="sm">
                                 <thead class="thead">
                                     <tr>
-                                        <td><strong>Company</strong></td>
                                         <td><strong>Amount</strong></td>
+                                        <td><strong>Company</strong></td>
                                     </tr>
                                 </thead>
                                 <tbody class="tbody">

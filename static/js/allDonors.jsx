@@ -118,7 +118,10 @@ function AllIndustries({ searchResult }) {
         then((response) => response.json()).
         then((industries) => setIndustries(industries.industries));
     }, [])
-    if (industries.length === 0) return <div>Loading...</div>
+    if (industries.length === 0) return (
+        <div><ReactBootstrap.Spinner class="spinner" animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+        </ReactBootstrap.Spinner></div>)
     const content = []
     for (const industry of industries) {
         content.push(<Industry key={industry.catcode} catcode={industry.catcode} catname={industry.catname} openCatname={openCatname} setOpenCatname={setOpenCatname} searchResult={searchResult}/>);
@@ -241,7 +244,10 @@ function AllStates() {
             then((response) => response.json()).
             then((states) => setStates(states.states));
     }, [])
-    if (states.length === 0) return <div>Loading...</div>
+    if (states.length === 0) return (
+        <div><ReactBootstrap.Spinner class="spinner" animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+        </ReactBootstrap.Spinner></div>)
     const content = []
     for (const state of states) {
         content.push(<CandidateState key={state}

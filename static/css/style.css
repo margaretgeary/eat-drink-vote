@@ -274,25 +274,6 @@ button, input {
     text-align: center;
 }
 
-/* .submit-button:link, .submit-button:visited {
-  background-color: #e63946;
-  color: white;
-  padding: 15px 25px;
-  text-align: center;
-  font-family: 'Pacifico', cursive;
-  font-size: 20pt;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 25px;
-}
-
-.submit-button:hover, .submit-button :active {
-  background-color: red;
-  color: white;
-  text-align: center;
-  border-radius: 25px;
-} */
-
 .submit-button {
     width: 100px !important;
     margin-left: auto !important;
@@ -305,14 +286,6 @@ button, input {
     font-family: 'Pacifico', cursive !important;
 }
 }
-
-/* .submit-button:hover, .submit-button :active {
-  background-color: red;
-  color: white;
-  text-align: center;
-  border-radius: 25px;
-
-} */
 
 .results-parent {
   align-items: center;
@@ -588,4 +561,10 @@ a.candidate-name {
 .issue, .name-voted, .likes-brand, .user-result {
   text-align: left;
   padding-left: 25px;
+}
+
+.spinner {
+  position: "fixed";
+  top: "50%";
+  left: "50%";
 }

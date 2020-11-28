@@ -375,8 +375,10 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     for (const company of companies) {
         companiesContent.push(
             <div class="flex-nested-item">
-                <label><img class="brand-img" src={companyNameToImage[company]}></img><input class="brand-radio" type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
-                {company}</label>
+                <label>
+                    <input class="radio" type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
+                             <img class="brand-img" src={companyNameToImage[company]}></img>{company}
+                </label>
             </div>
         );
     }
@@ -386,18 +388,14 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
         <div class="container">
             <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
-                        <div class="radio-item">
                         <label>
-                            <input type="radio" onChange={(e) => setYesNo("No")} />    Yes
+                            <input type="radio" class="radio" onChange={(e) => setYesNo("No")} />    Yes
                         </label>
-                    </div>
                     </div>
                     <div class="flex-nested-item">
-                    <div class="radio-item">
                         <label>
-                            <input type="radio" onChange={(e) => setYesNo("Yes")} />    No
+                            <input type="radio" class="radio" onChange={(e) => setYesNo("Yes")} />    No
                         </label>
-                    </div>
                     </div>
             </div>
         </div>

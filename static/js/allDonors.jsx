@@ -298,9 +298,11 @@ function QuizContainer() {
     return (
         <div>
             <h3 class="quiz-head">Eat Drink Vote Quiz</h3>
-            {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["McDonald's Corp","Taco Bell","PepsiCo Inc","Domino's Pizza","Coca-Cola Co"]} />}
-        {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Climate Action Now Act" billText="Do you think that the U.S. should remain a participant in the Paris Climate Accord to counter the climate crisis?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
-        {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Equality Act" billText="Should the 1964 law that outlawed race discrimination be updated to include LGBTQ individuals?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />}
+            {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["Domino's Pizza", "McDonald's Corp", "Taco Bell", "Starbucks Corp"]} />}
+            {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={["Land O'Lakes", "Stonyfield Farms", "Leprino Foods", "Tyson Foods"]} />}
+            {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={["PepsiCo Inc", "Coca-Cola Co", "Walmart Inc", "Jelly Belly Candy"]} />}
+            {/* {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should only apply to dairy cheese and not plant-based cheese alternatives?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
+            {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that the federal government should pay billions in subsidies to factory farms and big food & beverage companies?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />} */}
         {questionNum > 3 && <form action="/result/:resultId" method="POST">
             <div class="save-results-container">
                 <div class="save-results-flex">
@@ -343,6 +345,9 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
         "Jelly Belly Candy": 'static/css/jelly.jpg',
         "Trident Seafoods": 'static/css/trident.png',
         "Starbucks Corp": 'static/css/starbucks.jpg',
+        "Leprino Foods": 'static/css/leprino.png',
+        "Land O'Lakes": 'static/css/landolakes.jpeg',
+        "Stonyfield Farms": 'static/css/stonyfield.jpg'
     }
 
     React.useEffect(() => {
@@ -377,7 +382,7 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <div class="flex-nested-item">
                 <label>
                     <input class="radio" type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
-                             <img class="brand-img" src={companyNameToImage[company]}></img>{company}
+                        <img class="brand-img" src={companyNameToImage[company]}></img>   {company}
                 </label>
             </div>
         );
@@ -433,27 +438,30 @@ function Result() {
                 setName(result.quiz_result.full_name);
             })
     }, [])
-    if (!result) return <div>Loading...</div>
+    if (!result) return (
+        <div><ReactBootstrap.Spinner class="spinner" animation="border" role="status">
+            <span className="sr-only">Loading...</span>
+        </ReactBootstrap.Spinner></div>)
     return(
         <div class="results-parent">
         <div class="results-container">
             <div class="results-flex-item">
                 <p class="result-h"> Quiz Result for:</p>
                 <p class="result-name"> {name}</p>
-                <p class="bill-name">#1:  {result.results_json['Raise the Wage Act'].billName}</p>
+                <p class="bill-name">1.  {result.results_json['Raise the Wage Act'].billName}</p>
                 <p class="issue"><strong>The issue:</strong>  {result.results_json['Raise the Wage Act'].billText}</p>
                 <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Raise the Wage Act'].yesNo}</p>
                 <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Raise the Wage Act'].selectedCompany}</p>
                 <p class="user-result"><strong>The result:</strong></p>
-                <p class="bill-name">#2:  {result.results_json['Climate Action Now Act'].billName}</p>
-                <p class="issue"><strong>The issue:</strong>  {result.results_json['Climate Action Now Act'].billText}</p>
-                <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Climate Action Now Act'].yesNo}</p>
-                <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Climate Action Now Act'].selectedCompany}</p>
+                <p class="bill-name">2.  {result.results_json['CURD Act'].billName}</p>
+                <p class="issue"><strong>The issue:</strong>  {result.results_json['CURD Act'].billText}</p>
+                <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['CURD Act'].yesNo}</p>
+                <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['CURD Act'].selectedCompany}</p>
                 <p class="user-result"><strong>The result:</strong></p>
-                <p class="bill-name">#3:  {result.results_json['Equality Act'].billName}</p>
-                <p class="issue"><strong>The issue:</strong>  {result.results_json['Equality Act'].billText}</p>
-                <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Equality Act'].yesNo}</p>
-                <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Equality Act'].selectedCompany}</p>
+                <p class="bill-name">3.  {result.results_json['Agriculture Improvement Act'].billName}</p>
+                <p class="issue"><strong>The issue:</strong>  {result.results_json['Agriculture Improvement Act'].billText}</p>
+                <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Agriculture Improvement Act'].yesNo}</p>
+                <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Agriculture Improvement Act'].selectedCompany}</p>
                 <p class="user-result"><strong>The result:</strong></p>
             </div>
         </div>

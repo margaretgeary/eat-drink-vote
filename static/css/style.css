@@ -74,9 +74,9 @@ a.home-button:hover, a.home-button :active {
 }
 
 .navbar-dark .navbar-brand {
-    color: white;
+    color: white !important;
     font-family: 'Pacifico', cursive;
-    filter: drop-shadow(.05em .05em  #e63946);
+    font-size: 23px !important;
     border-radius: 30px;  
     padding-right: 100px;
 }
@@ -282,7 +282,7 @@ button, input {
     text-align: center;
     color: black !important;
     /* filter: drop-shadow(.05em .05em  #e63946) !important; */
-    font-family: 'Pacifico', cursive;
+    font-family: 'Noto Sans JP', sans-serif;
     padding-top: 20pt;
 }
 
@@ -294,8 +294,8 @@ button, input {
     text-align: center;
     color: black !important;
     font-family: 'Pacifico', cursive !important;
-    padding-bottom: 10px;
-    padding-top: 10pt;
+    padding-bottom: 40px;
+    padding-top: 5px;
 }
 
 .bill-name {

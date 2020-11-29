@@ -506,3 +506,33 @@ input[type="radio"]{
     vertical-align: top !important;
     margin-right: 10px;
 }
+
+.about-h {
+    font-weight: 500;
+    line-height: 1.2;
+    font-size: 50px;
+    text-align: left;
+    color: white !important;
+    font-family: 'Pacifico', cursive;
+    /* filter: drop-shadow(.05em .05em #4175ce) !important; */
+    filter: drop-shadow(.05em .05em black) !important;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    padding-left: 90px;
+    padding-right: 500px !important;
+    /* text-shadow: 0 1px 0 black; */
+}   
+
+
+.about-p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: white;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: left;
+    font-size: 13pt;
+    padding-left: 100px;
+    padding-right: 150px;
+    text-shadow: 0 1px 0 black;
+    padding-bottom: 30px;
+}  

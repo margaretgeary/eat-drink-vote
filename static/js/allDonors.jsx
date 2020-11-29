@@ -41,7 +41,7 @@ function Donor({ orgname, totalAmount }) {
                                     <tr key={candidate.firstlast}>
                                         <td>${candidate.total.toLocaleString()}</td>
                                         <td>{candidate.party}-{candidate.state}</td>
-                                        <td><a class="candidate-name" href={`http://www.google.com/search?q=${candidate.firstlast}`}>{candidate.firstlast}</a></td>
+                                        <td><a class="candidate-name" href={`http://www.google.com/search?q=${candidate.firstlast}&btnI`}>{candidate.firstlast}</a></td>
                                     </tr>   
                             
                                 )}
@@ -269,20 +269,28 @@ function AllStates() {
 
 function QuizContainer() {
     const [questionNum, setQuestionNum] = React.useState(1);
+    // 1 is initial state, setQuestionNum is function for changing state
     function goToNextQuestion() {
         setQuestionNum(questionNum + 1);
+        // function called goToNextQuestion that changes the state to questionNum +1
     }
     const [quizResults, setQuizResults] = React.useState({});
+    // quizResults is empty object, setQuizResult is function for changing state
     function quizFinished(quizResult, billName) {
         setQuizResults({[billName]: quizResult, ...quizResults})
+        // function called quizFinished that sets the quizResults to an object where the key is billName and the value is the quizResult -- do this for all quizResults
     }
     console.log("quizResult is", quizResults)
 
     const [name, setName] = React.useState(null);
+    // initial state for name is null
     const [resultId, setResultId] = React.useState(null);
+    // initial state for resultID is null
     function handleSubmit(event) {
         event.preventDefault();
+        // when the button for submitting results is clicked...
         return fetch('/api/quiz_result', {
+            // posting the quizResults and full_name as a JSON object to the database
             method: 'POST',
             body: JSON.stringify({results: quizResults, full_name: name}),
             headers: { 'Content-Type': 'application/json' },
@@ -291,6 +299,7 @@ function QuizContainer() {
                 console.log(data);
                 return setResultId(data.result_id);
                 })
+                // resultID is set as the number for resultID that you get back from the JSON response, which is autoincremented
             .catch((err) => console.log(err))
         }
         
@@ -301,8 +310,7 @@ function QuizContainer() {
             {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["Domino's Pizza", "McDonald's Corp", "Taco Bell", "Starbucks Corp"]} />}
             {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={["Land O'Lakes", "Stonyfield Farms", "Leprino Foods", "Tyson Foods"]} />}
             {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={["PepsiCo Inc", "Coca-Cola Co", "Walmart Inc", "Jelly Belly Candy"]} />}
-            {/* {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should only apply to dairy cheese and not plant-based cheese alternatives?" companies={["Molson Coors Brewing", "Target Corp", "Walmart Inc", "Tyson Foods", "Waffle House Inc"]} />}
-            {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that the federal government should pay billions in subsidies to factory farms and big food & beverage companies?" companies={["Russell Stover Candies", "Meijer Inc", "Jelly Belly Candy", "Trident Seafoods", "Starbucks Corp"]} />} */}
+            {/* if question number is >= 1 --> pass to Quiz component the props goToNextQuestion and quizFinished. we are also defining here the variables for each question: billName and billText and companies */}
         {questionNum > 3 && <form action="/result/:resultId" method="POST">
             <div class="save-results-container">
                 <div class="save-results-flex">
@@ -315,7 +323,7 @@ function QuizContainer() {
                     <p class="result-button-wrap">
                         {resultId && <a class="home-button" href={`/result/${resultId}`}>Quiz Result for {name}</a>}
                     </p>
-                    {/* {resultId && <a href={`/result/${resultId}`}>Quiz Result for {name}</a>} */}
+                    {/* once we finish the quiz, we can submit our name and post our result to the database. we get back a resultID that we use to make the link */}
                 </div>
             </div>
         </form>}
@@ -323,44 +331,54 @@ function QuizContainer() {
         )
 }
 
+// summary of quizcontainer: this is the component that we use to determine question number, advance to the next question, 
+// determine that the qui is done, post our results to the database, get back a resultID that we give to the user as link
+// we are passing props for goToNextQuestion and quizFinished to quiz component
+
 
 function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, initialYesNo, initialSelectedCompany }) {
     const [yesNo, setYesNo] = React.useState(initialYesNo);
+    // initial state is called initialYesNo -- we will pass this in when we make quiz results page!
     const [selectedCompany, setSelectedCompany] = React.useState(initialSelectedCompany);
+    // initial state is called initialSelectedCompany -- we will pass this in when we make quiz results page
     const [answer, setAnswer] = React.useState(null);
+    // initial state of answer is none --> is set when we get the API response back!
 
     const companyNameToImage = {
         "McDonald's Corp": '/static/css/mcdonalds.png',
         'Taco Bell': '/static/css/tacobell.jpg',
         'PepsiCo Inc': '/static/css/pepsi.png',
         "Domino's Pizza": '/static/css/dominos.jpg',
-        "Coca-Cola Co": 'static/css/cocacola.png',
-        "Molson Coors Brewing": 'static/css/coors.jpeg',
-        "Target Corp": 'static/css/target.png',
-        "Walmart Inc": 'static/css/walmart.jpg',
-        "Tyson Foods": 'static/css/tyson.png',
-        "Waffle House Inc": 'static/css/waffle.png',
-        "Russell Stover Candies": 'static/css/rsc.png',
-        "Meijer Inc": 'static/css/meijer.png',
-        "Jelly Belly Candy": 'static/css/jelly.jpg',
-        "Trident Seafoods": 'static/css/trident.png',
-        "Starbucks Corp": 'static/css/starbucks.jpg',
-        "Leprino Foods": 'static/css/leprino.png',
-        "Land O'Lakes": 'static/css/landolakes.jpeg',
-        "Stonyfield Farms": 'static/css/stonyfield.jpg'
+        "Coca-Cola Co": '/static/css/cocacola.png',
+        "Molson Coors Brewing": '/static/css/coors.jpeg',
+        "Target Corp": '/static/css/target.png',
+        "Walmart Inc": '/static/css/walmart.jpg',
+        "Tyson Foods": '/static/css/tyson.png',
+        "Waffle House Inc": '/static/css/waffle.png',
+        "Russell Stover Candies": '/static/css/rsc.png',
+        "Meijer Inc": '/static/css/meijer.png',
+        "Jelly Belly Candy": '/static/css/jelly.jpg',
+        "Trident Seafoods": '/static/css/trident.png',
+        "Starbucks Corp": '/static/css/starbucks.jpg',
+        "Leprino Foods": '/static/css/leprino.png',
+        "Land O'Lakes": '/static/css/landolakes.jpeg',
+        "Stonyfield Farms": '/static/css/stonyfield.jpg'
     }
+    // company name to image object
 
     React.useEffect(() => {
-        console.log("Quiz useEffect yesNo", yesNo, "selectedCompany", selectedCompany)
         if (!yesNo || !selectedCompany) {
             return;
         }
+        // if yesNo and selectedCompany do not exist yet (if the user has not started the quiz) --> don't do anything just return
         fetch(`/api/answer/${billName}/${yesNo}/${selectedCompany}`).
             then((response) => response.json()).
             then((response) => {
                 console.log("Got answer response", response);
                 setAnswer(response.response);
+                // we get a response back from the API call that has the answer (incl candidate count, vote of company, total donated) --> and we setAnswer to be this response
                 goToNextQuestion();
+                // then we call the goToNextQuestion function to advance the question number and show the next question
 
                 const quizResult = {
                     billName: billName,
@@ -368,25 +386,32 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
                     yesNo: yesNo,
                     selectedCompany: selectedCompany,
                 }
+                // from our API repsonse, quizResult constant is a dictionary with billName, billText, yesNo, selectedCompany
                 
                 quizFinished(quizResult, billName);
+                // once we've gone through all of the question, we call quizFinished (inherited from quizcontainer) sets the quizResults to an object where the key is billName and the value is the quizResult
+                // this component is all about just the quiz questions. we can't call quizFinished here because we need all of the questions to be collected together at the end
             })
     }, [yesNo, selectedCompany])
+    // if yesNo and selectedCompany have changed, re-render the component
 
     function handleSubmit(event) {
         event.preventDefault();
     }
+    // there will be a button
     const companiesContent = []
     for (const company of companies) {
+        // companies is coming from quizContainer --> we hard-coded them for each quiz question
         companiesContent.push(
             <div class="flex-nested-item">
                 <label>
-                    <input class="radio" type="radio" name="brand" value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
+                    <input class="radio" type="radio" name="brand" checked={selectedCompany===company} value={company} onChange={(e) => setSelectedCompany(e.target.value)} />
                         <img class="brand-img" src={companyNameToImage[company]}></img>   {company}
                 </label>
             </div>
         );
     }
+    // into the array companiesContent we are pushing the radio buttons for each company. when a company button is selected, we setSelectedCompany to that company that the user chose.
     console.log("Quiz() answer", answer);
     return (
         <form onSubmit={handleSubmit}>
@@ -394,12 +419,14 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
                         <label>
-                            <input type="radio" class="radio" onChange={(e) => setYesNo("No")} />    Yes
+                            <input type="radio" class="radio" checked={yesNo==="Yes"} onChange={(e) => setYesNo("No")} />    Yes
                         </label>
                     </div>
                     <div class="flex-nested-item">
                         <label>
-                            <input type="radio" class="radio" onChange={(e) => setYesNo("Yes")} />    No
+                            <input type="radio" class="radio" checked={yesNo === "No"} onChange={(e) => setYesNo("Yes")} />    No
+                            {/* when a user selects yes or no, we setYesNo to the opposite of what they said */}
+                            {/* want to show the companies that disagree with you --> why yesno is reversed from user answer */}
                         </label>
                     </div>
             </div>
@@ -411,11 +438,13 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
         </div>
         <div class="answer-container">
             {answer && yesNo == "No" && 
+            // if answer is not null and if yesNo is equal to No, show "you guessed incorrectly" etc.
                 <div class="answer-flex">
                     <div class="oh-no">You guessed incorrectly!</div>
                     <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName} in 2018.</div></div>}
         <div class="answer-container">
             {answer && yesNo == "Yes" && 
+            // if answer is not null and yesNo is equal to Yes, show "you guessed correctly" etc.
                 <div class="answer-flex">
                     <div class="oh-yes">You're right!</div>
                     <div class="answer">{selectedCompany} gave ${answer.total_received.toLocaleString()} to {answer.candidate_count} politicians who voted {yesNo} on the {billName} in 2018.</div></div>}
@@ -425,17 +454,29 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
     );
 }
 
+
+// this is the componet that renders each quiz question individually. it is not responsible for advancing the quiz or indicating the quiz is finished.
+// we are getting an API response with the answer info. then we compare this against what the user said and that dictates what the "you are correct" etc. statement reads
+
+
 function Result() {
     let { resultId } = ReactRouterDOM.useParams();
+    // we will use resultID to define a path to result for that ID --> resultID will be a parameter
     const [result, setResult] = React.useState(null);
+    // initial state of result is null
     const [name, setName] = React.useState(null);
+    // initial state of name is null
+    // states are things that have the potential to change!
     React.useEffect(() => {
         fetch(`/api/quiz_result/${resultId}`).
             then((response) => response.json()).
             then((result) => {
                 console.log("urrrrrrr got result", result)
+                // collect response from API for that resultID (which is a dictionary with key "result" that has values resultID, name, and results_json)
                 setResult(result.quiz_result);
+                // using the API response, setResult to quiz_result from result of API call
                 setName(result.quiz_result.full_name);
+                // do the same as above for name
             })
     }, [])
     if (!result) return (
@@ -448,7 +489,11 @@ function Result() {
             <div class="results-flex-item">
                 <p class="result-h"> Quiz Result for:</p>
                 <p class="result-name"> {name}</p>
-                <p class="bill-name">1.  {result.results_json['Raise the Wage Act'].billName}</p>
+                <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['Raise the Wage Act'].yesNo} initialSelectedCompany={result.results_json['Raise the Wage Act'].selectedCompany} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={[result.results_json['Raise the Wage Act'].selectedCompany]} />
+                <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['CURD Act'].yesNo} initialSelectedCompany={result.results_json['CURD Act'].selectedCompany} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={[result.results_json['CURD Act'].selectedCompany]} />
+                <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['Agriculture Improvement Act'].yesNo} initialSelectedCompany={result.results_json['Agriculture Improvement Act'].selectedCompany} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={[result.results_json['Agriculture Improvement Act'].selectedCompany]} />
+                {/* quiz takes a prop called go to next question that you need to pass in. when you are using a component in another compoent where one of the props is a function, it is best to pass in the function even just with a null value*/}
+                {/* <p class="bill-name">1.  {result.results_json['Raise the Wage Act'].billName}</p>
                 <p class="issue"><strong>The issue:</strong>  {result.results_json['Raise the Wage Act'].billText}</p>
                 <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Raise the Wage Act'].yesNo}</p>
                 <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Raise the Wage Act'].selectedCompany}</p>
@@ -462,10 +507,11 @@ function Result() {
                 <p class="issue"><strong>The issue:</strong>  {result.results_json['Agriculture Improvement Act'].billText}</p>
                 <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Agriculture Improvement Act'].yesNo}</p>
                 <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Agriculture Improvement Act'].selectedCompany}</p>
-                <p class="user-result"><strong>The result:</strong></p>
+                <p class="user-result"><strong>The result:</strong></p> */}
             </div>
         </div>
         </div>
+        // render the results for the specific user/resultID
     )
 }
 
@@ -488,14 +534,17 @@ function Home() {
 function About() {
     return (
         <React.Fragment>
-            <h3>About</h3>
-            <p>Our food choices are extensions of our identities. We gravitate toward food brands that we know and love, ones that evoke nostalgia and bring comfort.</p>
-            <p>Our food choices are also reflections of our values. For example, one might try to minimize meat consumption to prioritize animal welfare or to take action on climate change.</p>
-            <p>As consumers, we strive to balance our health, likings, and values when we make decisions about what to put on our table.</p>
-            <p>But, are our values shared by the food companies that we know, love, and patronize? When we buy our beloved KitKat bar, how is a company like Hershey allocating our money?</p>
-            <p>Food companies, like other big businesses, engage in lobbying and funnel tens of thousands of dollars to politicians who shape the policies that regulate their industry.</p>
-            <p>When big food companies use money to influence government agencies, this can harm public health, the environment, and human rights -- and can grossly misalign with our values.</p>
-            <p>As consumers, we are entitled to transparency and truth -- the Eat Drink Vote app will help you make sense of what is really behind the food label -- both nutritionally and politically.</p>
+            <p class="about-h">About</p>
+            <p class="about-p">
+                <p>Our food choices are extensions of our identities. We gravitate toward food brands that we know and love, ones that evoke nostalgia and bring comfort.</p>
+                <p>Our food choices are also reflections of our values. For example, one might try to minimize meat consumption to prioritize animal welfare or to take action on climate change.</p>
+                <p>As consumers, we strive to balance our health, likings, and values when we make decisions about what to put on our table.</p>
+                <p>But, are our values shared by the food companies that we know, love, and patronize? </p>
+                    {/* When we buy our beloved KitKat bar, how is a company like Hershey allocating our money?</p> */}
+                <p>Food companies, like other big businesses, lobby the politicians who shape the policies that regulate the food industry -- and that may or may not align with our values.</p>
+                {/* <p>When big food companies use money to influence government agencies, this can harm public health, the environment, and human rights -- and can grossly misalign with our values.</p> */}
+                <p>As consumers, we are entitled to transparency and truth. The Eat Drink Vote app will help you make sense of what is really behind the food label -- both nutritionally and politically.</p>
+            </p>
         </React.Fragment>
     )
 }

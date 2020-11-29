@@ -102,7 +102,7 @@ a.nav-link {
     font-family: 'Pacifico', cursive;
     filter: drop-shadow(.05em .05em black);
     padding-top: 50px;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
 }
 
 .container { 
@@ -199,7 +199,7 @@ img {
   padding-right: 70px;
   padding-left: 70px;
   padding-top: 25px;
-  padding-bottom: 25px;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
 }
@@ -257,6 +257,7 @@ button, input {
   padding-bottom: 25px !important;
   align-items: center !important;
   font-family: 'Noto Sans JP', sans-serif;
+  text-align: center;
   }
 
   .results-flex-item {
@@ -271,6 +272,7 @@ button, input {
   padding-bottom: 25px !important;
   display: flex !important;
   flex-direction: column !important;
+  align-items: center;
 }
 
 
@@ -287,15 +289,23 @@ button, input {
 }
 
 .result-name {
-    margin-bottom: .5rem;
+    /* margin-bottom: .5rem; */
     font-weight: 500;
     line-height: 1.2;
     font-size: 40pt;
     text-align: center;
     color: black !important;
     font-family: 'Pacifico', cursive !important;
-    padding-bottom: 40px;
+    padding-bottom: 10px;
     padding-top: 5px;
+}
+
+a.twitter-share-button {
+   background: url('favorites-image.jpg') no-repeat;
+ height: 51px;
+ width: 92px;
+ text-align: center;
+ align-items: center;
 }
 
 .bill-name {
@@ -536,3 +546,21 @@ input[type="radio"]{
     text-shadow: 0 1px 0 black;
     padding-bottom: 30px;
 }  
+
+.why-matter {
+    font-size: 10pt;
+    color: white;
+    font-style: italic;
+    padding-left: 100pt;
+    padding-right: 100pt;
+    padding-bottom: 25px;
+    text-align: center;
+    padding-top: 7px;
+    text-shadow: 0 1px 0 black;
+}
+
+
+.tweet-img {
+  height: 30px;
+  width: 80px;
+}

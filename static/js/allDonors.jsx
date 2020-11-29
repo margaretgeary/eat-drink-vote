@@ -233,9 +233,6 @@ function CandidateState({ firstlast, state, party, openState, setOpenState }) {
 }
 
 
-
-// make list of bill names and bill texts and loop over that, then makelistof quizzes and loop overthat
-
 function AllStates() {
     const [states, setStates] = React.useState([]);
     const [openState, setOpenState] = React.useState(null);
@@ -280,8 +277,6 @@ function QuizContainer() {
         setQuizResults({[billName]: quizResult, ...quizResults})
         // function called quizFinished that sets the quizResults to an object where the key is billName and the value is the quizResult -- do this for all quizResults
     }
-    console.log("quizResult is", quizResults)
-
     const [name, setName] = React.useState(null);
     // initial state for name is null
     const [resultId, setResultId] = React.useState(null);
@@ -307,9 +302,10 @@ function QuizContainer() {
     return (
         <div>
             <h3 class="quiz-head">Eat Drink Vote Quiz</h3>
-            {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["Domino's Pizza", "McDonald's Corp", "Taco Bell", "Starbucks Corp"]} />}
-            {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={["Land O'Lakes", "Stonyfield Farms", "Leprino Foods", "Tyson Foods"]} />}
-            {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={["PepsiCo Inc", "Coca-Cola Co", "Walmart Inc", "Jelly Belly Candy"]} />}
+            <p class="why-matter">Why does it matter? Take a quiz to find out how your values align with those of the big corporations.</p>
+            {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["Domino's Pizza", "McDonald's Corp", "Taco Bell", "Starbucks Corp"]} yesOrNo={["Yes", "No"]} />}
+            {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={["Land O'Lakes", "Stonyfield Farms", "Leprino Foods", "Tyson Foods"]} yesOrNo={["Yes", "No"]} />}
+            {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={["PepsiCo Inc", "Coca-Cola Co", "Walmart Inc", "Jelly Belly Candy"]} yesOrNo={["Yes", "No"]}/>}
             {/* if question number is >= 1 --> pass to Quiz component the props goToNextQuestion and quizFinished. we are also defining here the variables for each question: billName and billText and companies */}
         {questionNum > 3 && <form action="/result/:resultId" method="POST">
             <div class="save-results-container">
@@ -332,7 +328,7 @@ function QuizContainer() {
 }
 
 // summary of quizcontainer: this is the component that we use to determine question number, advance to the next question, 
-// determine that the qui is done, post our results to the database, get back a resultID that we give to the user as link
+// determine that the quiz is done, post our results to the database, get back a resultID that we give to the user as link
 // we are passing props for goToNextQuestion and quizFinished to quiz component
 
 
@@ -419,12 +415,12 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
                         <label>
-                            <input type="radio" class="radio" checked={yesNo==="Yes"} onChange={(e) => setYesNo("No")} />    Yes
+                            <input type="radio" class="radio" checked={yesNo==="No"} value="No" onChange={(e) => setYesNo(e.target.value)} />    Yes
                         </label>
                     </div>
                     <div class="flex-nested-item">
                         <label>
-                            <input type="radio" class="radio" checked={yesNo === "No"} onChange={(e) => setYesNo("Yes")} />    No
+                            <input type="radio" class="radio" checked={yesNo === "Yes"} value="Yes" onChange={(e) => setYesNo(e.target.value)} />    No
                             {/* when a user selects yes or no, we setYesNo to the opposite of what they said */}
                             {/* want to show the companies that disagree with you --> why yesno is reversed from user answer */}
                         </label>
@@ -489,10 +485,15 @@ function Result() {
             <div class="results-flex-item">
                 <p class="result-h"> Quiz Result for:</p>
                 <p class="result-name"> {name}</p>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="I took a quiz on political donation patterns of big food companies -- want to see how I did?" data-hashtags="#campaignfinance #corporatelobbying" data-show-count="false">
+                <img class="tweet-img" src="/static/css/tweet.png"></img>
+                </a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['Raise the Wage Act'].yesNo} initialSelectedCompany={result.results_json['Raise the Wage Act'].selectedCompany} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={[result.results_json['Raise the Wage Act'].selectedCompany]} />
                 <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['CURD Act'].yesNo} initialSelectedCompany={result.results_json['CURD Act'].selectedCompany} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={[result.results_json['CURD Act'].selectedCompany]} />
                 <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['Agriculture Improvement Act'].yesNo} initialSelectedCompany={result.results_json['Agriculture Improvement Act'].selectedCompany} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={[result.results_json['Agriculture Improvement Act'].selectedCompany]} />
                 {/* quiz takes a prop called go to next question that you need to pass in. when you are using a component in another compoent where one of the props is a function, it is best to pass in the function even just with a null value*/}
+                
                 {/* <p class="bill-name">1.  {result.results_json['Raise the Wage Act'].billName}</p>
                 <p class="issue"><strong>The issue:</strong>  {result.results_json['Raise the Wage Act'].billText}</p>
                 <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Raise the Wage Act'].yesNo}</p>
@@ -523,7 +524,7 @@ function Home() {
                 <p class="title-p">Uncover how big food companies take political stances.</p>
                 <p class="title-p">Satisfy you appetite for transparency.</p>
             <p class="button-wrap">
-                 <a class="home-button" href="/quiz">Take the quiz</a>
+                 <a class="home-button" href="/companies">Browse Companies</a>
             </p>
         </div>
         <div class="bar"></div>
@@ -557,10 +558,10 @@ function NavBar({ searchResult, setSearchResult }) {
                 <ReactBootstrap.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <ReactBootstrap.Navbar.Collapse id="basic-navbar-nav">
                     <ReactBootstrap.Nav className="mr-auto">
-                        <ReactRouterDOM.Link to="/about" className="nav-link" >About</ReactRouterDOM.Link>
-                        <ReactRouterDOM.Link to="/quiz" className="nav-link" >Take the Quiz</ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/companies" className="nav-link" >Browse Companies</ReactRouterDOM.Link>
                         <ReactRouterDOM.Link to="/politicians" className="nav-link" >Browse Politicians</ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/quiz" className="nav-link" >Why It Matters Quiz</ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to="/about" className="nav-link" >About</ReactRouterDOM.Link>
                     </ReactBootstrap.Nav>
                     <ReactBootstrap.Form inline>
                         <input class="search-bar" value={searchResult} onChange={event => setSearchResult(event.target.value)} type="text" placeholder=" Search" className="mr-sm-2" /> 

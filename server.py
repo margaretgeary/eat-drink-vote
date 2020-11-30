@@ -199,12 +199,15 @@ def get_candidates_by_statename(state):
     for candidate in candidates:
         info = {
             'firstlast': candidate.firstlast,
-            'party': candidate.party
+            'party': candidate.party,
+            'lastname': candidate.firstlast.split(" ")[-1],
         }
         if info not in candidate_list:
             candidate_list.append(info)
+        all_candidates = sorted(candidate_list,
+            key=lambda i: i['lastname'])
     return jsonify({'state': {
-        'candidates': candidate_list,
+        'candidates': all_candidates,
     }})
 
 

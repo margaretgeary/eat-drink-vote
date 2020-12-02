@@ -310,13 +310,13 @@ function QuizContainer() {
             <h3 class="quiz-head">Eat Drink Vote Quiz</h3>
             <p class="why-matter">Why does it matter? Take a quiz to find out how your values align with those of the big corporations.</p>
             {questionNum >= 1 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={["Domino's Pizza", "McDonald's Corp", "Taco Bell", "Starbucks Corp"]} yesOrNo={["Yes", "No"]} />}
-            {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={["Land O'Lakes", "Stonyfield Farms", "Leprino Foods", "Tyson Foods"]} yesOrNo={["Yes", "No"]} />}
-            {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={["PepsiCo Inc", "Coca-Cola Co", "Walmart Inc", "Jelly Belly Candy"]} yesOrNo={["Yes", "No"]} />}
+            {questionNum >= 2 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={["Land O'Lakes", "Stonyfield Farms", "Leprino Foods", "PepsiCo Inc"]} yesOrNo={["Yes", "No"]} />}
+            {questionNum >= 3 && <Quiz goToNextQuestion={goToNextQuestion} quizFinished={quizFinished} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={["Tyson Foods", "Mountaire Corp", "Coca-Cola Inc", "Molson Coors Brewing"]} yesOrNo={["Yes", "No"]} />}
             {/* if question number is >= 1 --> pass to Quiz component the props goToNextQuestion and quizFinished. we are also defining here the variables for each question: billName and billText and companies */}
             {questionNum > 3 && <form action="/result/:resultId" method="POST">
                 <div class="save-results-container">
                     <div class="save-results-flex">
-                        <div class="done">Surprised by what you learned?</div>
+                        <div class="done">Want to share what you learned?</div>
                         <div class="done-text"> Enter your name to get a personalized, shareable results link:</div>
                         <label>
                             <input type="text" placeholder="Your name" name="name" onChange={(event) => { setName(event.target.value) }} />
@@ -364,7 +364,8 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
         "Starbucks Corp": '/static/css/starbucks.jpg',
         "Leprino Foods": '/static/css/leprino.png',
         "Land O'Lakes": '/static/css/landolakes.jpeg',
-        "Stonyfield Farms": '/static/css/stonyfield.jpg'
+        "Stonyfield Farms": '/static/css/stonyfield.jpg',
+        'Mountaire Corp': '/static/css/mountaire.png'
     }
     // company name to image object
 
@@ -491,10 +492,10 @@ function Result() {
                 <div class="results-flex-item">
                     <p class="result-h"> Quiz Result for:</p>
                     <p class="result-name"> {name}</p>
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="I took a quiz on political donation patterns of big food companies -- want to see how I did?" data-hashtags="#campaignfinance #corporatelobbying" data-show-count="false">
-                        <img class="tweet-img" src="/static/css/tweet.png"></img>
-                    </a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="I took a quiz on political donation patterns of big food companies -- want to see how I did?" data-hashtags="#campaignfinance #corporatelobbying" data-show-count="false">
+                            <img class="tweet-img" src="/static/css/tweet.png"></img>
+                        </a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['Raise the Wage Act'].yesNo} initialSelectedCompany={result.results_json['Raise the Wage Act'].selectedCompany} billName="Raise the Wage Act" billText="Do you think the federal minimum wage should be raised to $15/hr?" companies={[result.results_json['Raise the Wage Act'].selectedCompany]} />
                     <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['CURD Act'].yesNo} initialSelectedCompany={result.results_json['CURD Act'].selectedCompany} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={[result.results_json['CURD Act'].selectedCompany]} />
                     <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['Agriculture Improvement Act'].yesNo} initialSelectedCompany={result.results_json['Agriculture Improvement Act'].selectedCompany} billName="Agriculture Improvement Act" billText="Do you think that there should be a limit on number of federal subsidies for corporate mega-farms?" companies={[result.results_json['Agriculture Improvement Act'].selectedCompany]} />

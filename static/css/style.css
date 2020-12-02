@@ -108,7 +108,7 @@ a.nav-link {
 .container { 
   display: flex;
   flex-direction: column;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   align-items: center;
   }
 
@@ -261,14 +261,14 @@ button, input {
   }
 
   .results-flex-item {
-  background: white !important;
+  /* background: white !important; */
   border-radius: 25px !important;
   border: 25px black !important;
   width: 900px !important;
   text-align: center !important;
   padding-right: 70px !important;
   padding-left: 70px !important;
-  padding-top: 25px !important;
+  /* padding-top: 25px !important; */
   padding-bottom: 25px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -282,10 +282,11 @@ button, input {
     line-height: 1.2;
     font-size: 20pt;
     text-align: center;
-    color: black !important;
+    color: white !important;
+    text-shadow: 0 1px 0 black;
     /* filter: drop-shadow(.05em .05em  #e63946) !important; */
     font-family: 'Noto Sans JP', sans-serif;
-    padding-top: 20pt;
+    padding-top: 10px;
 }
 
 .result-name {
@@ -294,7 +295,8 @@ button, input {
     line-height: 1.2;
     font-size: 40pt;
     text-align: center;
-    color: black !important;
+    color: white !important;
+    filter: drop-shadow(.06em .06em black) !important;
     font-family: 'Pacifico', cursive !important;
     padding-bottom: 10px;
     padding-top: 5px;
@@ -563,4 +565,22 @@ input[type="radio"]{
 .tweet-img {
   height: 30px;
   width: 80px;
+    border-radius: 25px;
+    margin-bottom: 70px !important;
+}
+
+.facebook-img {
+  height: 30px !important;
+  width: 80px !important;
+    border-radius: 25px;
+    margin-bottom: 70px !important;
+}
+
+.search-bar {
+    font-family: 'Noto Sans JP', sans-serif !important;
+}
+
+.social-container {
+    display: flex;
+    flex-direction: row;
 }

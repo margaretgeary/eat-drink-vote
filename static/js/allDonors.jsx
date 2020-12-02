@@ -210,8 +210,6 @@ function CandidateState({ firstlast, state, party, openState, setOpenState, sear
         return <div></div>
     }
     const candidateSearch = candidates.candidates.filter(entry => entry.firstlast.toLowerCase().includes(searchResult));
-    console.log("urrrrrrrrrrrrrrrrrrr candidatesearch is", candidateSearch);
-    console.log("urrrrrrrrrrrrrrrrrrrrrrrrrr candidates.candidates is", candidates.candidates);
     return (
         <ReactBootstrap.Card>
             <ReactBootstrap.Card.Header>
@@ -422,12 +420,12 @@ function Quiz({ billName, billText, companies, goToNextQuestion, quizFinished, i
             <div class="container">
                 <div class="flex-item"><h5>{billText}</h5>
                     <div class="flex-nested-item">
-                        <label>
+                        <label hidden = {initialYesNo && initialYesNo === "Yes"}>
                             <input type="radio" class="radio" checked={yesNo === "No"} value="No" onChange={(e) => setYesNo(e.target.value)} />    Yes
                         </label>
                     </div>
                     <div class="flex-nested-item">
-                        <label>
+                        <label hidden={initialYesNo && initialYesNo === "No"}>
                             <input type="radio" class="radio" checked={yesNo === "Yes"} value="Yes" onChange={(e) => setYesNo(e.target.value)} />    No
                             {/* when a user selects yes or no, we setYesNo to the opposite of what they said */}
                             {/* want to show the companies that disagree with you --> why yesno is reversed from user answer */}

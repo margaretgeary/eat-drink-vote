@@ -38,6 +38,7 @@ p.title-p {
     padding-left: 100px;
     padding-right: 100px;
     text-shadow: 0 1px 0 black;
+        filter: drop-shadow(.05em .05em black) !important;
 }  
 
 a.home-button:link, a.home-button:visited {
@@ -55,6 +56,8 @@ a.home-button:link, a.home-button:visited {
 a.home-button:hover, a.home-button :active {
   background-color: red;
   color: white;
+      text-shadow: 0 1px 0 black;
+        filter: drop-shadow(.05em .05em black) !important;
   text-align: left;
   border-radius: 25px;
 
@@ -284,7 +287,7 @@ button, input {
     text-align: center;
     color: white !important;
     text-shadow: 0 1px 0 black;
-    /* filter: drop-shadow(.05em .05em  #e63946) !important; */
+    filter: drop-shadow(.05em .05em black) !important;
     font-family: 'Noto Sans JP', sans-serif;
     padding-top: 10px;
 }
@@ -578,9 +581,4 @@ input[type="radio"]{
 
 .search-bar {
     font-family: 'Noto Sans JP', sans-serif !important;
-}
-
-.social-container {
-    display: flex;
-    flex-direction: row;
 }

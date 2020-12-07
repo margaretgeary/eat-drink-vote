@@ -89,16 +89,16 @@ Access the live webapp: URRRRRRRRRRRRRRR
 
 #### Browse Companies
 Here, you can view a list of American food companies sorted by industry, select one, and learn which politicians that company has funded since 2018 and see their donation ratio of Democats vs. Republicans. Each politician's name links out to their campaign website.
-![Browse Companies](/static/gif/browsecompanies "Browse Companies")
+![Browse Companies](/static/gif/browsecompanies.gif "Browse Companies")
 #### Browse Politicians
 Here, you can find your US state, see or search for who your representatives are, and learn which food companies donated to them since 2018. Each company's name links out to their corporate website.
-![Browse Politicians](/static/gif/browsepoliticians "Browse Politicians")
+![Browse Politicians](/static/gif/browsepoliticians.gif "Browse Politicians")
 #### Why It Matters Quiz
 Here, you answer questions about where you stand on some key issues, and try to guess which food companies donated to candidates who aligned with you based on aggregations of congressional voting records.
-![Why It Matters Quiz](/static/gif/quiz "Why It Matters Quiz")
+![Why It Matters Quiz](/static/gif/quiz.gif "Why It Matters Quiz")
 #### Save & Share Results
 Once you finish the quiz, you can submit your name to receive a personalized results link to your own webpage so that you can save your quiz results and others can view them.
-![Save & Share Quiz Results](/static/gif/saveresults "Save & Share Quiz Results")
+![Save & Share Quiz Results](/static/gif/saveresults.gif "Save & Share Quiz Results")
 
 ---
 ### <a name="featuresfor2.0"></a> Features for 2.0

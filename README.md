@@ -5,6 +5,8 @@ The objective of Eat Drink Vote was to build a coherent educational tool that ca
 
 In the end, I achieved my goal of making the complicated world of campaign finance, and its intersection with food & beverage, available to a wider audience.
 
+Access the live webapp [here](http://eatdrinkvoteapp.com).
+
 ![Homepage](/static/gif/homepage.gif "Homepage")
 
 ## Contents
@@ -92,7 +94,7 @@ $ python3 server.py
 ```
 ---
 ### Features
-Access the live webapp: URRRRRRRRRRRRRRR
+Access the live webapp: [eatdrinkvoteapp.com](http://eatdrinkvoteapp.com)
 
 #### Browse Companies
 Here, you can view a list of American food companies sorted by industry, select one, and learn which politicians that company has funded since 2018 and see their donation ratio of Democats vs. Republicans. Each politician's name links out to their campaign website.

@@ -500,22 +500,6 @@ function Result() {
                     <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['CURD Act'].yesNo} initialSelectedCompany={result.results_json['CURD Act'].selectedCompany} billName="CURD Act" billText="Do you think that the label 'natural cheese' should apply to plant-based cheese alternatives?" companies={[result.results_json['CURD Act'].selectedCompany]} />
                     <Quiz goToNextQuestion={() => null} quizFinished={() => null} initialYesNo={result.results_json['Agriculture Improvement Act'].yesNo} initialSelectedCompany={result.results_json['Agriculture Improvement Act'].selectedCompany} billName="Agriculture Improvement Act" billText="Do you think there should be a limit on number of federal subsidies for corporate mega-farms?" companies={[result.results_json['Agriculture Improvement Act'].selectedCompany]} />
                     {/* quiz takes a prop called go to next question that you need to pass in. when you are using a component in another compoent where one of the props is a function, it is best to pass in the function even just with a null value*/}
-
-                    {/* <p class="bill-name">1.  {result.results_json['Raise the Wage Act'].billName}</p>
-                <p class="issue"><strong>The issue:</strong>  {result.results_json['Raise the Wage Act'].billText}</p>
-                <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Raise the Wage Act'].yesNo}</p>
-                <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Raise the Wage Act'].selectedCompany}</p>
-                <p class="user-result"><strong>The result:</strong></p>
-                <p class="bill-name">2.  {result.results_json['CURD Act'].billName}</p>
-                <p class="issue"><strong>The issue:</strong>  {result.results_json['CURD Act'].billText}</p>
-                <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['CURD Act'].yesNo}</p>
-                <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['CURD Act'].selectedCompany}</p>
-                <p class="user-result"><strong>The result:</strong></p>
-                <p class="bill-name">3.  {result.results_json['Agriculture Improvement Act'].billName}</p>
-                <p class="issue"><strong>The issue:</strong>  {result.results_json['Agriculture Improvement Act'].billText}</p>
-                <p class="name-voted"><strong>{name} voted:</strong>  {result.results_json['Agriculture Improvement Act'].yesNo}</p>
-                <p class="likes-brand"><strong>{name} guessed:</strong>  {result.results_json['Agriculture Improvement Act'].selectedCompany}</p>
-                <p class="user-result"><strong>The result:</strong></p> */}
                 </div>
             </div>
         </div>
@@ -548,9 +532,7 @@ function About() {
                 <p>Our food choices are also reflections of our values. For example, one might try to minimize meat consumption to prioritize animal welfare or to take action on climate change.</p>
                 <p>As consumers, we strive to balance our health, likings, and values when we make decisions about what to put on our table.</p>
                 <p>But, are our values shared by the food companies that we know, love, and patronize? </p>
-                {/* When we buy our beloved KitKat bar, how is a company like Hershey allocating our money?</p> */}
                 <p>Food companies, like other big businesses, lobby the politicians who shape the policies that regulate the food industry -- and that may or may not align with our values.</p>
-                {/* <p>When big food companies use money to influence government agencies, this can harm public health, the environment, and human rights -- and can grossly misalign with our values.</p> */}
                 <p>As consumers, we are entitled to transparency and truth. The Eat Drink Vote app will help you make sense of what is really behind the food label -- both nutritionally and politically.</p>
             </p>
         </React.Fragment>

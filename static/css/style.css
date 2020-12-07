@@ -3,9 +3,6 @@ body {
       rgba(179, 35, 35, 0.6),
       rgba(32, 61, 158, 0.6)
     ),url("/static/css/cocacola.jpg");
-    /* height: 100vh;
-    background-position: center;
-    background-repeat: no-repeat; */
     background-size: cover;
     background-position: 50% 70%;
     background-attachment: fixed;
@@ -19,12 +16,10 @@ body {
     text-align: left;
     color: white !important;
     font-family: 'Pacifico', cursive;
-    /* filter: drop-shadow(.05em .05em #4175ce) !important; */
     filter: drop-shadow(.05em .05em black) !important;
     padding-top: 100px;
     padding-bottom: 70px;
     padding-left: 90px;
-    /* text-shadow: 0 1px 0 black; */
 }   
 
 
@@ -38,7 +33,7 @@ p.title-p {
     padding-left: 100px;
     padding-right: 100px;
     text-shadow: 0 1px 0 black;
-        filter: drop-shadow(.05em .05em black) !important;
+    filter: drop-shadow(.05em .05em black) !important;
 }  
 
 a.home-button:link, a.home-button:visited {
@@ -54,12 +49,12 @@ a.home-button:link, a.home-button:visited {
 }
 
 a.home-button:hover, a.home-button :active {
-  background-color: red;
-  color: white;
-      text-shadow: 0 1px 0 black;
-        filter: drop-shadow(.05em .05em black) !important;
-  text-align: left;
-  border-radius: 25px;
+    background-color: red;
+    color: white;
+    text-shadow: 0 1px 0 black;
+    filter: drop-shadow(.05em .05em black) !important;
+    text-align: left;
+    border-radius: 25px;
 
 }
 
@@ -307,10 +302,10 @@ button, input {
 
 a.twitter-share-button {
    background: url('favorites-image.jpg') no-repeat;
- height: 51px;
- width: 92px;
- text-align: center;
- align-items: center;
+    height: 51px;
+    width: 92px;
+    text-align: center;
+    align-items: center;
 }
 
 .bill-name {
@@ -351,7 +346,6 @@ a.twitter-share-button {
 .browse-companies {
     padding-top: 20px;
     font-family: 'Pacifico', cursive;
-    /* filter: drop-shadow(.05em .05em ) !important; */
     font-size: 50px;
 }
 
@@ -529,7 +523,6 @@ input[type="radio"]{
     text-align: left;
     color: white !important;
     font-family: 'Pacifico', cursive;
-    /* filter: drop-shadow(.05em .05em #4175ce) !important; */
     filter: drop-shadow(.05em .05em black) !important;
     padding-top: 60px;
     padding-bottom: 20px;

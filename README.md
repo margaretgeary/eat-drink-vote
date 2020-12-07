@@ -5,13 +5,11 @@ The objective of Eat Drink Vote was to build a coherent educational tool that ca
 
 In the end, I achieved my goal of making the complicated world of campaign finance, and its intersection with food & beverage, available to a wider audience.
 
-This project was made at Hackbright Academy over ten weeks from October to December 2020.
-
 ![Homepage](/static/gif/homepage.gif "Homepage")
 
 ## Contents
  - [Technologies](#technologies)
- - [Datasets/APIs] (#apis)
+- [Datasets/APIs](#apis)
  - [Installation](#installation)
  - [Features](#features)
  - [Features for 2.0](#featuresfor2.0)
@@ -27,7 +25,7 @@ This project was made at Hackbright Academy over ten weeks from October to Decem
 * AJAX/JSON
 * React
 * React Router
-* React Bootstrap
+* Bootstrap
 * HTML/CSS
 
 ### <a name="apis"></a> Datasets/APIs

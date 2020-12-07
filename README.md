@@ -45,7 +45,7 @@ To run Eat Drink Vote, you must have installed:
 Download OpenSecrets Campaign Finance Data:
 > This web app uses data from the OpenSecrest campaign fiance bulk database. 
 >The data was parsed with a python algorithm and seeded into a PostgreSQL database.
-> To access the data, create an Open Secrets Bulk Data account,then under the Campaign > Finance Data tab, select 2018 Cycle Tables. Save the file indivs18.txt as a CSV in
+> To access the data, create an Open Secrets Bulk Data account, then under the Campaign Finance Data tab, select 2018 Cycle Tables. Save the file indivs18.txt as a CSV in
 > the main folder of the repo.
 
 [Campaign Finance Data - 2018 Cycle Tables](https://www.opensecrets.org/bulk-data/downloads)

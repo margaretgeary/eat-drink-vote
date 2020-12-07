@@ -1,7 +1,12 @@
 # Eat Drink Vote
 Eat Drink Vote is a full stack web application that uncovers how the food industry plays in the political space by financing politicians -- and what effect this has on our laws.
-The objective of Eat Drink Vote was to build a coherent educational tool that can inform your decisions on what foods to buy based on the issues that matter to you. In the end, I achieved my goal of making the complicated world of campaign finance, and its intersection with food & beverage, available to a wider audience.
+
+The objective of Eat Drink Vote was to build a coherent educational tool that can inform your decisions on what foods to buy based on the issues that matter to you.
+
+In the end, I achieved my goal of making the complicated world of campaign finance, and its intersection with food & beverage, available to a wider audience.
+
 This project was made at Hackbright Academy over ten weeks from October to December 2020.
+
 ![Homepage](/static/gif/homepage.gif "Homepage")
 
 ## Contents
@@ -9,7 +14,7 @@ This project was made at Hackbright Academy over ten weeks from October to Decem
  - [Datasets/APIs] (#apis)
  - [Installation](#installation)
  - [Features](#features)
- - [Features for V2.0](#featuresfor2.0)
+ - [Features for 2.0](#featuresfor2.0)
  - [About the Developer](#aboutthedeveloper)
 
 ### Technologies
@@ -25,18 +30,18 @@ This project was made at Hackbright Academy over ten weeks from October to Decem
 * React Bootstrap
 * HTML/CSS
 
-### Datasets/APIs
-[Federal Elections Commission](https://api.open.fec.gov/developers/) 
-[GovTrack](https://www.govtrack.us/congress/votes)
-[OpenSecrets] (https://www.opensecrets.org/bulk-data)
-[GetLegislators API](https://www.opensecrets.org/open-data/api-documentation)
+### <a name="apis"></a> Datasets/APIs
+* [Federal Elections Commission](https://api.open.fec.gov/developers/) 
+* [GovTrack](https://www.govtrack.us/congress/votes)
+* [OpenSecrets](https://www.opensecrets.org/bulk-data)
+* [GetLegislators API](https://www.opensecrets.org/open-data/api-documentation)
 ---
 ### Installation
 #### Prerequisites
 To run Eat Drink Vote, you must have installed:
  - [PostgreSQL](https://www.postgresql.org/)
  - [Python 3.7](https://www.python.org/downloads/)
- - [API key for OpenSecrets GetLegislators API](https://www.opensecrets.org/api/admin/index.php?function=signup)
+ - [API key for the GetLegislators API](https://www.opensecrets.org/api/admin/index.php?function=signup)
 
  #### Run Eat Drink Vote on your local computer
 Download OpenSecrets Campaign Finance Data:
@@ -44,10 +49,14 @@ Download OpenSecrets Campaign Finance Data:
 >The data was parsed with a python algorithm and seeded into a PostgreSQL database.
 > To access the data, create an Open Secrets Bulk Data account,then under the Campaign > Finance Data tab, select 2018 Cycle Tables. Save the file indivs18.txt as a CSV in
 > the main folder of the repo.
+
 [Campaign Finance Data - 2018 Cycle Tables](https://www.opensecrets.org/bulk-data/downloads)
+
  Clone or fork repository:
-    $ git clone https://github.com/margaretgeary/eat-drink-vote
-    
+ ```
+ $ git clone https://github.com/margaretgeary/eat-drink-vote
+ ```
+
 Create and activate a virtual environment within your Eat Drink Vote directory:
 ```
 $ virtualenv env

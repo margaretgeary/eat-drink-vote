@@ -513,7 +513,7 @@ function Home() {
             <div>
                 <p class="title-h">Eat Drink Vote</p>
                 <p class="title-p">Uncover how big food companies take political stances.</p>
-                <p class="title-p">Satisfy you appetite for transparency.</p>
+                <p class="title-p">Satisfy your appetite for transparency.</p>
                 <p class="button-wrap">
                     <a class="home-button" href="/companies">Browse Companies</a>
                 </p>
